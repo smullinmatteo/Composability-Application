@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ComposedSystem>
+  <UMPs>
+    <UMP name="name1" type="type1" description="description1">
+      <Input name="name1" description="description1" category="category1" type="type1" value="1" unit="unit1" />
+      <Input name="name2" description="description2" category="category2" type="type2" value="-79228162514264337593543950335" unit="unit2" />
+      <Input name="name3" description="description3" category="category3" type="type3" value="79228162514264337593543950335" unit="unit3" />
+      <Output name="name1" description="description1" category="category1" type="type1" value="1" unit="unit1" />
+      <Output name="name2" description="description2" category="category2" type="type2" value="-79228162514264337593543950335" unit="unit2" />
+      <Output name="name3" description="description3" category="category3" type="type3" value="79228162514264337593543950335" unit="unit3" />
+      <Feedback name="name1" description="description1" value="1" unit="unit1" />
+      <Feedback name="name2" description="description2" value="-79228162514264337593543950335" unit="unit2" />
+      <Feedback name="name3" description="description3" value="79228162514264337593543950335" unit="unit3" />
+      <ProductProcessInformation name="name1" description="description1" category="category1" value="1" unit="unit1" />
+      <ProductProcessInformation name="name2" description="description2" category="category2" value="-79228162514264337593543950335" unit="unit2" />
+      <ProductProcessInformation name="name3" description="description3" category="category3" value="79228162514264337593543950335" unit="unit3" />
+      <ResourceInformation name="name1" description="description1" category="category1" value="1" unit="unit1" />
+      <ResourceInformation name="name2" description="description2" category="category2" value="-79228162514264337593543950335" unit="unit2" />
+      <ResourceInformation name="name3" description="description3" category="category3" value="79228162514264337593543950335" unit="unit3" />
+      <Transformation>
+        <Equation category="category1" description="description1" set="set1">Equation1</Equation>
+        <Equation category="category2" description="description2" set="set2">Equation2</Equation>
+        <Equation category="category3" description="description3" set="set3">Equation3</Equation>
+        <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+        <EquationVariables description="description2" category="category2" set="set2" origin="origin2" />
+        <EquationVariables description="description3" category="category3" set="set3" origin="origin3" />
+      </Transformation>
+    </UMP>
+    <UMP name="name2" type="type2" description="description2">
+      <Input name="name4" description="description4" category="category4" type="type4" value="0.9" unit="unit4" />
+      <Input name="name5" description="description5" category="category5" type="type5" value="1.1" unit="unit5" />
+      <Input name="name6" description="description6" category="category6" type="type6" value="-79228162514264337593543950335" unit="unit6" />
+      <Output name="name4" description="description4" category="category4" type="type4" value="0.9" unit="unit4" />
+      <Output name="name5" description="description5" category="category5" type="type5" value="1.1" unit="unit5" />
+      <Output name="name6" description="description6" category="category6" type="type6" value="-79228162514264337593543950335" unit="unit6" />
+      <Feedback name="name4" description="description4" value="0.9" unit="unit4" />
+      <Feedback name="name5" description="description5" value="1.1" unit="unit5" />
+      <Feedback name="name6" description="description6" value="-79228162514264337593543950335" unit="unit6" />
+      <ProductProcessInformation name="name4" description="description4" category="category4" value="0.9" unit="unit4" />
+      <ProductProcessInformation name="name5" description="description5" category="category5" value="1.1" unit="unit5" />
+      <ProductProcessInformation name="name6" description="description6" category="category6" value="-79228162514264337593543950335" unit="unit6" />
+      <ResourceInformation name="name4" description="description4" category="category4" value="0.9" unit="unit4" />
+      <ResourceInformation name="name5" description="description5" category="category5" value="1.1" unit="unit5" />
+      <ResourceInformation name="name6" description="description6" category="category6" value="-79228162514264337593543950335" unit="unit6" />
+      <Transformation>
+        <Equation category="category4" description="description4" set="set4">Equation4</Equation>
+        <Equation category="category5" description="description5" set="set5">Equation5</Equation>
+        <Equation category="category6" description="description6" set="set6">Equation6</Equation>
+        <EquationVariables description="description4" category="category4" set="set4" origin="origin4" />
+        <EquationVariables description="description5" category="category5" set="set5" origin="origin5" />
+        <EquationVariables description="description6" category="category6" set="set6" origin="origin6" />
+      </Transformation>
+    </UMP>
+    <UMP name="name3" type="type3" description="description3">
+      <Input name="name7" description="description7" category="category7" type="type7" value="79228162514264337593543950335" unit="unit7" />
+      <Input name="name8" description="description8" category="category8" type="type8" value="0.8" unit="unit8" />
+      <Input name="name9" description="description9" category="category9" type="type9" value="1.2" unit="unit9" />
+      <Output name="name7" description="description7" category="category7" type="type7" value="79228162514264337593543950335" unit="unit7" />
+      <Output name="name8" description="description8" category="category8" type="type8" value="0.8" unit="unit8" />
+      <Output name="name9" description="description9" category="category9" type="type9" value="1.2" unit="unit9" />
+      <Feedback name="name7" description="description7" value="79228162514264337593543950335" unit="unit7" />
+      <Feedback name="name8" description="description8" value="0.8" unit="unit8" />
+      <Feedback name="name9" description="description9" value="1.2" unit="unit9" />
+      <ProductProcessInformation name="name7" description="description7" category="category7" value="79228162514264337593543950335" unit="unit7" />
+      <ProductProcessInformation name="name8" description="description8" category="category8" value="0.8" unit="unit8" />
+      <ProductProcessInformation name="name9" description="description9" category="category9" value="1.2" unit="unit9" />
+      <ResourceInformation name="name7" description="description7" category="category7" value="79228162514264337593543950335" unit="unit7" />
+      <ResourceInformation name="name8" description="description8" category="category8" value="0.8" unit="unit8" />
+      <ResourceInformation name="name9" description="description9" category="category9" value="1.2" unit="unit9" />
+      <Transformation>
+        <Equation category="category7" description="description7" set="set7">Equation7</Equation>
+        <Equation category="category8" description="description8" set="set8">Equation8</Equation>
+        <Equation category="category9" description="description9" set="set9">Equation9</Equation>
+        <EquationVariables description="description7" category="category7" set="set7" origin="origin7" />
+        <EquationVariables description="description8" category="category8" set="set8" origin="origin8" />
+        <EquationVariables description="description9" category="category9" set="set9" origin="origin9" />
+      </Transformation>
+    </UMP>
+  </UMPs>
+  <LinkingVariables>
+    <LinkingAction targetUMP="targetUMP1" targetInput="targetInput1" sourceUMP="sourceUMP1" sourceOutput="sourceOutput1" description="description1" allocationVariable="1" />
+    <LinkingAction targetUMP="targetUMP2" targetInput="targetInput2" sourceUMP="sourceUMP2" sourceOutput="sourceOutput2" description="description2" allocationVariable="-79228162514264337593543950335" />
+    <LinkingAction targetUMP="targetUMP3" targetInput="targetInput3" sourceUMP="sourceUMP3" sourceOutput="sourceOutput3" description="description3" allocationVariable="79228162514264337593543950335" />
+    <Transformation>
+      <Equation targetUMP="targetUMP1" targetInput="targetInput1" sourceUMP="sourceUMP1" sourceOutput="sourceOutput1" description="description1" allocationVariable="1">Equation1</Equation>
+      <Equation targetUMP="targetUMP2" targetInput="targetInput2" sourceUMP="sourceUMP2" sourceOutput="sourceOutput2" description="description2" allocationVariable="-79228162514264337593543950335">Equation2</Equation>
+      <Equation targetUMP="targetUMP3" targetInput="targetInput3" sourceUMP="sourceUMP3" sourceOutput="sourceOutput3" description="description3" allocationVariable="79228162514264337593543950335">Equation3</Equation>
+      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+      <EquationVariables description="description2" category="category2" set="set2" origin="origin2" />
+      <EquationVariables description="description3" category="category3" set="set3" origin="origin3" />
+    </Transformation>
+  </LinkingVariables>
+</ComposedSystem>
