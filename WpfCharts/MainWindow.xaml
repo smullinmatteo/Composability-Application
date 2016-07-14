@@ -1,0 +1,28 @@
+﻿<Window x:Class="WpfCharts.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:WpfCharts="clr-namespace:WpfCharts"
+        Title="Test Spider or Radar chart control" Height="600" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <WpfCharts:SpiderChart Title="Spider chart"  
+                               Lines="{Binding Lines}" 
+                               Axis="{Binding Axes}" 
+                               Minimum="0" 
+                               Maximum="1" 
+                               Ticks="5" 
+                               ShowLegend="True" 
+                               LegendLocation="BottomRight"
+                               LegendBackgroundColor="Aquamarine"/>
+        <Button x:Name="AddLine" 
+                HorizontalAlignment="Right"
+                Margin="5"
+                Padding="5"
+                Grid.Row="1"
+                Content="Add line" 
+                Click="AddLineClick" />
+    </Grid>
+</Window>
