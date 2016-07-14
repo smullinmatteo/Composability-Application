@@ -1,0 +1,9 @@
+shotPower,powerConsumed
+powerAirCompressor,powerConsumed
+processTime,processTime
+shotConsumption,massConsumable
+volumePaintConsumed,massConsumable
+energyCoat,energyUse
+Eon,energyUse
+energyReqd,energyUse
+massCH4burned,massConsumable

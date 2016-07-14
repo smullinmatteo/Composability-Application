@@ -1,0 +1,11 @@
+<ComposedSystem name="Shot Peening_Impression Depth_Surface Area_Liquid Spray Coating">
+<FinalSustainabilityMetrics>
+<Metric name="operatingCost" value="706750" />
+<Metric name="energyUse" value="0.0168055555555556" />
+<Metric name="waterUse" value="0" />
+<Metric name="GHGEmissions" value="26.0995050555556" />
+<Metric name="totalWaste" value="6" />
+<Metric name="averageWage" value="250" />
+<Metric name="lostWorkDays" value="0" />
+</FinalSustainabilityMetrics>
+</ComposedSystem>

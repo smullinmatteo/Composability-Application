@@ -1,0 +1,84 @@
+<ComposedSystem>
+<UMPs>
+<UMP name="Tempering" type="StructureChange" description="Heating and Cooling of the workpiece">
+<Parameter name="totalHeat" value="20"/>
+<Parameter name="processTime" value="10"/>
+<Parameter name="enthalpyCombustCHCH4" value="10"/>
+<Parameter name="percUncombusted" value="10"/>
+<Parameter name="ovenHeatLoss" value="0"/>
+<Parameter name="flueGasHeatLoss" value="0"/>
+<Parameter name="tempFlueDown" value="10"/>
+<Parameter name="tempRoomAmbient" value="10"/>
+<Parameter name="massCombustAir" value="10"/>
+<Parameter name="massCombustCH4" value="110"/>
+<Parameter name="specHeatFlueGas" value="10"/>
+<Parameter name="burnTime" value="1.09090909090909"/>
+<Parameter name="massFlowRateFlueGas" value="1100"/>
+<Parameter name="flowRate" value="10"/>
+<Parameter name="densityFlueGas" value="110"/>
+<Parameter name="massStoicAir" value="10"/>
+<Parameter name="percExcessAir" value="90.9090909090909"/>
+<Parameter name="percO2FlueGas" value="10"/>
+<Parameter name="heatTransferOvenWall" value="10"/>
+<Parameter name="surfaceArea" value="10"/>
+<Parameter name="tempOven" value="10"/>
+<Parameter name="wallThickness" value="10"/>
+<Parameter name="workpieceHeatCapacity" value="10"/>
+<Parameter name="massPart" value="10"/>
+<Transformation>
+<Equation category="Energy" description="total energy required">energyReqd=10</Equation>
+<Equation category="Energy" description="describes the total natural gas burned ">massCH4burned=-0.111111111111111</Equation>
+<Equation category="Energy" description="total heat loss">totalHeat=20</Equation>
+<Equation category="Percent" description="percent heat lost in flue gas">percFlueGasLoss=1</Equation>
+<Equation category="Energy" description="total heat lost in flue gas ">flueGasHeatLoss=0</Equation>
+<Equation category="Time" description="time to burn one Kg CH4">burnTime=1.09090909090909</Equation>
+<Equation category="Energy" description="mass flow rate of flue gas">massFlowRateFlueGas=1100</Equation>
+<Equation category="Energy" description="total air supplied to oven">massAir=11</Equation>
+<Equation category="Percent" description="percent excess air">percExcessAir=90.9090909090909</Equation>
+<Equation category="Energy" description="heat lost from oven conduction">ovenHeatLoss=0</Equation>
+<Equation category="Energy" description="heat lost to Workpiece">workpieceHeatLoss=0</Equation>
+</Transformation>
+<SustainabilityMetrics>
+<Metric name="operatingCost" value="-0.0555555555555556" />
+<Metric name="energyUse" value="0" />
+<Metric name="waterUse" value="0" />
+<Metric name="GHGEmissions" value="0" />
+<Metric name="totalWaste" value="0" />
+<Metric name="averageWage" value="0" />
+<Metric name="lostWorkDays" value="0" />
+</SustainabilityMetrics>
+</UMP>
+<UMP name="Shot Peening" type="Surface Modification" description="imparts a compressive residual stress to the surface of the workpiece through bombardment with high velocity shot">
+<Parameter name="percentCov" value="10"/>
+<Parameter name="batchTime" value="10"/>
+<Parameter name="shotUseRate" value="10"/>
+<Parameter name="shotFlowRater" value="10"/>
+<Parameter name="shotVelocity" value="10"/>
+<Parameter name="E" value="10"/>
+<Transformation>
+<Equation category="Time" description="process time equal to coverage times batch time">processTime=-385.054806986546</Equation>
+<Equation category="Shot" description="mass of shot consumption">shotConsumption=-385.054806986546</Equation>
+<Equation category="Shot" description="shot power">shotPower=-385.054806986546</Equation>
+<Equation category="Energy" description="on site energy consumption equal to shot power times process time">Eon=-385.054806986546</Equation>
+</Transformation>
+<SustainabilityMetrics>
+<Metric name="operatingCost" value="3705717.47256868" />
+<Metric name="energyUse" value="148267.204383446" />
+<Metric name="waterUse" value="0" />
+<Metric name="GHGEmissions" value="230263179.196096" />
+<Metric name="totalWaste" value="-231.032884191927" />
+<Metric name="averageWage" value="-9626.37017466365" />
+<Metric name="lostWorkDays" value="0" />
+</SustainabilityMetrics>
+</UMP>
+</UMPs>
+<FinalSustainabilityMetrics>
+<Metric name="operatingCost" value="3705717.41701313" />
+<Metric name="energyUse" value="148267.204383446" />
+<Metric name="waterUse" value="0" />
+<Metric name="GHGEmissions" value="230263179.196096" />
+<Metric name="totalWaste" value="-231.032884191927" />
+<Metric name="averageWage" value="-9626.37017466365" />
+<Metric name="lostWorkDays" value="0" />
+</FinalSustainabilityMetrics>
+</ComposedSystem>

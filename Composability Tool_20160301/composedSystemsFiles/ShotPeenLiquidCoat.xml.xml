@@ -1,0 +1,60 @@
+<ComposedSystem>
+<UMPs>
+<UMP name="Shot Peening" type="Surface Modification" description="imparts a compressive residual stress to the surface of the workpiece through bombardment with high velocity shot">
+<Parameter name="percentCov" value="0"/>
+<Parameter name="batchTime" value="0"/>
+<Parameter name="shotUseRate" value="0"/>
+<Parameter name="shotFlowRater" value="0"/>
+<Parameter name="shotVelocity" value="0"/>
+<Parameter name="E" value="0"/>
+<Transformation>
+<Equation category="Time" description="process time equal to coverage times batch time">processTime=0</Equation>
+<Equation category="Shot" description="mass of shot consumption">shotConsumption=0</Equation>
+<Equation category="Shot" description="shot power">shotPower=-1.79769313486232E+308</Equation>
+<Equation category="Energy" description="on site energy consumption equal to shot power times process time">Eon=-1.79769313486232E+308</Equation>
+</Transformation>
+<SustainabilityMetrics>
+<Metric name="operatingCost" value="0" />
+<Metric name="energyUse" value="0" />
+<Metric name="waterUse" value="0" />
+<Metric name="GHGEmissions" value="0" />
+<Metric name="totalWaste" value="0" />
+<Metric name="averageWage" value="0" />
+<Metric name="lostWorkDays" value="0" />
+</SustainabilityMetrics>
+</UMP>
+<UMP name="Liquid Spray Coating" type="Surface Finishing" description="description2">
+<Parameter name="toolPaintFlow" value="0"/>
+<Parameter name="processTime" value="0"/>
+<Parameter name="layers" value="0"/>
+<Parameter name="surfaceArea" value="0"/>
+<Parameter name="layerThickness" value="0"/>
+<Parameter name="powerAirCompressor" value="0"/>
+<Parameter name="paintDensity" value="0"/>
+<Transformation>
+<Equation category="" description="description4">volumeAirConsumed=0</Equation>
+<Equation category="category5" description="description5">volumePaintConsumed=0</Equation>
+<Equation category="category6" description="description6">energyCoat=0</Equation>
+<Equation category="category6" description="description6">massPaintConsumed=-1.79769313486232E+308</Equation>
+</Transformation>
+<SustainabilityMetrics>
+<Metric name="operatingCost" value="0" />
+<Metric name="energyUse" value="0" />
+<Metric name="waterUse" value="0" />
+<Metric name="GHGEmissions" value="0" />
+<Metric name="totalWaste" value="0" />
+<Metric name="averageWage" value="0" />
+<Metric name="lostWorkDays" value="0" />
+</SustainabilityMetrics>
+</UMP>
+</UMPs>
+<FinalSustainabilityMetrics>
+<Metric name="operatingCost" value="0" />
+<Metric name="energyUse" value="0" />
+<Metric name="waterUse" value="0" />
+<Metric name="GHGEmissions" value="0" />
+<Metric name="totalWaste" value="0" />
+<Metric name="averageWage" value="0" />
+<Metric name="lostWorkDays" value="0" />
+</FinalSustainabilityMetrics>
+</ComposedSystem>

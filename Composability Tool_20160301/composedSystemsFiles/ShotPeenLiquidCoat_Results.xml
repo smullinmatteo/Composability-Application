@@ -1,0 +1,11 @@
+<ComposedSystem name="Tempering_Yield Strength_ProcessTime_Shot Peening">
+<FinalSustainabilityMetrics>
+<Metric name="operatingCost" value="NaN" />
+<Metric name="energyUse" value="∞" />
+<Metric name="waterUse" value="0" />
+<Metric name="GHGEmissions" value="∞" />
+<Metric name="totalWaste" value="-1.07861588091739E+308" />
+<Metric name="averageWage" value="-∞" />
+<Metric name="lostWorkDays" value="0" />
+</FinalSustainabilityMetrics>
+</ComposedSystem>

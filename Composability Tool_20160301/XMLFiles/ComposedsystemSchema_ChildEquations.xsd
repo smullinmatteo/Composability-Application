@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="XSLTFile1.xslt"?>
+
+<xs:schema id="UMPSchema" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+  <xs:element name="ComposedSystem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="UMPs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UMP" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Input" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string"/>
+                        <xs:attribute name="description" type="descriptiontype"/>
+                        <xs:attribute name="category" type="categorytype"/>
+                        <xs:attribute name=" type" type="datatype"/>
+                        <xs:attribute name="value" type="xs:decimal"/>
+                        <xs:attribute name="unit" type="unittype"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Output" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string"/>
+                        <xs:attribute name="description" type="descriptiontype"/>
+                        <xs:attribute name="category" type="categorytype"/>
+                        <xs:attribute name=" type" type="datatype"/>
+                        <xs:attribute name="value" type="xs:decimal"/>
+                        <xs:attribute name="unit" type="unittype"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Feedback" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string"/>
+                        <xs:attribute name="description" type="descriptiontype"/>
+                        <xs:attribute name="value" type="xs:decimal"/>
+                        <xs:attribute name="unit" type="unittype"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ProductProcessInformation" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string"/>
+                        <xs:attribute name="description" type="descriptiontype"/>
+                        <xs:attribute name="category" type="categorytype"/>
+                        <xs:attribute name="value" type="xs:decimal"/>
+                        <xs:attribute name="unit" type="unittype"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ResourceInformation" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string"/>
+                        <xs:attribute name="description" type="descriptiontype"/>
+                        <xs:attribute name="category" type="categorytype"/>
+                        <xs:attribute name="value" type="xs:decimal"/>
+                        <xs:attribute name="unit" type="unittype"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Transformation" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Equation" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="category" type="categorytype"/>
+                                  <xs:attribute name="description" type="descriptiontype"/>
+                                  <xs:attribute name="set" type="xs:string"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="name" type="xs:string"/>
+                  <xs:attribute name="type" type="datatype"/>
+                  <xs:attribute name="description" type="descriptiontype"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LinkingVariables">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LinkingAction" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="targetUMP" type="xs:string"/>
+                  <xs:attribute name="sourceUMP" type="xs:string"/>
+                  <xs:attribute name="description" type="descriptiontype"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Transformation" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Equation" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="description" type="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="EquationVariables" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="description" type="descriptiontype"/>
+                        <xs:attribute name="category" type="categorytype"/>
+                        <xs:attribute name="set" type="xs:string"/>
+                        <xs:attribute name="origin" type="xs:string"/> <!--whether its found from the sourceUMP, the target UMP, or the workpiece-->
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="targetInput" type="xs:string"/>
+                  <xs:attribute name="sourceOutput" type="xs:string"/>
+                  <xs:attribute name="description" type="descriptiontype"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:simpleType name="categorytype">
+      <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="descriptiontype">
+      <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="datatype">
+      <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="unittype">
+      <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+</xs:schema>

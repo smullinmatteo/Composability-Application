@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ComposedSystem>
+  <UMPs>
+    <UMP name="Shot Peening" type="Surface Modification" description="description1">
+      <Input name="Shot"/>
+      <Input name="Energy"/>
+      <Output name="Spent Shot" description="description1" category="category1" type="type1" value="1" unit="unit1" />
+      <Feedback name="percentage of reusable shot" description="description1" value="1" unit="unit1" />
+      <ProductProcessInformation name="Shot Diameter"/>
+      <ProductProcessInformation name="Shot Velocity"/>
+      <ProductProcessInformation name="Shot Density"/>
+      <ProductProcessInformation name="Shot Material"/>
+      <ProductProcessInformation name="Shot Flow Rate"/>
+
+      <ResourceInformation name="Machine Efficiency" description="description1" category="category1" value="1" unit="unit1" />
+      <Transformation>
+        <Equation category="internal" description="description1" set="set1">shotPower=((0.5*rateShotFlow*shotVelocity^2)/(3600*1000))/E</Equation>
+        <Equation category="category2" description="description2" set="set2">processTime=coverageperc*batchTime</Equation>
+        <Equation category="category3" description="description3" set="set3">spentShot=rateShotFlow*processTime</Equation>
+        <Equation category="category3" description="description3" set="set3">energyPeen=shotPower*processTime</Equation>
+      </Transformation>
+    </UMP>
+    <UMP name="Liquid Spray Coating" type="Surface Finishing" description="description2">
+      <Input name="Paint"/>
+      <Input name="Compressed Air"/>
+      <Output name="Overspray"/>
+      <Output name="Volume of Air Consumed"/>
+      <Output name="Volume of Paint Consumed"/>
+      <Feedback name="Process Time" description="description4" value="0.9" unit="unit4" />
+      <ProductProcessInformation name="Overspray Margin"/>
+      <ProductProcessInformation name="Rated Tool Paint Flow"/>
+      <ProductProcessInformation name="Power of Air Compressor"/>
+      <ProductProcessInformation name="Number of Layers"/>
+      <ProductProcessInformation name="Layer Thickness"/>
+      <ProductProcessInformation name="Surface Area"/>
+
+      <ResourceInformation name="Paint Density"/>
+      <ResourceInformation name="Air Compressor Efficiency"/>
+      <Transformation>
+        <Equation category="" description="description4" set="set4">volumeAirConsumed=toolPaintFlow*processTime</Equation>
+        <Equation category="category5" description="description5" set="set5">volumePaintConsumed=layers*surfaceArea*layerThickness</Equation>
+        <Equation category="category6" description="description6" set="set6">energyCoat=volumeAirConsumed*powerAirCompressor/60</Equation>
+        <Equation category="category6" description="description6" set="set6">massPaintConsumed=volumePaintConsumed/paintDensity</Equation>
+      </Transformation>
+    </UMP>
+  </UMPs>
+  <Linking>
+    <LinkingAction targetUMP="Liquid Spray Coating" sourceUMP="Shot Peening" description="description1" >
+      <Transformation targetInput="Surface Area" sourceOutput="Impression Depth" description="description1">
+        <Equation description="description1">impressionDepth=constant*constant*(1-modElastic^2)^.25*shotDensity*(shotVelocity^.5/brinellHardness^.25)</Equation>>
+        <Equation description="description2">areaIndent=2*3.14*impressionDepth^2</Equation>>
+        <Equation description="description3">totalAreaImpressions=surfaceArea/areaIndent*areaIndent*coveragePerc</Equation>
+        <Equation description="description3">surfaceArea=totalAreaImpressions+surfaceArea*(1-coveragePerc)</Equation>
+        <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+        <EquationVariables description="description2" category="category2" set="set2" origin="origin2" />
+        <EquationVariables description="description3" category="category3" set="set3" origin="origin3" />
+      </Transformation>
+    </LinkingAction>
+  </Linking>
+</ComposedSystem>

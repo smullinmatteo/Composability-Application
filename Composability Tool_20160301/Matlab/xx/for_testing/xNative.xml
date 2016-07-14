@@ -1,0 +1,2686 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>xNative</name>
+    </assembly>
+    <members>
+        <member name="T:xNative.x">
+            <summary>
+            The x class provides a CLS compliant, Object (native) interface to the MATLAB
+            functions contained in the files:
+            <newpara></newpara>
+            C:\Users\Zara\Documents\Visual Studio 2015\Projects\Composability
+            Tool_20160301\Composability Tool_20160301\Composability
+            Tool_20160301\Matlab\Sustainability_Evaluation_Criteria.m
+            </summary>
+            <remarks>
+            @Version 0.0
+            </remarks>
+        </member>
+        <member name="M:xNative.x.#cctor">
+            <summary internal= "true">
+            The static constructor instantiates and initializes the MATLAB Runtime instance.
+            </summary>
+        </member>
+        <member name="M:xNative.x.#ctor">
+            <summary>
+            Constructs a new instance of the x class.
+            </summary>
+        </member>
+        <member name="M:xNative.x.Finalize">
+            <summary internal= "true">
+            Class destructor called by the CLR garbage collector.
+            </summary>
+        </member>
+        <member name="M:xNative.x.Dispose">
+            <summary>
+            Frees the native resources associated with this object
+            </summary>
+        </member>
+        <member name="M:xNative.x.Dispose(System.Boolean)">
+            <summary internal= "true">
+            Internal dispose function
+            </summary>
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria">
+             <summary>
+             Provides a single output, 0-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object)">
+             <summary>
+             Provides a single output, 1-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object)">
+             <summary>
+             Provides a single output, 2-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 3-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 4-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 5-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 6-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 7-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 8-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 9-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 10-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 11-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 12-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 13-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 14-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 15-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 16-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 17-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 18-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <param name="GWPN2O">Input argument #18</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 19-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <param name="GWPN2O">Input argument #18</param>
+             <param name="Rland">Input argument #19</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 20-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <param name="GWPN2O">Input argument #18</param>
+             <param name="Rland">Input argument #19</param>
+             <param name="Rinc">Input argument #20</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 21-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <param name="GWPN2O">Input argument #18</param>
+             <param name="Rland">Input argument #19</param>
+             <param name="Rinc">Input argument #20</param>
+             <param name="Rrec">Input argument #21</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides a single output, 22-input Objectinterface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <param name="GWPN2O">Input argument #18</param>
+             <param name="Rland">Input argument #19</param>
+             <param name="Rinc">Input argument #20</param>
+             <param name="Rrec">Input argument #21</param>
+             <param name="Rhaz">Input argument #22</param>
+             <returns>An Object containing the first output argument.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32)">
+             <summary>
+             Provides the standard 0-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object)">
+             <summary>
+             Provides the standard 1-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object)">
+             <summary>
+             Provides the standard 2-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 3-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 4-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 5-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 6-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 7-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 8-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 9-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 10-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 11-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 12-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 13-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 14-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 15-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 16-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 17-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 18-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <param name="GWPN2O">Input argument #18</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 19-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <param name="GWPN2O">Input argument #18</param>
+             <param name="Rland">Input argument #19</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 20-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <param name="GWPN2O">Input argument #18</param>
+             <param name="Rland">Input argument #19</param>
+             <param name="Rinc">Input argument #20</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 21-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <param name="GWPN2O">Input argument #18</param>
+             <param name="Rland">Input argument #19</param>
+             <param name="Rinc">Input argument #20</param>
+             <param name="Rrec">Input argument #21</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object,System.Object)">
+             <summary>
+             Provides the standard 22-input Object interface to the
+             Sustainability_Evaluation_Criteria MATLAB function.
+             </summary>
+             <remarks>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return.</param>
+             <param name="massConsumable">Input argument #1</param>
+             <param name="costConsumable">Input argument #2</param>
+             <param name="powerConsumed">Input argument #3</param>
+             <param name="costPower">Input argument #4</param>
+             <param name="processTime">Input argument #5</param>
+             <param name="wage">Input argument #6</param>
+             <param name="illness">Input argument #7</param>
+             <param name="injury">Input argument #8</param>
+             <param name="illnessDaysLost">Input argument #9</param>
+             <param name="injuryDaysLost">Input argument #10</param>
+             <param name="waterRate">Input argument #11</param>
+             <param name="energyCost">Input argument #12</param>
+             <param name="waterCost">Input argument #13</param>
+             <param name="RateCO2">Input argument #14</param>
+             <param name="RateCH4">Input argument #15</param>
+             <param name="GWPCH4">Input argument #16</param>
+             <param name="RateN2O">Input argument #17</param>
+             <param name="GWPN2O">Input argument #18</param>
+             <param name="Rland">Input argument #19</param>
+             <param name="Rinc">Input argument #20</param>
+             <param name="Rrec">Input argument #21</param>
+             <param name="Rhaz">Input argument #22</param>
+             <returns>An Array of length "numArgsOut" containing the output
+             arguments.</returns>
+            
+        </member>
+        <member name="M:xNative.x.Sustainability_Evaluation_Criteria(System.Int32,System.Object[]@,System.Object[],System.Object[])">
+             <summary>
+             Provides an interface for the Sustainability_Evaluation_Criteria function in
+             which the input and output
+             arguments are specified as an array of Objects.
+             </summary>
+             <remarks>
+             This method will allocate and return by reference the output argument
+             array.<newpara></newpara>
+             M-Documentation:
+             function [
+             operatingCost,energyUse,waterUse,GHGEmissions,totalWaste,averageWage,lostWorkDays
+             ] = Sustainability_Evaluation_Criteria(inputVars)
+             This function accepts the results of the process and linking model
+             parametric equations and then inputs them to determine the final
+             sustainability scores
+             inputVars
+             index = 1;
+             massConsumable = inputVars(index);index = index+1;
+             costConsumable = inputVars(index);index = index+1;
+             powerConsumed = inputVars(index);index = index+1;
+             costPower = inputVars(index);index = index+1;
+             processTime = inputVars(index);index = index+1;
+             wage = inputVars(index);index = index+1;
+             illness = inputVars(index);index = index+1;
+             injury = inputVars(index);index = index+1;
+             illnessDaysLost = inputVars(index);index = index+1;
+             injuryDaysLost = inputVars(index);index = index+1;
+             waterRate = inputVars(index);index = index+1;
+             energyCost = inputVars(index);index = index+1;
+             waterCost = inputVars(index);index = index+1;
+             RateCO2 = inputVars(index);index = index+1;
+             RateCH4 = inputVars(index);index = index+1;
+             GWPCH4 = inputVars(index);index = index+1;
+             RateN2O = inputVars(index);index = index+1;
+             GWPN2O = inputVars(index);index = index+1;
+             Rland = inputVars(index);index = index+1;
+             Rinc = inputVars(index);index = index+1;
+             Rrec = inputVars(index);index = index+1;
+             Rhaz = inputVars(index);index = index+1;
+             test dummy variables
+             powerConsumed = 10;
+             processTime = 5;
+             </remarks>
+             <param name="numArgsOut">The number of output arguments to return</param>
+             <param name= "argsOut">Array of Object output arguments</param>
+             <param name= "argsIn">Array of Object input arguments</param>
+             <param name= "varArgsIn">Array of Object representing variable input
+             arguments</param>
+            
+        </member>
+        <member name="M:xNative.x.WaitForFiguresToDie">
+             <summary>
+             This method will cause a MATLAB figure window to behave as a modal dialog box.
+             The method will not return until all the figure windows associated with this
+             component have been closed.
+             </summary>
+             <remarks>
+             An application should only call this method when required to keep the
+             MATLAB figure window from disappearing.  Other techniques, such as calling
+             Console.ReadLine() from the application should be considered where
+             possible.</remarks>
+            
+        </member>
+    </members>
+</doc>

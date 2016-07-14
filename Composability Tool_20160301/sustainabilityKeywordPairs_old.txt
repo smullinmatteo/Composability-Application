@@ -1,0 +1,14 @@
+shotPower,powerConsumed
+powerAirCompressor,powerConsumed
+processTime,processTime
+shotConsumption,massConsumable
+volumePaintConsumed,massConsumable
+shotCost,costConsumable
+paintCost,costConsumable
+energyCoat,energyUse
+peenWage,wage
+paintWage,wage
+peenIllness,Illness
+paintIllness,Illness
+spentShot,Rland
+overspray,Rland
