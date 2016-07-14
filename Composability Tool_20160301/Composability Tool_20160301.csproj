@@ -64,14 +64,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\ComposibilityMatlabTool.dll</HintPath>
     </Reference>
-    <Reference Include="Feel.Net, Version=1.0.5966.28887, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\Feel.Net.0.2.0\lib\net40\Feel.Net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MathNet.Numerics, Version=3.12.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.3.12.0\lib\net40\MathNet.Numerics.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="MWArray, Version=2.16.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Program Files\MATLAB\R2016a\toolbox\dotnetbuilder\bin\win64\v2.0\MWArray.dll</HintPath>
@@ -324,13 +316,6 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Feel.Net.0.2.0\build\Feel.Net.targets" Condition="Exists('..\packages\Feel.Net.0.2.0\build\Feel.Net.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Feel.Net.0.2.0\build\Feel.Net.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Feel.Net.0.2.0\build\Feel.Net.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -5,8 +5,6 @@ using System.Text;
 using MathWorks.MATLAB.NET.Arrays;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using MathNet.Numerics;
-using MathNet.Numerics.LinearAlgebra.Double;
 using System.IO;
 using ComposibilityMatlabTool;
 
