@@ -21,6 +21,8 @@
 bld/
 [Bb]in/
 [Oo]bj/
+Composability Tool_20160301_1/
+DTAR_*/
 
 # Visual Studio 2015 cache/options directory
 .vs/
