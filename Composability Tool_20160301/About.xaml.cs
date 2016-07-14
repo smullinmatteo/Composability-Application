@@ -22,7 +22,7 @@ namespace Composability_Tool_20160301
     {
         public About()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
         private void ComposeButton_Click(object sender, RoutedEventArgs e)
         {

@@ -1,0 +1,202 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Composability_Tool_20160301"
+      xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" x:Class="Composability_Tool_20160301.Results"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1400"
+      Title="Results"
+      Style="{StaticResource PageStyle}">
+
+    <Grid>
+        <!--set columns and rows. There are four rows, and three columns-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="800"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="450"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
+
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="0" Margin="10,190,-10,10" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ItemsControl x:Name="UMPResults_ItemControl" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Margin="10">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="5,5,5,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+                                <!--the itemsControl will list the sustainability metrics and their resulting values for the composed system-->
+                                <TextBlock Text="{Binding name}" Grid.Row="2" Grid.Column="0" />
+                                <TextBlock Text="{Binding name}" Grid.Row="2" Grid.Column="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <!--chartingToolkit:ColumnSeries Grid.Column="1" Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{Binding}"/-->
+                <chartingToolkit:Chart  Name="barChart"
+                                        Grid.Column="1" 
+                      Title="Matteo's title" 
+                      VerticalAlignment="Top" Margin="2,2,0,0" 
+                      Height="262"  
+                      BorderThickness="0"
+                      DataContext="{Binding}"
+                      IsTabStop="True">
+
+                    <!-- Plot area-->
+                    <chartingToolkit:Chart.PlotAreaStyle>
+                        <Style TargetType="Grid">
+                            <Setter Property="Background" Value="White" />
+                        </Style>
+                    </chartingToolkit:Chart.PlotAreaStyle>
+                    <!-- Hide Legend-->
+                    <chartingToolkit:Chart.LegendStyle>
+                        <Style TargetType="Control">
+                            <Setter Property="Width" Value="0"/>
+                            <Setter Property="Height" Value="0"/>
+                        </Style>
+                    </chartingToolkit:Chart.LegendStyle>
+
+                    <chartingToolkit:ColumnSeries Grid.Column="1" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="Black"
+                    ItemsSource="{Binding}"
+                    IndependentValueBinding="{Binding Key}"
+                    DependentValueBinding="{Binding Value}">
+                        <!--chartingToolkit:ColumnSeries.DataPointStyle>
+                            <Style TargetType="chartingToolkit:ColumnDataPoint">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="chartingToolkit:ColumnDataPoint">
+                                            <Grid>
+                                                <Rectangle Fill="{TemplateBinding Background}" Stroke="Black"/>
+                                                <Grid Margin="0 -20 0 0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                    <TextBlock Text="{TemplateBinding FormattedDependentValue}" Margin="2"/>
+                                                </Grid>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </-->
+                        <chartingToolkit:ColumnSeries.DataPointStyle>
+                            <Style TargetType="chartingToolkit:ColumnDataPoint">
+                                <Setter Property="Background" Value="Red"/>
+                                <Setter Property="BorderBrush" Value="Red" />
+                                <Setter Property="BorderThickness" Value="1" />
+
+                            </Style>
+
+                        </chartingToolkit:ColumnSeries.DataPointStyle>
+
+                    </chartingToolkit:ColumnSeries>
+                    <chartingToolkit:Chart.Axes>
+                        <chartingToolkit:CategoryAxis Orientation="X" 
+                                      Location="Bottom" 
+                                      Foreground="Black">
+                            <chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                <Style TargetType="chartingToolkit:AxisLabel">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate 
+                                          TargetType="chartingToolkit:AxisLabel">
+                                                <TextBlock 
+                                 Text="{TemplateBinding FormattedContent}" 
+                                                   TextAlignment="Right" 
+                                                   TextWrapping="Wrap" 
+                                                   Width="60" 
+                                                   Margin="-20,15,0,0" 
+                                                   RenderTransformOrigin="0.5,0.5">
+                                                    <TextBlock.RenderTransform>
+                                                        <RotateTransform Angle="45" />
+                                                    </TextBlock.RenderTransform>
+                                                </TextBlock>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </chartingToolkit:CategoryAxis.AxisLabelStyle>
+                        </chartingToolkit:CategoryAxis>
+                    </chartingToolkit:Chart.Axes>
+                    <!--chartingToolkit:PieSeries Grid.Column="2" Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{Binding}"/-->
+                </chartingToolkit:Chart>
+            </Grid>
+            <TextBlock Name="UMPResult_TextBlock" Margin="10" Grid.Row="0" Grid.Column="0" Text="{Binding composedUMPName}"/>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="2">
+            <StackPanel Grid.Column="2" Grid.Row="2" Margin="10" VerticalAlignment="Top">
+                <Button Style="{StaticResource SidePanelStyle}" Content="New"/>
+                <!--="NewResultButton_Click"-->
+                <Button Style="{StaticResource SidePanelStyle}" Content="Run"/>
+                <!--="RunResultButton_Click"-->
+            </StackPanel>
+            <StackPanel Grid.Column="2" Grid.Row="2" Margin="10" VerticalAlignment="Bottom">
+                <Button x:Name="SaveButton" Visibility="Visible" VerticalAlignment="Bottom" Style="{StaticResource SidePanelStyle}" Content="Save"/>
+                <!--Click="SaveButton_Click"-->
+                <Button x:Name="SaveAsButton" Visibility="Visible" VerticalAlignment="Bottom" Style="{StaticResource SidePanelStyle}" Content="Save As"/>
+                <!--="SaveAsButton_Click"-->
+            </StackPanel>
+        </Grid>
+
+        <!--label definitions-->
+        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Results"/>
+        <Button
+			Grid.Column="0"
+			Grid.Row="0"
+			Margin="5,5,5,5"
+			Click="StartButton_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid x:Name="bg">
+                        <Image Margin="4" Source="C:\Users\smull\Documents\Visual Studio 2015\Composability Tool_20160301\Composability Tool_20160301\ISL Logo.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Background" Value="Black"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <!--Make Buttons to Navigate to other Pages of the Application-->
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False">
+            <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" Content="Compose" />
+            <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click" Content="Repository"/>
+            <Button Style="{StaticResource bannerStyle}" Click="ResultsButton_Click" Content="Results"/>
+            <Button Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click" Content="Comparison"/>
+        </DockPanel>
+        <!--HomePage Footer-->
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" LastChildFill="False">
+            <Button Style="{StaticResource bottombannerStyle}" Click="HelpButton_Click" Content="Help"/>
+            <Button Style="{StaticResource bottombannerStyle}" Click="AboutButton_Click" Content="About"/>
+            <Button Style="{StaticResource bottombannerStyle}" Click="FeedbackButton_Click" Content="Feedback"/>
+        </DockPanel>
+        <!--add image in top left and bottom right corner-->
+        <!--Image Grid.Column="0" 
+               Grid.Row="0" 
+               Source="C:\Users\smull\Documents\Visual Studio 2015\Composability Tool_20160301\Composability Tool_20160301\ISL Logo.png" 
+               Margin="5,5,5,5">
+        </-->
+
+
+    </Grid>
+</Page>

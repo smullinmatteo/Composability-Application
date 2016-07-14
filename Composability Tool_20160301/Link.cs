@@ -9,30 +9,34 @@ namespace Composability_Tool_20160301
     public class Link
     {
         public string targetUMP { get; set; }
-        public string targetInput { get; set; }
-        public string sourceUMP { get; set; }
-        public string sourceOutput { get; set; }
         public string description { get; set; }
-        public List<LinkEquation> equations;
+        public string sourceUMP { get; set; }
+        public List<Transformation> transformations { get; set; }
+        
+        //public string sourceOutput { get; set; }
+        //public string targetInput { get; set; }
+        //public List<LinkEquation> equations;
 
-        public Link(string _targetUMP, string _targetInput, string _sourceUMP, string _sourceOutput, string _descr)
+        public Link(string _targetUMP, string _sourceUMP, string _descr)
         {
             targetUMP = _targetUMP;
-            targetInput = _targetInput;
+            //targetInput = _targetInput;
             sourceUMP = _sourceUMP;
-            sourceOutput = _sourceOutput;
+            //sourceOutput = _sourceOutput;
             description = _descr;
-            equations = new List<LinkEquation>();
+            transformations = new List<Transformation>();
+            //equations = new List<LinkEquation>();
         }
 
-        public void AddEquation(LinkEquation eq)
+        /*public void AddEquation(LinkEquation eq)
         {
             equations.Add(eq);
-        }
+        }*/
+        
 
-        public List<LinkEquation> getEqueation()
+        public void AddTransformation(Transformation trans)
         {
-            return equations;
+            transformations.Add(trans);
         }
 
         public bool compareSourceTarget(string _sourceUMP, string _targetUMP)

@@ -51,7 +51,7 @@
         <!--Make Buttons to Navigate to other Pages of the Application-->
         <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False">
             <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" >Compose</Button>
-            <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click">Repository</Button>
+            <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click">Warehouse</Button>
             <Button Style="{StaticResource bannerStyle}" Click="ResultsButton_Click">Results</Button>
             <Button Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click">Comparison</Button>
         </DockPanel>

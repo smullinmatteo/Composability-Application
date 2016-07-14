@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfCharts;
 
 namespace Composability_Tool_20160301
 {
@@ -21,16 +24,33 @@ namespace Composability_Tool_20160301
     /// </summary>
     public partial class Comparison : Page
     {
+        public string path;
+        public List<KeyValuePair<string, int>> ValueList { get; private set; }
         public IEnumerable<string> composedUMPName { get; set; }
+        public string defaultImageSource { get; set; }
+        public Dictionary<string, ulong> columnData { get; set; }
+        public ObservableCollection<ChartLine> Lines { get; set; }
+
+        public ObservableCollection<double> DependentValueA { get; set; }
+        public ObservableCollection<double> DependentValueB { get; set; }
+        public ObservableCollection<double> DependentValueC { get; set; }
+        public ObservableCollection<string> IndependentValue { get; set; }
+        public string[] Axes { get; set; }
         public Comparison()
         {
             InitializeComponent();
+            path = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()))) + "\\composedSystemsFiles\\";
+            //var uri = new Uri(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\Images\\ISL Logo.png");
+            //var bitmap = new BitmapImage(uri);
+            //logoImage1.Source = bitmap;
+            //defaultImageSource = "@("+System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\Images\\ISL Logo.png)";
             LoadComposedSystems();
         }
 
         public Comparison( string _composedUMPName)
         {
             InitializeComponent();
+            path = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\composedSystemsFiles\\";
             this.DataContext = this;
             //composedUMPName = _composedUMPName;
         }
@@ -40,8 +60,11 @@ namespace Composability_Tool_20160301
             comparisoncomboBox_1.DataContext = null;
             comparisoncomboBox_2.DataContext = null;
             comparisoncomboBox_3.DataContext = null;
-            string path = AppDomain.CurrentDomain.BaseDirectory + "composedSystemsFiles\\";
-            composedUMPName = Directory.GetFiles(path, "*.xml").Select(System.IO.Path.GetFileName);
+            string[] files = Directory.GetFiles(path, "*.xml");
+            if (files != null)
+                composedUMPName = files.Select(System.IO.Path.GetFileName);
+            else
+                composedUMPName = null;
             comparisoncomboBox_1.DataContext = this;
             comparisoncomboBox_2.DataContext = this;
             comparisoncomboBox_3.DataContext = this;
@@ -92,22 +115,47 @@ namespace Composability_Tool_20160301
         //this section adds a sin graph for the canvas's in row 1
         private void RunComparisonButton_Click(object sender, RoutedEventArgs e)
         {
-            AddChart();
+            Dictionary<string, double> umpSustainabilityMetrics1 = null, umpSustainabilityMetrics2 = null, umpSustainabilityMetrics3 = null;
+            if (comparisoncomboBox_1.SelectedValue != null)
+                umpSustainabilityMetrics1 = (UMP.readXMLComposedSystemContent(path + comparisoncomboBox_1.SelectedValue));
+            if (comparisoncomboBox_2.SelectedValue != null)
+                umpSustainabilityMetrics2 = (UMP.readXMLComposedSystemContent(path + comparisoncomboBox_2.SelectedValue));
+            if (comparisoncomboBox_3.SelectedValue != null)
+                umpSustainabilityMetrics3 = (UMP.readXMLComposedSystemContent(path + comparisoncomboBox_3.SelectedValue));
+            loadStackedColumnData(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
+            loadSpiderChart(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
+        }
+        
+        private Dictionary<string, double> sumupSustainabilityMetrics(Dictionary<string, Dictionary<string, double>> umpSustainabilityMetrics)
+        {
+            Dictionary<string, double> sustMetrics = new Dictionary<string, double>();
+            foreach(string umpS in umpSustainabilityMetrics.Keys)
+            {
+                foreach (string metric in umpSustainabilityMetrics[umpS].Keys) {
+                    if (sustMetrics.ContainsKey(metric))
+                        sustMetrics[metric] += umpSustainabilityMetrics[umpS][metric];
+                    else
+                        sustMetrics.Add(metric, umpSustainabilityMetrics[umpS][metric]);
+                }
+            }
+            return sustMetrics;
         }
 
-
-        private double xmin = 0;
-
-        private double xmax = 6.5;
-        private double ymin = -1.1;
-        private double ymax = 1.1;
-        private Polyline polyline;
-        
-
-        private void AddChart()
+        private void AddChart(Dictionary<string, double> umpSustainabilityMetrics1, Dictionary<string, double> umpSustainabilityMetrics2, Dictionary<string, double> umpSustainabilityMetrics3)
         {
+            /*barChart.DataContext = null;
+            DataPointSeries series0 = (DataPointSeries)barChart.Series[0];
+            DataPointSeries series1 = (DataPointSeries)barChart.Series[1];
+            DataPointSeries series2 = (DataPointSeries)barChart.Series[2];
+            series0.DataContext = umpSustainabilityMetrics1;
+            series1.DataContext = umpSustainabilityMetrics2;
+            series2.DataContext = umpSustainabilityMetrics3;
+            barChart.DataContext = this;*/
+            //columnSeries1.IndependentValuePath = "Key";
+            //columnSeries1.DependentValuePath = "Value";
+
             // Draw sine chart:
-            polyline = new Polyline { Stroke = Brushes.Black };
+            /*polyline = new Polyline { Stroke = Brushes.Black };
 
             for (int i = 0; i < 70; i++)
             {
@@ -128,9 +176,9 @@ namespace Composability_Tool_20160301
                 var y = Math.Cos(x);
                 polyline.Points.Add(CorrespondingPoint(new Point(x, y)));
             }
-            canvas_1.Children.Add(polyline);
+            canvas_1.Children.Add(polyline);*/
         }
-        private Point CorrespondingPoint(Point pt)
+        /*private Point CorrespondingPoint(Point pt)
         {
             var result = new Point
             {
@@ -139,15 +187,147 @@ namespace Composability_Tool_20160301
                     / (ymax - ymin)
             };
             return result;
+        }*/
+
+        private void loadStackedColumnData(Dictionary<string, double> umpSustainabilityMetrics1, Dictionary<string, double> umpSustainabilityMetrics2, Dictionary<string, double> umpSustainabilityMetrics3)
+        {
+            IndependentValue = new ObservableCollection<string>() { "C1", "C2", "C3" };
+            List<SimpleDataValue> FirstCollection = new List<SimpleDataValue>();
+            List<SimpleDataValue> SecondCollection = new List<SimpleDataValue>();
+            List<SimpleDataValue> ThirdCollection = new List<SimpleDataValue>();
+            if (umpSustainabilityMetrics1 != null)
+            {
+                foreach (string metric in umpSustainabilityMetrics1.Keys)
+                    FirstCollection.Add(new SimpleDataValue("C1", umpSustainabilityMetrics1[metric]));
+            }
+            if (umpSustainabilityMetrics2 != null)
+            {
+                foreach (string metric in umpSustainabilityMetrics2.Keys)
+                    SecondCollection.Add(new SimpleDataValue("C2", umpSustainabilityMetrics2[metric]));
+            }
+            if (umpSustainabilityMetrics3 != null)
+            {
+                foreach (string metric in umpSustainabilityMetrics3.Keys)
+                    ThirdCollection.Add(new SimpleDataValue("C3", umpSustainabilityMetrics3[metric]));
+            }
+            StackedColumnSeries.DataContext = null;
+            StackedColumnSeries.DataContext = new ChartModel(FirstCollection, SecondCollection, ThirdCollection);
+            //StackedColumnSeries.DataContext = this;
+
+            /*this.StackedColumnSeries.DataContext = new ChartModel
+            {
+                FirstCollection = 
+                FirstCollection = Enumerable.Range(1, 10).Select(i => new SimpleDataValue { IndependentValue = "Czujnik " + i, DependentValue = 100 }).ToList(),
+                SecondCollection = Enumerable.Range(1, 10).Select(i => new SimpleDataValue { IndependentValue = "" + i, DependentValue = 200 }).ToList(),
+                ThirdCollection = Enumerable.Range(1, 10).Select(i => new SimpleDataValue { IndependentValue = "" + i, DependentValue = 200 }).ToList()
+            };*/
         }
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             comparisoncomboBox_1.SelectedIndex = -1;
             comparisoncomboBox_2.SelectedIndex = -1;
-            comparisoncomboBox_1.SelectedIndex = -1;
-            canvas_1.Children.Clear();
-            canvas_2.Children.Clear();
-            canvas_3.Children.Clear();
+            comparisoncomboBox_3.SelectedIndex = -1;
+            /*foreach (DataPointSeries series in barChart.Series)
+            {
+                series.DataContext = null;
+            }
+            barChart.DataContext = null;*/
+        }
+
+        public void loadSpiderChart(Dictionary<string, double> umpSustainabilityMetrics1, Dictionary<string, double> umpSustainabilityMetrics2, Dictionary<string, double> umpSustainabilityMetrics3)
+        {
+            
+            Dictionary<string, double> sustMetrics = umpSustainabilityMetrics1;
+            if (umpSustainabilityMetrics1 == null)
+            {
+                if (umpSustainabilityMetrics2 != null)
+                {
+                    sustMetrics = umpSustainabilityMetrics3;
+                }
+                else if (umpSustainabilityMetrics3 != null)
+                    sustMetrics = umpSustainabilityMetrics3;
+            }
+            Axes = new string[sustMetrics.Count];
+            int ind = 0;
+            var ptsA = new List<double>(Axes.Length);
+            var ptsB = new List<double>(Axes.Length);
+            var ptsC = new List<double>(Axes.Length);
+            foreach (string metric in sustMetrics.Keys)
+            {
+                Axes[ind] = metric; ind++;
+                double minValue = 0, maxValue = 0;
+                minValue = Math.Min((umpSustainabilityMetrics1==null)? double.MaxValue : umpSustainabilityMetrics1[metric], (umpSustainabilityMetrics2 == null) ? double.MaxValue : umpSustainabilityMetrics2[metric]);
+                minValue = Math.Min(minValue, (umpSustainabilityMetrics3 == null) ? double.MaxValue : umpSustainabilityMetrics3[metric]);
+                maxValue = Math.Max((umpSustainabilityMetrics1 == null) ? double.MinValue : umpSustainabilityMetrics1[metric], (umpSustainabilityMetrics2 == null) ? double.MinValue : umpSustainabilityMetrics2[metric]);
+                maxValue = Math.Max(maxValue, (umpSustainabilityMetrics3 == null) ? double.MinValue : umpSustainabilityMetrics3[metric]);
+                
+                if(umpSustainabilityMetrics1 != null)
+                    ptsA.Add((umpSustainabilityMetrics1[metric] - minValue) / (maxValue - minValue + 1));
+                if (umpSustainabilityMetrics2 != null)
+                    ptsB.Add((umpSustainabilityMetrics2[metric] - minValue) / (maxValue - minValue + 1));
+                if (umpSustainabilityMetrics3 != null)
+                    ptsC.Add((umpSustainabilityMetrics3[metric] - minValue) / (maxValue - minValue + 1));
+            }
+            Lines = new ObservableCollection<ChartLine>();
+            if (ptsA.Count > 0) {
+                Lines.Add(new ChartLine
+                {
+                    LineColor = Colors.Blue,
+                    FillColor = Color.FromArgb(128, 0, 0, 255),
+                    LineThickness = 2,
+                    PointDataSource = ptsA,
+                    Name = "C1"
+                });
+            }
+            if (ptsB.Count > 0) {
+                Lines.Add(new ChartLine {
+                    LineColor = Colors.Red,
+                    FillColor = Color.FromArgb(128, 255, 0, 0),
+                    LineThickness = 2,
+                    PointDataSource = ptsB,
+                    Name = "C2"
+                });
+            }
+            if (ptsC.Count > 0)
+            {
+                Lines.Add(new ChartLine
+                {
+                    LineColor = Colors.Green,
+                    FillColor = Color.FromArgb(128, 0, 255, 0),
+                    LineThickness = 2,
+                    PointDataSource = ptsC,
+                    Name = "C3"
+                });
+            }
+            spiderChart.DataContext = null;
+            spiderChart.DataContext = this;
+            Console.WriteLine("Loaded Spider Chart");
+
+        }
+    }
+    public class SimpleDataValue
+    {
+        public SimpleDataValue(string metric, double v)
+        {
+            this.IndependentValue = metric;
+            this.DependentValue = v;
+        }
+
+        public string IndependentValue { get; set; }
+        public double DependentValue { get; set; }
+    }
+
+    public class ChartModel
+    {
+        public List<SimpleDataValue> FirstCollection { get; set; }
+        public List<SimpleDataValue> SecondCollection { get; set; }
+        public List<SimpleDataValue> ThirdCollection { get; set; }
+
+        public ChartModel(List<SimpleDataValue> _A, List<SimpleDataValue> _B, List<SimpleDataValue> _C)
+        {
+            FirstCollection = _A;
+            SecondCollection = _B;
+            ThirdCollection = _C;
         }
     }
 }

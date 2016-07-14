@@ -7,6 +7,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Composability_Tool_20160301
 {
@@ -26,20 +28,30 @@ namespace Composability_Tool_20160301
     public partial class Compose : Page
     {
         XMLReader xmlreader;
+        MathEquation mathEq;
+        string folderPath = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(Directory.GetCurrentDirectory())));
         public string SourceValue { get; set; }
         public bool targetUMPSelectionFlag = false;
+        public Visibility pbarVis { get; set; }
         public bool sourceUMPSelectionFlag = false;
+        public HashSet<String> allUserVariables;
         public ObservableCollection<eqVariable> sourceVarList { get; private set; }
         public ObservableCollection<eqVariable> targetVarList { get; private set; }
         public ObservableCollection<eqVariable> linkVarList { get; private set; }
         public List<UMP> myUMPs { get; set; }
-        public List<LinkEquation> myLinks { get; set; }
+        public List<Transformation> myLinks { get; set; }
+
+        private List<Dictionary<string, double>> composeResults { get; set; }
         public Compose()
         {
             InitializeComponent();
             xmlreader = new XMLReader();
             xmlreader.readComposedSystem();
             loadUMPs();
+            mathEq = new MathEquation();
+            allUserVariables = new HashSet<string>();
+            composeResults = null;
+            pbarVis = Visibility.Hidden;
             //loadLinks();
         }
 
@@ -54,37 +66,44 @@ namespace Composability_Tool_20160301
         }
         private void loadLinks()
         {
-            LinkingAction.ItemsSource = null;
-            myLinks = new List<LinkEquation>();
+            Transformation.ItemsSource = null;
+            myLinks = new List<Transformation>();
             if (SourceUMP.SelectedValue != null && TargetUMP.SelectedValue != null)
             {
                 foreach (Link link in xmlreader.linkingList)
                 {
                     if (link.compareSourceTarget(((UMP)SourceUMP.SelectedValue).name, ((UMP)TargetUMP.SelectedValue).name))
                     {
-                        myLinks.AddRange(link.equations);
+                        myLinks.AddRange(link.transformations);
                     }
                 }
             }
-            LinkingAction.DataContext = this;
-            LinkingAction.ItemsSource = myLinks;
+            Transformation.DataContext = this;
+            Transformation.ItemsSource = myLinks;
         }
         public void DynamicSourceUMPValues()
         {
             //SourceUMPParameters_ItemsControl.ItemsSource = null;
             HashSet<String> items = new HashSet<String>();
             UMP ump = (UMP)SourceUMP.SelectedValue;
-
+            sourceVarList = new ObservableCollection<eqVariable>();
             if (ump != null)
             {
                 foreach (UMPEquation eq in ump.equations)
                 {
+                    //Prepare the list of equation variables that we will show to user, replace them with their specified name if available
                     foreach (string variable in eq.getEqVar())
                     {
+                        eqVariable ev;
+                        if (items.Contains(variable))
+                            continue;
+                        items.Add(variable);
+                        allUserVariables.Add(variable);
                         if (ump.nameVarDic.ContainsKey(variable))
-                            items.Add(ump.nameVarDic[variable]);
+                            ev = new eqVariable(variable, ump.nameVarDic[variable], "");
                         else
-                            items.Add(variable);
+                            ev = new eqVariable(variable, variable, "");
+                        sourceVarList.Add(ev);
                     }
                 }
 
@@ -98,9 +117,8 @@ namespace Composability_Tool_20160301
                 ButtonChain_1.Content = ((UMP)SourceUMP.SelectedValue).name.ToString();
 
             }
-            sourceVarList = new ObservableCollection<eqVariable>();
-            foreach (string p in items)
-                sourceVarList.Add(new eqVariable(p));
+            //foreach (string p in items)
+            //    sourceVarList.Add(new eqVariable());
             SourceUMPParameters_ItemsControl.DataContext = null;
             SourceUMPParameters_ItemsControl.DataContext = this;
         }
@@ -110,16 +128,23 @@ namespace Composability_Tool_20160301
             TargetUMPParameters_ItemsControl.DataContext = null;
             HashSet<String> items = new HashSet<String>();
             UMP ump = (UMP)TargetUMP.SelectedValue;
+            targetVarList = new ObservableCollection<eqVariable>();
             if (ump != null)
             {
                 foreach (UMPEquation eq in ump.equations)
                 {
                     foreach (string variable in eq.getEqVar())
                     {
+                        eqVariable ev;
+                        if (items.Contains(variable))
+                            continue;
+                        items.Add(variable);
+                        allUserVariables.Add(variable);
                         if (ump.nameVarDic.ContainsKey(variable))
-                            items.Add(ump.nameVarDic[variable]);
+                            ev = new eqVariable(variable, ump.nameVarDic[variable], "");
                         else
-                            items.Add(variable);
+                            ev = new eqVariable(variable, variable, "");
+                        targetVarList.Add(ev);
                     }
                 }
                 /*
@@ -132,32 +157,42 @@ namespace Composability_Tool_20160301
                 ButtonChain_4.Content = ((UMP)TargetUMP.SelectedValue).name.ToString();
 
             }
-            targetVarList = new ObservableCollection<eqVariable>();
-            foreach (string p in items)
-                targetVarList.Add(new eqVariable(p));
             TargetUMPParameters_ItemsControl.DataContext = this;
         }
         public void DynamicLinkingValues()
         {
             LinkingValues_ItemsControl.DataContext = null;
-            List<String> items = new List<String>();
-            if (LinkingAction != null)
+            HashSet<String> items = new HashSet<String>();
+            linkVarList = new ObservableCollection<eqVariable>();
+            if (Transformation != null)
             {
-                LinkEquation linkequation = (LinkEquation)LinkingAction.SelectedValue;
-                if (linkequation != null)
+                Transformation selectedTransformation = (Transformation)Transformation.SelectedValue;
+                if (selectedTransformation != null)
                 {
-                    items.AddRange(linkequation.eqVars);
+                    selectedTransformation.eqVars.RemoveWhere(v => allUserVariables.Contains(v));
+                    foreach (string variable in selectedTransformation.getEqVar())
+                    {
+                        eqVariable ev;
+                        if (items.Contains(variable))
+                            continue;
+                        items.Add(variable);
+                        allUserVariables.Add(variable);
+                        if (selectedTransformation.nameVarDic.ContainsKey(variable))
+                            ev = new eqVariable(variable, selectedTransformation.nameVarDic[variable], "");
+                        else
+                            ev = new eqVariable(variable, variable, "");
+                        linkVarList.Add(ev);
+                    }
+                    //items.AddRange(selectedTransformation.eqVars);
                     //LinkingValues_ItemsControl.ItemsSource = items;
                     ButtonChain_2.Visibility = System.Windows.Visibility.Visible;
                     ButtonChain_3.Visibility = System.Windows.Visibility.Visible;
-                    ButtonChain_2.Content = ((LinkEquation)LinkingAction.SelectedValue).sourceOutput.ToString();
-                    ButtonChain_3.Content = ((LinkEquation)LinkingAction.SelectedValue).targetInput.ToString();
+                    ButtonChain_2.Content = ((Transformation)Transformation.SelectedValue).sourceOutput.ToString();
+                    ButtonChain_3.Content = ((Transformation)Transformation.SelectedValue).targetInput.ToString();
 
                 }
             }
-            linkVarList = new ObservableCollection<eqVariable>();
-            foreach (string p in items)
-                linkVarList.Add(new eqVariable(p));
+            allUserVariables = new HashSet<string>();
             LinkingValues_ItemsControl.DataContext = this;
         }
 
@@ -173,24 +208,9 @@ namespace Composability_Tool_20160301
              SourceUMPParameters_ItemsControl.ItemsSource = items;
          }*/
 
-        private void linkUMPs()
-        {
-            UMP source = (UMP)SourceUMP.SelectedValue;
-            UMP target = (UMP)TargetUMP.SelectedValue;
-            LinkEquation linkEquation = (LinkEquation)LinkingAction.SelectedValue;
-            //link source to target using linkequation equations
-            string eqStr = linkEquation.eq;
-            //var interpreter = new Interpreter();
-            //var result = interpreter.Eval("8 / 2 + 2");
-            foreach (eqVariable eqVar in linkVarList)
-            {
-                if (eqStr.Contains(eqVar.name))
-                    eqStr = eqStr.Replace(eqVar.name, eqVar.value.ToString());
-            }
-            NCalc.Expression expression = new NCalc.Expression(eqStr);
-            expression.Parameters["pi"] = 3.14;
-            var value = expression.Evaluate();
-        }
+
+
+
 
         private void ComposeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -235,67 +255,134 @@ namespace Composability_Tool_20160301
 
         private void FinishButton_Click(object sender, RoutedEventArgs e)
         {
+            //pbar.Visibility = Visibility.Visible;
+            //AllowUIToUpdate();
+
             //SaveAsButton.Visibility = System.Windows.Visibility.Visible;
             //SaveButton.Visibility = System.Windows.Visibility.Visible;
             //RunButton.Visibility = System.Windows.Visibility.Visible;
-            linkUMPs();
-            string composedUMPName = "";
-            if (SourceUMP.SelectedValue != null && LinkingAction.SelectedValue != null && TargetUMP.SelectedValue != null)
+            if (SourceUMP.SelectedValue == null || TargetUMP.SelectedValue == null || Transformation == null || Transformation.SelectedValue == null)
             {
-                composedUMPName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((LinkEquation)LinkingAction.SelectedValue).sourceOutput + "_" + ((LinkEquation)LinkingAction.SelectedValue).targetInput + "_" + ((UMP)TargetUMP.SelectedValue).name;
-                SourceUMPParameters_ItemsControl.IsTextSearchEnabled = true;
-                TargetUMPParameters_ItemsControl.IsTextSearchEnabled = true;
-                this.NavigationService.Navigate(new Results(composedUMPName, sourceVarList, targetVarList, linkVarList));
+                ShowError("Error\nTo continue to results be sure to select both Target and Source UMP and a linking variable");
+                return;
             }
+            if (composeResults == null)
+            {
+                composeUMPSAsynch("Finish", "");
+                //ProgressBarInderminate popup = new ProgressBarInderminate();
+                //popup.ShowDialog();
+                /*composeResults = UMP.composeUMPs((UMP)SourceUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, sourceVarList, targetVarList, linkVarList, (Transformation)Transformation.SelectedValue, xmlreader.sustainabilityKeywordListPairs);
+                if(composeResults.Count == 1)//Error situation
+                {
+                    string errorMsg = composeResults[0].Keys.First();
+                    composeResults = null;
+                    ShowError(errorMsg);
+                    return;
+                }*/
+                //popup.Close();
+            }
+            else {
+                string composedUMPName = "";
+                if (SourceUMP.SelectedValue != null && Transformation.SelectedValue != null && TargetUMP.SelectedValue != null)
+                {
+                    composedUMPName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((Transformation)Transformation.SelectedValue).sourceOutput + "_" + ((Transformation)Transformation.SelectedValue).targetInput + "_" + ((UMP)TargetUMP.SelectedValue).name;
+                    SourceUMPParameters_ItemsControl.IsTextSearchEnabled = true;
+                    TargetUMPParameters_ItemsControl.IsTextSearchEnabled = true;
+                    this.NavigationService.Navigate(new Results(composedUMPName, sourceVarList, targetVarList, linkVarList, composeResults));
+                }
+            }
+            //pbar.Visibility = Visibility.Hidden;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            //SaveFileDialog saveFileDialog = new SaveFileDialog();
-            //saveFileDialog.Filter = "XML file (*.xml)|*.xml";
-            //saveFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory+"composedSystemsFiles";
-            //if (saveFileDialog.ShowDialog() == true)
-            //File.WriteAllText(saveFileDialog.FileName, getXMLComposedSystemContent());
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "composedSystemsFiles\\" + ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name + ".xml", getXMLComposedSystemContent());
+            //pbar.Visibility = Visibility.Visible;
+            //AllowUIToUpdate();
+            string fileName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "XML file (*.xml)|*.xml";
+            saveFileDialog.InitialDirectory = folderPath+"\\composedSystemsFiles\\";
+            if (saveFileDialog.ShowDialog() == true)
+                fileName = saveFileDialog.FileName;
+            //File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "composedSystemsFiles\\" + ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name + ".xml", writeXMLComposedSystemContent());
+            if (SourceUMP.SelectedValue == null || TargetUMP.SelectedValue == null || Transformation == null || Transformation.SelectedValue == null)
+            {
+                ShowError("Error\nTo continue saving be sure to select both Target and Source UMP and a linking variable");
+                return;
+            }
+            if (composeResults == null)
+            {
+                composeUMPSAsynch("Save", fileName);
+                /*composeResults = UMP.composeUMPs((UMP)SourceUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, sourceVarList, targetVarList, linkVarList, (Transformation)Transformation.SelectedValue, xmlreader.sustainabilityKeywordListPairs);
+                if (composeResults.Count == 1)//Error situation
+                {
+                    string errorMsg = composeResults[0].Keys.First();
+                    composeResults = null;
+                    ShowError(errorMsg);
+                    return;
+                }*/
+            }
+            else
+            {
+                File.WriteAllText(folderPath + "\\composedSystemsFiles\\" + ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name + ".xml", UMP.writeXMLComposedSystemContent((UMP)SourceUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, sourceVarList, targetVarList, composeResults[3], composeResults[4], null, null));
+            }
+            //pbar.Visibility = Visibility.Hidden;
         }
 
-        private string getXMLComposedSystemContent()
+        void AllowUIToUpdate()
         {
-            StringBuilder fileContent = new StringBuilder("<ComposedSystem>\n<UMPs>\n");
-            //UMP tmpUMP = (UMP)SourceUMP.SelectedValue;
-            foreach (UMP tmpUMP in new List<UMP>() { (UMP)SourceUMP.SelectedValue, (UMP)TargetUMP.SelectedValue })
+
+            DispatcherFrame frame = new DispatcherFrame();
+
+            Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Render, new DispatcherOperationCallback(delegate (object parameter)
+
             {
-                fileContent.Append("<UMP name=\"" + tmpUMP.name + "\" type=\"" + tmpUMP.type + "\" description=\"" + tmpUMP.description + "\">\n");
-                foreach (eqVariable param in sourceVarList)
-                {
-                    fileContent.Append("<Parameter name=\"" + param.name + "\" value=\"" + param.value + "\"/>\n");
-                }
-                fileContent.Append("<Transformation>\n");
-                foreach (UMPEquation eq in tmpUMP.equations)
-                {
-                    //TODO: compute the equation results and write them to the file
-                    //< Equation category =\"Energy\" description=\"describes the total natural gas burned \" set=\"Natural Gas\">mCH4 = ΔCHCH4 *ΔHreq*MMCH4*PUNCOMB</Equation>
-                }
-                fileContent.Append("</Transformation>\n");
-                fileContent.Append("</UMP>\n");
-            }
-            fileContent.Append("</UMPs>\n</ComposedSystem>");
-            return fileContent.ToString();
+
+                frame.Continue = false;
+
+                return null;
+
+            }), null);
+
+            Dispatcher.PushFrame(frame);
+
         }
 
         private void LinkUMPButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Compose_AddProcess(((UMP)TargetUMP.SelectedValue).name, targetVarList));
-            //NavigationService.Navigate(new Uri("Compose_AddProcess.xaml", UriKind.Relative));
+            AllowUIToUpdate();
+            if (SourceUMP.SelectedValue == null || TargetUMP.SelectedValue == null || Transformation == null || Transformation.SelectedValue == null)
+            {
+                ShowError("Error\nTo continue linking be sure to select both Target and Source UMP and a linking variable");
+                return;
+            }
+            if (composeResults == null)
+            {
+                composeUMPSAsynch("Link", "");
+            }
+            else
+            {
+                string mixedName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name;
+                this.NavigationService.Navigate(new Compose_AddProcess(((UMP)TargetUMP.SelectedValue).name, sourceVarList, targetVarList, linkVarList, mixedName, composeResults));
+            }
         }
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             SourceUMP.UnselectAll();
             TargetUMP.UnselectAll();
-            LinkingAction.UnselectAll();
-            SourceUMPParameters_ItemsControl.ItemsSource = null;
-            TargetUMPParameters_ItemsControl.ItemsSource = null;
-            LinkingValues_ItemsControl.ItemsSource = null;
+            Transformation.UnselectAll();
+            SourceUMPParameters_ItemsControl.DataContext = null;
+            TargetUMPParameters_ItemsControl.DataContext = null;
+            allUserVariables = new HashSet<string>();
+            LinkingValues_ItemsControl.DataContext = null;
+            ButtonChain_1.Visibility = System.Windows.Visibility.Hidden;
+            ButtonChain_1.Content = "";
+            ButtonChain_2.Visibility = System.Windows.Visibility.Hidden;
+            ButtonChain_2.Content = "";
+            ButtonChain_3.Visibility = System.Windows.Visibility.Hidden;
+            ButtonChain_3.Content = "";
+            ButtonChain_4.Visibility = System.Windows.Visibility.Hidden;
+            ButtonChain_4.Content = "";
         }
 
         private void Run_Click(object sender, RoutedEventArgs e)
@@ -320,6 +407,7 @@ namespace Composability_Tool_20160301
 
         private void selectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            composeResults = null;
             DynamicSourceUMPValues();
             sourceUMPSelectionFlag = true;
             if (targetUMPSelectionFlag)
@@ -328,6 +416,7 @@ namespace Composability_Tool_20160301
 
         private void targetSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            composeResults = null;
             DynamicTargetUMPValues();
             targetUMPSelectionFlag = true;
             if (sourceUMPSelectionFlag)
@@ -336,8 +425,134 @@ namespace Composability_Tool_20160301
 
         private void linkingSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            composeResults = null;
             DynamicLinkingValues();
         }
+
+        private void ShowError(string errorMsg)
+        {
+            //pbar.Visibility = Visibility.Hidden;
+            System.Windows.Forms.MessageBox.Show(errorMsg);
+        }
+        
+        /*public void composeUMPSAsynch()
+        {
+
+            pbCalculationProgress.Value = 0;
+            doneEvent = new AutoResetEvent(false);
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.WorkerReportsProgress = true;
+            //worker.DoWork += worker_DoWork;
+            worker.ProgressChanged += worker_ProgressChanged;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            List<Object> arguments = new List<object>();
+            arguments.Add((UMP)SourceUMP.SelectedValue);
+            arguments.Add((UMP)TargetUMP.SelectedValue);
+            arguments.Add(sourceVarList);
+            arguments.Add(targetVarList);
+            arguments.Add(linkVarList);
+            arguments.Add((Transformation)Transformation.SelectedValue);
+            arguments.Add(xmlreader.sustainabilityKeywordListPairs);
+            worker.RunWorkerAsync(arguments);
+            doneEvent.WaitOne(1000);
+        }*/
+
+        private async void composeUMPSAsynch(string methodCallName, string fileName)
+        {
+            try
+            {
+                pbCalculationProgress.Visibility = Visibility.Visible;
+                var cancellationTokenSource = new CancellationTokenSource();
+
+                var limit = 10;
+
+                var progressReport = new Progress<int>();//(i) =>
+                //    pbCalculationProgress.Value = Convert.ToInt32((100 * i / (limit - 1))));
+
+                var token = cancellationTokenSource.Token;
+                List<object> arguments = new List<object>();
+                arguments.Add((UMP)SourceUMP.SelectedValue);
+                arguments.Add((UMP)TargetUMP.SelectedValue);
+                arguments.Add(sourceVarList);
+                arguments.Add(targetVarList);
+                arguments.Add(linkVarList);
+                arguments.Add((Transformation)Transformation.SelectedValue);
+                arguments.Add(xmlreader.sustainabilityKeywordListPairs);
+                await Task.Run(() =>
+                    DoWork(limit, token, progressReport, arguments),
+                    token);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            pbCalculationProgress.Visibility = Visibility.Hidden;
+            switch (methodCallName) {
+                case "Save":
+                    File.WriteAllText(fileName, UMP.writeXMLComposedSystemContent((UMP)SourceUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, sourceVarList, targetVarList, composeResults[3], composeResults[4], null, null));
+                    break;
+                case "Finish":
+                    string composedUMPName = "";
+                    if (SourceUMP.SelectedValue != null && Transformation.SelectedValue != null && TargetUMP.SelectedValue != null)
+                    {
+                        composedUMPName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((Transformation)Transformation.SelectedValue).sourceOutput + "_" + ((Transformation)Transformation.SelectedValue).targetInput + "_" + ((UMP)TargetUMP.SelectedValue).name;
+                        SourceUMPParameters_ItemsControl.IsTextSearchEnabled = true;
+                        TargetUMPParameters_ItemsControl.IsTextSearchEnabled = true;
+                        this.NavigationService.Navigate(new Results(composedUMPName, sourceVarList, targetVarList, linkVarList, composeResults));
+                    }
+                    break;
+                case "Link":
+                    string mixedName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name;
+                    this.NavigationService.Navigate(new Compose_AddProcess(((UMP)TargetUMP.SelectedValue).name, sourceVarList, targetVarList, linkVarList, mixedName, composeResults));
+                    break;
+                default:
+                    break;
+            }
+        }
+        private int DoWork(
+            int limit,
+            CancellationToken token,
+            IProgress<int> progressReport,
+            List<object> arguments)
+        {
+            UMP a = (UMP)arguments[0];
+            UMP b = (UMP)arguments[1];
+            ObservableCollection<eqVariable> sourceVarList1 = (ObservableCollection<eqVariable>)arguments[2];
+            ObservableCollection<eqVariable> targetVarList1 = (ObservableCollection<eqVariable>)arguments[3];
+            ObservableCollection<eqVariable> linkVarList1 = (ObservableCollection<eqVariable>)arguments[4];
+            Transformation trans = (Transformation)arguments[5];
+            Dictionary<string, List<string>> keywords = (Dictionary<string, List<string>>)arguments[6];
+            limit = 100;
+            int progressPercentage = Convert.ToInt32(20);
+            System.Threading.Thread.Sleep(100);
+            progressReport.Report(progressPercentage);
+            composeResults = UMP.composeUMPs(a, b, sourceVarList1, targetVarList1, linkVarList1, trans, keywords);
+            progressPercentage = Convert.ToInt32(80);
+            System.Threading.Thread.Sleep(100);
+            progressReport.Report(progressPercentage);
+            if (composeResults.Count == 1)//Error situation
+            {
+                string errorMsg = composeResults[0].Keys.First();
+                composeResults = null;
+                ShowError(errorMsg);
+            }
+            System.Threading.Thread.Sleep(100);
+            progressPercentage = Convert.ToInt32(100);
+            progressReport.Report(progressPercentage);
+            token.ThrowIfCancellationRequested();
+            return limit;
+        }
+
+        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            pbCalculationProgress.Visibility = Visibility.Visible;
+            //pbCalculationProgress.Value = e.ProgressPercentage;
+        }
+
+        void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Done");
+        }
     }
-    
+
 }

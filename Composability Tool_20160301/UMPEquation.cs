@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Composability_Tool_20160301
 {
     public class UMPEquation
     {
-        string category { get; set; }
-        string description { get; set; }
-        string eq { get; set; }
-        HashSet<String> eqVars { get; set; }
+        public string category { get; set; }
+        public string description { get; set; }
+        public string eq { get; set; }
+        public HashSet<String> eqVars { get; set; }
 
-        string internalVar { get; set; }
+        public KeyValuePair<String, Double> internalVar { get; set; }
 
         public void AddEqVars(string eqVar)
         {
@@ -29,22 +30,22 @@ namespace Composability_Tool_20160301
         {
             category = _category;
             description = _descr;
-            eq = _eq;
-            findSetEqVars();
+            eq = Regex.Replace(_eq, "[ \n\r\t]", "");
+            eq = findSetEqVars();
         }
 
-        public void findSetEqVars()
+        public string findSetEqVars()
         {
             //we have the equation string in eq and we want to extract equation variables from eq and set to eqVars
             string eqTmp = eq;
             string[] tmpEqSplits = eq.Split('=');
             if (tmpEqSplits.Length > 1)
             {
-                internalVar = tmpEqSplits[0];
+                internalVar = new KeyValuePair<string, double>(tmpEqSplits[0], 0.0);
                 eqTmp = tmpEqSplits[1];
             }
 
-            string[] delimiterStrs = { " ", "+", "-", "=", "\t", "tan(", "sin(", "cos(", "ln(", "log(", "/", "exp", "(", ")", "[", "]", "*", "^"};
+            string[] delimiterStrs = { " ", "+", "-", "=", "\t", "tan(", "sin(", "cos(", "ln(", "log(", "/", "exp", "sqrt", "(", ")", "[", "]", "*", "^" };
             string[] potentialVars = eqTmp.Split(delimiterStrs, StringSplitOptions.RemoveEmptyEntries);
             double tmp;
             eqVars = new HashSet<string>();
@@ -53,6 +54,8 @@ namespace Composability_Tool_20160301
                 if (!Double.TryParse(pvar, out tmp))
                     eqVars.Add(pvar);
             }
+            eq = eqTmp;
+            return eq;
         }
 
     }

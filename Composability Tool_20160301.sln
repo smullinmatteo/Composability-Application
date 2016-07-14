@@ -3,23 +3,39 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composability Tool_20160301", "Composability Tool_20160301\Composability Tool_20160301.csproj", "{E51A7931-E996-42DC-9898-D75D3D79D032}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{FD8843BE-70FA-4703-9A3E-6C2F79B347B3}"
 	ProjectSection(SolutionItems) = preProject
 		Composability Tool_20160301\ISL Logo.png = Composability Tool_20160301\ISL Logo.png
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composability Tool_20160301", "Composability Tool_20160301\Composability Tool_20160301.csproj", "{C0348432-1BCC-427F-B8BE-C28D94C945AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCharts", "WpfCharts\WpfCharts.csproj", "{894F30A7-1E96-41AB-8CB1-95CC2D425D2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E51A7931-E996-42DC-9898-D75D3D79D032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E51A7931-E996-42DC-9898-D75D3D79D032}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E51A7931-E996-42DC-9898-D75D3D79D032}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E51A7931-E996-42DC-9898-D75D3D79D032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0348432-1BCC-427F-B8BE-C28D94C945AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0348432-1BCC-427F-B8BE-C28D94C945AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0348432-1BCC-427F-B8BE-C28D94C945AA}.Debug|x64.ActiveCfg = Debug|x64
+		{C0348432-1BCC-427F-B8BE-C28D94C945AA}.Debug|x64.Build.0 = Debug|x64
+		{C0348432-1BCC-427F-B8BE-C28D94C945AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0348432-1BCC-427F-B8BE-C28D94C945AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0348432-1BCC-427F-B8BE-C28D94C945AA}.Release|x64.ActiveCfg = Release|x64
+		{C0348432-1BCC-427F-B8BE-C28D94C945AA}.Release|x64.Build.0 = Release|x64
+		{894F30A7-1E96-41AB-8CB1-95CC2D425D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{894F30A7-1E96-41AB-8CB1-95CC2D425D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{894F30A7-1E96-41AB-8CB1-95CC2D425D2B}.Debug|x64.ActiveCfg = Debug|x64
+		{894F30A7-1E96-41AB-8CB1-95CC2D425D2B}.Debug|x64.Build.0 = Debug|x64
+		{894F30A7-1E96-41AB-8CB1-95CC2D425D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{894F30A7-1E96-41AB-8CB1-95CC2D425D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{894F30A7-1E96-41AB-8CB1-95CC2D425D2B}.Release|x64.ActiveCfg = Release|x64
+		{894F30A7-1E96-41AB-8CB1-95CC2D425D2B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

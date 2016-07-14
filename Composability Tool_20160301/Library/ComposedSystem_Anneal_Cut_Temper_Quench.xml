@@ -56,7 +56,7 @@
       <Feedback name="feed rate" description="" value="" unit="">feedrate</Feedback>
       <Feedback name="MRR" description="" value="" unit="">MRR</Feedback>
       <Feedback name="feed factor" description="" value="" unit="">Feedfactor</Feedback>
-      <Feedback name="Tool Power" description="" value="" unit="">Powermotor</Feedback>
+      <Feedback name="Tool Power" description="" value="" unit="">powerTool</Feedback>
       <Feedback name="Idle Power" description="" value="" unit="">powerIdle</Feedback>
       <Feedback name="Basic Power" description="" value="" unit="">powerBasic</Feedback>
       <Feedback name="Idle time" description="" value="" unit="">idleTime</Feedback>
@@ -158,7 +158,7 @@
     <LinkingAction targetUMP="Tempering" targetInput="" sourceUMP="Milling" sourceOutput="" />
     <LinkingAction targetUMP="Quench" targetInput="" sourceUMP="Tempering" sourceOutput="" />
     <Transformation>
-      <Equation targetUMP="Shot Peening" targetInput="Coverage" sourceUMP="Tempering" sourceOutput="Yield Strength"
+      <!--Equation targetUMP="Shot Peening" targetInput="Coverage" sourceUMP="Tempering" sourceOutput="Yield Strength"
                 description="the equation to convert yield strength into coverage" allocationVariable="1"
                 >C=100*[1-exp((-3*beta*0.05*flowrate*pressure*nozzlelength*(sin(theta^2))/(2.5*shotdensity*(tan(nozzleangle)standoff^2*yieldstrength*pi*shot radius^2)]</Equation>
       <Equation targetUMP="Shot Peening" targetInput="ProcessTime" sourceUMP="Tempering" sourceOutput="Yield Strength"
@@ -175,7 +175,7 @@
       <EquationVariables description="shot radius" category="Shot" set="" origin="Shot Peening">shotradius</EquationVariables>
       <EquationVariables description="beta" category="Shot" set="" origin="Shot Peening">beta</EquationVariables>
       <EquationVariables description="youngs modulus" category="Mechanical" set="" origin="Tempering">youngsmodulus</EquationVariables>
-      <EquationVariables description="yield strength" category="Mechanical" set="" origin="Tempering">yieldstrength</EquationVariables>
+      <EquationVariables description="yield strength" category="Mechanical" set="" origin="Tempering">yieldstrength</EquationVariables-->
     </Transformation>
 
 
