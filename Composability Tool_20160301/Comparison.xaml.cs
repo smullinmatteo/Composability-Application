@@ -298,7 +298,7 @@ namespace Composability_Tool_20160301
             var ptsC = new List<double>(Axes.Length);
             foreach (string metric in sustMetrics.Keys)
             {
-                Axes[ind] = metric; ind++;
+                Axes[ind] = metric.Replace("Average", "Avg"); ind++;
                 double minValue = 0, maxValue = 0;
                 minValue = Math.Min((umpSustainabilityMetrics1==null)? double.MaxValue : umpSustainabilityMetrics1[metric], (umpSustainabilityMetrics2 == null) ? double.MaxValue : umpSustainabilityMetrics2[metric]);
                 minValue = Math.Min(minValue, (umpSustainabilityMetrics3 == null) ? double.MaxValue : umpSustainabilityMetrics3[metric]);

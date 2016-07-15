@@ -32,7 +32,7 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding}" Background="{Binding ElementName=border, Path=Background}" FontSize="14" FontWeight="Bold" />
+                                        <TextBlock Text="{Binding}" Background="{Binding ElementName=border, Path=Background}" FontSize="8" FontWeight="Bold" TextWrapping="WrapWithOverflow" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
@@ -50,15 +50,15 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Rectangle Height="20" 
-                                                           Width="20" 
-                                                           Margin="5"
+                                                <Rectangle Height="15" 
+                                                           Width="15" 
+                                                           Margin="3"
                                                            StrokeThickness="{Binding LineThickness}"
                                                            Fill="{Binding FillColor, Converter={Converters:ConvertColorToBrush}}" 
                                                            Stroke="{Binding LineColor, Converter={Converters:ConvertColorToBrush}}" />
                                                 <TextBlock Text="{Binding Name}" 
                                                            FontFamily="Segoe UI"
-                                                           FontSize="14"
+                                                           FontSize="10"
                                                            Margin="5 5 10 5"/>
                                             </StackPanel>
                                         </DataTemplate>

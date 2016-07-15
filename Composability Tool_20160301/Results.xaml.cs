@@ -38,6 +38,7 @@ namespace Composability_Tool_20160301
             this.DataContext = this;
             composedUMPName = "Please compose two UMPs first to see the results.";
             UMPResult_TextBlock.Foreground = new SolidColorBrush(Colors.Red);
+            
             //barChart.Visibility = Visibility.Hidden;
             //we need to pass: 1. Composed name of two UMPs 2. Parameters of each UMP entered by the user
             /*string parameter = string.Empty;

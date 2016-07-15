@@ -313,9 +313,43 @@ namespace WpfCharts
         }
 
         /// <summary>
+        /// LegendBackgroundColor Dependency Property
+        /// </summary>
+        public static readonly DependencyProperty LegendFontSizeProperty =
+            DependencyProperty.Register("LegendFontSize", typeof(int), typeof(SpiderChart),
+                new FrameworkPropertyMetadata(10, OnLegendBackgroundColorChanged));
+
+        /// <summary>
         /// Provides derived classes an opportunity to handle changes to the LegendBackgroundColor property.
         /// </summary>
         protected virtual void OnLegendBackgroundColorChanged(Color oldLegendBackgroundColor, Color newLegendBackgroundColor)
+        {
+        }
+
+        /// <summary>
+        /// Gets or sets the LegendFontSize property. \
+        /// </summary>
+        public int LegendFontSize
+        {
+            get { return (int)GetValue(LegendFontSizeProperty); }
+            set { SetValue(LegendFontSizeProperty, value); }
+        }
+
+        /// <summary>
+        /// Handles changes to the LegendBackgroundColor property.
+        /// </summary>
+        private static void OnLegendFontSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var target = (SpiderChart)d;
+            var oldLegendFontSize = (int)e.OldValue;
+            var newLegendFontSize = target.LegendFontSize;
+            target.OnLegendFontSizeChanged(oldLegendFontSize, newLegendFontSize);
+        }
+
+        /// <summary>
+        /// Provides derived classes an opportunity to handle changes to the LegendBackgroundColor property.
+        /// </summary>
+        protected virtual void OnLegendFontSizeChanged(int oldLegendFontSize, int newLegendFontSize)
         {
         }
 

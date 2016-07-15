@@ -244,13 +244,13 @@
                                Lines="{Binding Lines}" 
                                Axis="{Binding Axes}" 
                                Minimum="0" 
-                               Maximum="1" 
-                               Ticks="5" 
+                               Maximum="1"
+                               Ticks="10" 
                                Margin="10,5,20,5"
-                                       FontSize="5"
-                               ShowLegend="True" 
+                               ShowLegend="True"
+                               FontSize="5"
                                LegendLocation="BottomRight"
-                               LegendBackgroundColor="Aquamarine"/>
+                               LegendBackgroundColor="White"/>
             </Grid>
         </Grid>
         <StackPanel Grid.Column="2" Grid.Row="2" Margin="10" VerticalAlignment="Top">
