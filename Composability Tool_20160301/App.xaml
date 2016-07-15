@@ -8,11 +8,10 @@
         <!-- Header text style -->
         <Style x:Key="headerTextStyle" TargetType="{x:Type Label}">
             <Setter Property="Label.VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="Label.FontFamily" Value="Garamond"></Setter>
             <Setter Property="Label.FontWeight" Value="Bold"></Setter>
             <Setter Property="Label.FontSize" Value="30"></Setter>
             <Setter Property="Label.Foreground" Value="Black"></Setter>
-            <Setter Property="Label.FontFamily" Value="Garamond"/>
+            <Setter Property="Label.FontFamily" Value="Futura"/>
         </Style>
 
         <!-- Label style -->
@@ -21,7 +20,7 @@
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Margin" Value="0,0,0,5" />
-            <Setter Property="FontFamily" Value="Garamond"/>
+            <Setter Property="FontFamily" Value="Futura"/>
         </Style>
 
         <!-- DataGrid header style -->
@@ -31,7 +30,7 @@
             <Setter Property="Background" Value="#4E87D4" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Label.VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="Label.FontFamily" Value="Garamond"></Setter>
+            <Setter Property="Label.FontFamily" Value="Futura"></Setter>
             <Setter Property="Label.FontWeight" Value="Bold"></Setter>
             <Setter Property="Label.FontSize" Value="24"></Setter>
             <Setter Property="Label.Foreground" Value="Black"></Setter>
@@ -51,7 +50,7 @@
             <Setter Property="Width" Value="125" />
             <Setter Property="Height" Value="25" />
             <Setter Property="Margin" Value="0,10,0,0" />
-            <Setter Property="FontFamily" Value="Garamond"/>
+            <Setter Property="FontFamily" Value="Futura"/>
 
         </Style>
 
@@ -68,7 +67,7 @@
             <Setter Property="Height" Value="25" />
             <Setter Property="Margin" Value="0,10,0,0" />
             <Setter Property="HorizontalAlignment" Value="Right" />
-            <Setter Property="FontFamily" Value="Garamond"/>
+            <Setter Property="FontFamily" Value="Futura"/>
 
         </Style>
         <!--Banner style-->
@@ -79,10 +78,10 @@
             <Setter Property="TextBlock.VerticalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Stretch" />
             <Setter Property ="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="Background" Value="#F3D08E"/>
+            <Setter Property="Background" Value="#385E86"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="FontFamily" Value="Garamond"/>
+            <Setter Property="FontFamily" Value="Futura"/>
             <Setter Property="TextElement.FontSize" Value="20"/>
         </Style>
         
@@ -91,10 +90,11 @@
             <Setter Property="Width" Value="200" />
             <Setter Property="Height" Value="50" />
             <Setter Property="Margin" Value="0,0,0,0" />
-            <Setter Property="Background" Value="#F3D08E"/>
+            <Setter Property="Background" Value="#385E86"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="FontFamily" Value="Garamond"/>
+            <Setter Property="FontFamily" Value="Futura"/>
+            <Setter Property="FontSize" Value="20"/>
 
         </Style>
 
@@ -129,7 +129,7 @@
 
         <!--Row and Column Background colors and styles-->
         <Style x:Key="RectangleStyle" TargetType="{x:Type Rectangle}">
-            <Setter Property="Fill" Value="#F3D08E" />
+            <Setter Property="Fill" Value="#385E86" />
         </Style>
         
         <Style x:Key= "SidePanelStyle" TargetType="{x:Type Button}">
@@ -185,7 +185,7 @@
             <Setter Property="TextBlock.FontSize" Value="20"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="TextBlock.TextAlignment" Value="Justify"/>
-            <Setter Property="TextBlock.FontFamily" Value="Garamond"/>
+            <Setter Property="TextBlock.FontFamily" Value="Arial"/>
             <Setter Property="TextBlock.FontWeight" Value="Bold"/>
             <Setter Property="TextBlock.Foreground" Value="Black"/>
             <Setter Property="Margin" Value="10,20,10,10"/>
