@@ -117,7 +117,7 @@ namespace Composability_Tool_20160301
             return sustMetrics;
         }
 
-        public static string writeXMLComposedSystemContent(UMP SourceUMP, UMP TargetUMP, ObservableCollection<eqVariable> sourceVarList, ObservableCollection<eqVariable> targetVarList, Dictionary<string, double> sourceSustainabilityMetrics, Dictionary<string, double> targetSustainabilityMetrics, Dictionary<string, double> allParams, Dictionary<string, double> allInternalVars)
+        public static string writeXMLComposedSystemContent(UMP SourceUMP, UMP TargetUMP, Transformation linkingAction, ObservableCollection<eqVariable> sourceVarList, ObservableCollection<eqVariable> targetVarList, ObservableCollection<eqVariable> linkVarList, Dictionary<string, double> sourceSustainabilityMetrics, Dictionary<string, double> targetSustainabilityMetrics, Dictionary<string, double> allParams, Dictionary<string, double> allInternalVars)
         {
             StringBuilder fileContent = new StringBuilder("<ComposedSystem>\n<UMPs>\n");
             //UMP tmpUMP = (UMP)SourceUMP.SelectedValue;
@@ -164,6 +164,16 @@ namespace Composability_Tool_20160301
                 ind++;
             }
             fileContent.Append("</UMPs>\n");
+            fileContent.Append("<Linking>\n");
+            fileContent.Append("<LinkingAction targetUMP = \"" + TargetUMP.name + "\" sourceUMP = \"" + SourceUMP.name + "\" allocationVariable = \"1\">\n");
+            fileContent.Append("<Transformation targetInput=\"" + linkingAction.targetInput + "\"  sourceOutput=\"" + linkingAction.sourceOutput + "\">\n");
+            foreach (eqVariable var in linkVarList)
+            {
+                fileContent.Append("<Equation name=\"" + var.name + "\">" + var.value + "</Equation>\n");
+            }
+            fileContent.Append("</Transformation>\n");
+            fileContent.Append("</LinkingAction>\n");
+            fileContent.Append("</Linking>\n");
             Dictionary<string, double> sumedMetrics = sumupSustainabilityMetrics(sustainabilityList[0], sustainabilityList[1]);
             fileContent.Append("<FinalSustainabilityMetrics>\n");
             foreach (string metric in sumedMetrics.Keys)
@@ -211,6 +221,61 @@ namespace Composability_Tool_20160301
             foreach (var met in metricVar)
                 sustainabilityMetrics.Add(met.name, met.value);
             return sustainabilityMetrics;
+        }
+
+        public static List<object> readXMLComposedSystemAllContent(string filename)
+        {
+            List<object> resList = new List<object>();
+            Console.WriteLine("file: " + filename);
+            XDocument testXML = XDocument.Load(filename);
+
+            var umpsVar = from ump in testXML.Descendants("UMP")
+                          select new
+                          {
+                              parameter = ump.Descendants("Parameter"),
+                              name = Convert.ToString(ump.Attribute("name").Value)
+                          };
+
+            foreach (var umpVar in umpsVar)
+            {
+                Dictionary<string, double> parameters = new Dictionary<string, double>();
+                var paramVar = from param in umpVar.parameter
+                                select new
+                              {
+                                  name = Convert.ToString(param.Attribute("name").Value),
+                                  value = Convert.ToDouble(param.Attribute("value").Value)
+                              };
+                foreach(var par in paramVar)                
+                    parameters.Add(par.name, par.value);
+                resList.Add(umpVar.name);
+                resList.Add(parameters);    // The first UMP is Source, Second one is Target        
+            }
+
+            var linkVar = from link in testXML.Descendants("LinkingAction").Descendants("Transformation")
+                          select new
+                          {
+                              equations = link.Descendants("Equation"),
+                              sourceOutput = Convert.ToString(link.Attribute("sourceOutput").Value),
+                              targetInput = Convert.ToString(link.Attribute("targetInput").Value)
+                          };
+            foreach (var link in linkVar) {
+                var eqVar = from eq in link.equations
+                            select new
+                            {
+                                value = Convert.ToDouble(eq.Value),
+                                name = Convert.ToString(eq.Attribute("name").Value)
+                            };
+                resList.Add(link.targetInput);
+                resList.Add(link.sourceOutput);
+                Dictionary<string, double> linkParameters = new Dictionary<string, double>();
+                foreach (var l in eqVar) {
+                    linkParameters.Add(l.name, l.value);
+                }
+                resList.Add(linkParameters);
+            }
+            
+            // 1. SourceName, 2. SourceParameters, 3.TargetName, 4.TargetParameters, 5. LinkTargetInput, 6. LinkSourceOutput, 7. LinkingParameters
+            return resList; 
         }
 
         public static List<Dictionary<string, double>> composeUMPs(UMP source, UMP target, ObservableCollection<eqVariable> sourceVarList, ObservableCollection<eqVariable> targetVarList, ObservableCollection<eqVariable> linkVarList, Transformation transformation, Dictionary<string, List<string>> sustainabilityKeywordListPairs)

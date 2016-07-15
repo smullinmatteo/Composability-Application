@@ -254,8 +254,8 @@ namespace Composability_Tool_20160301
                 foreach (string metric in umpSustainabilityMetrics3.Keys)
                     ThirdCollection.Add(new SimpleDataValue("C3", umpSustainabilityMetrics3[metric]));
             }*/
-            StackedColumnSeries.DataContext = null;
-            StackedColumnSeries.DataContext = new ChartModel(FirstCollection, SecondCollection, ThirdCollection);
+            stackedColumnSeries.DataContext = null;
+            stackedColumnSeries.DataContext = new ChartModel(FirstCollection, SecondCollection, ThirdCollection);
             //StackedColumnSeries.DataContext = this;
 
             /*this.StackedColumnSeries.DataContext = new ChartModel
@@ -347,6 +347,66 @@ namespace Composability_Tool_20160301
             spiderChart.DataContext = this;
             Console.WriteLine("Loaded Spider Chart");
 
+        }
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
+            if (stackedColumnSeries.DataContext == null)
+            {
+                MessageBox.Show("there is nothing to export");
+            }
+            else
+            {
+                Rect bounds = VisualTreeHelper.GetDescendantBounds(stackedColumnSeries);
+                RenderTargetBitmap renderBitmap = new RenderTargetBitmap((int)bounds.Width, (int)bounds.Height, 96, 96, PixelFormats.Pbgra32);
+
+                DrawingVisual isolatedVisual = new DrawingVisual();
+                using (DrawingContext drawing = isolatedVisual.RenderOpen())
+                {
+                    drawing.DrawRectangle(Brushes.White, null, new Rect(new Point(), bounds.Size)); // Optional Background
+                    drawing.DrawRectangle(new VisualBrush(stackedColumnSeries), null, new Rect(new Point(), bounds.Size));
+                }
+
+                renderBitmap.Render(isolatedVisual);
+
+                //SpiderChart
+                Rect boundsSpider = VisualTreeHelper.GetDescendantBounds(spiderChart);
+                RenderTargetBitmap renderBitmapSpider = new RenderTargetBitmap((int)bounds.Width, (int)bounds.Height, 96, 96, PixelFormats.Pbgra32);
+
+                DrawingVisual isolatedVisualSpider = new DrawingVisual();
+                using (DrawingContext drawing = isolatedVisualSpider.RenderOpen())
+                {
+                    drawing.DrawRectangle(Brushes.White, null, new Rect(new Point(), bounds.Size)); // Optional Background
+                    drawing.DrawRectangle(new VisualBrush(spiderChart), null, new Rect(new Point(), bounds.Size));
+                }
+
+                renderBitmapSpider.Render(isolatedVisualSpider);
+
+                Microsoft.Win32.SaveFileDialog uloz_obr = new Microsoft.Win32.SaveFileDialog();
+                uloz_obr.FileName = "Pic";
+                uloz_obr.DefaultExt = "png";
+
+                Nullable<bool> result = uloz_obr.ShowDialog();
+                if (result == true)
+                {
+                    string obr_cesta = uloz_obr.FileName.Split(new String[] { ".png" }, StringSplitOptions.RemoveEmptyEntries)[0] + "_StackedBar" + ".png";
+
+                    using (FileStream outStream = new FileStream(obr_cesta, FileMode.Create))
+                    {
+                        PngBitmapEncoder encoder = new PngBitmapEncoder();
+                        encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+                        encoder.Save(outStream);
+                    }
+
+                    obr_cesta = uloz_obr.FileName.Split(new String[] { ".png" }, StringSplitOptions.RemoveEmptyEntries)[0] + "_SpiderChart" + ".png";
+
+                    using (FileStream outStream = new FileStream(obr_cesta, FileMode.Create))
+                    {
+                        PngBitmapEncoder encoder = new PngBitmapEncoder();
+                        encoder.Frames.Add(BitmapFrame.Create(renderBitmapSpider));
+                        encoder.Save(outStream);
+                    }
+                }
+            }
         }
     }
     public class SimpleDataValue

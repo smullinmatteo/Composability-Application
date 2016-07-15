@@ -223,7 +223,7 @@ namespace Composability_Tool_20160301
                 composeUMPSAsynch("Save");
             }
             else {
-                File.WriteAllText(folderPath + "\\composedSystemsFiles\\" + mixedName + "_" + ((UMP)TargetUMP.SelectedValue).name + ".xml", UMP.writeXMLComposedSystemContent((UMP)LinkedUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, sourceVarList, targetVarList, composeResults[3], composeResults[4], composedUMPResults[5], composedUMPResults[6]));
+                File.WriteAllText(folderPath + "\\composedSystemsFiles\\" + mixedName + "_" + ((UMP)TargetUMP.SelectedValue).name + ".xml", UMP.writeXMLComposedSystemContent((UMP)LinkedUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, (Transformation)Transformation.SelectedValue, sourceVarList, targetVarList, linkVarList, composeResults[3], composeResults[4], composedUMPResults[5], composedUMPResults[6]));
             }
         }
 
@@ -359,7 +359,7 @@ namespace Composability_Tool_20160301
             switch (methodCallName)
             {
                 case "Save":
-                    File.WriteAllText(folderPath + "\\composedSystemsFiles\\" + mixedName + "_" + ((UMP)TargetUMP.SelectedValue).name + ".xml", UMP.writeXMLComposedSystemContent((UMP)LinkedUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, sourceVarList, targetVarList, composeResults[3], composeResults[4], composedUMPResults[5], composedUMPResults[6]));
+                    File.WriteAllText(folderPath + "\\composedSystemsFiles\\" + mixedName + "_" + ((UMP)TargetUMP.SelectedValue).name + ".xml", UMP.writeXMLComposedSystemContent((UMP)LinkedUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, (Transformation)Transformation.SelectedValue, sourceVarList, targetVarList, linkVarList, composeResults[3], composeResults[4], composedUMPResults[5], composedUMPResults[6]));
                     break;
                 case "Finish":
                     string composedUMPName = "";

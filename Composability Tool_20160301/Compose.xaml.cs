@@ -81,7 +81,7 @@ namespace Composability_Tool_20160301
             Transformation.DataContext = this;
             Transformation.ItemsSource = myLinks;
         }
-        public void DynamicSourceUMPValues()
+        public void DynamicSourceUMPValues(Dictionary<string, double> presetValues)
         {
             //SourceUMPParameters_ItemsControl.ItemsSource = null;
             HashSet<string> items = new HashSet<string>();
@@ -100,9 +100,9 @@ namespace Composability_Tool_20160301
                         items.Add(variable);
                         allUserVariables.Add(variable);
                         if (ump.nameVarDic.ContainsKey(variable))
-                            ev = new eqVariable(variable, ump.nameVarDic[variable], "");
+                            ev = new eqVariable(variable, ump.nameVarDic[variable], (presetValues != null)? presetValues[variable] : 0);
                         else
-                            ev = new eqVariable(variable, "*"+variable, "");
+                            ev = new eqVariable(variable, "*"+variable, (presetValues != null) ? presetValues[variable] : 0);
                         sourceVarList.Add(ev);
                     }
                 }
@@ -123,7 +123,7 @@ namespace Composability_Tool_20160301
             SourceUMPParameters_ItemsControl.DataContext = this;
         }
 
-        public void DynamicTargetUMPValues()
+        public void DynamicTargetUMPValues(Dictionary<string, double> presetValues)
         {
             TargetUMPParameters_ItemsControl.DataContext = null;
             HashSet<String> items = new HashSet<String>();
@@ -141,9 +141,9 @@ namespace Composability_Tool_20160301
                         items.Add(variable);
                         allUserVariables.Add(variable);
                         if (ump.nameVarDic.ContainsKey(variable))
-                            ev = new eqVariable(variable, ump.nameVarDic[variable], "");
+                            ev = new eqVariable(variable, ump.nameVarDic[variable], (presetValues != null) ? presetValues[variable] : 0);
                         else
-                            ev = new eqVariable(variable, "*" + variable, "");
+                            ev = new eqVariable(variable, "*" + variable, (presetValues != null) ? presetValues[variable] : 0);
                         targetVarList.Add(ev);
                     }
                 }
@@ -159,7 +159,7 @@ namespace Composability_Tool_20160301
             }
             TargetUMPParameters_ItemsControl.DataContext = this;
         }
-        public void DynamicLinkingValues()
+        public void DynamicLinkingValues(Dictionary<string, double> presetValues)
         {
             LinkingValues_ItemsControl.DataContext = null;
             HashSet<String> items = new HashSet<String>();
@@ -178,9 +178,9 @@ namespace Composability_Tool_20160301
                         items.Add(variable);
                         allUserVariables.Add(variable);
                         if (selectedTransformation.nameVarDic.ContainsKey(variable))
-                            ev = new eqVariable(variable, selectedTransformation.nameVarDic[variable], "");
+                            ev = new eqVariable(variable, selectedTransformation.nameVarDic[variable], (presetValues != null) ? presetValues[variable] : 0);
                         else
-                            ev = new eqVariable(variable, "*"+variable, "");
+                            ev = new eqVariable(variable, "*"+variable, (presetValues != null) ? presetValues[variable] : 0);
                         linkVarList.Add(ev);
                     }
                     //items.AddRange(selectedTransformation.eqVars);
@@ -324,7 +324,7 @@ namespace Composability_Tool_20160301
             }
             else
             {
-                File.WriteAllText(folderPath + "\\composedSystemsFiles\\" + ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name + ".xml", UMP.writeXMLComposedSystemContent((UMP)SourceUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, sourceVarList, targetVarList, composeResults[3], composeResults[4], null, null));
+                File.WriteAllText(folderPath + "\\composedSystemsFiles\\" + ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name + ".xml", UMP.writeXMLComposedSystemContent((UMP)SourceUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, ((Transformation)Transformation.SelectedValue), sourceVarList, targetVarList, linkVarList, composeResults[3], composeResults[4], null, null));
             }
             //pbar.Visibility = Visibility.Hidden;
         }
@@ -408,7 +408,7 @@ namespace Composability_Tool_20160301
         private void selectionChanged(object sender, SelectionChangedEventArgs e)
         {
             composeResults = null;
-            DynamicSourceUMPValues();
+            DynamicSourceUMPValues(null);
             sourceUMPSelectionFlag = true;
             if (targetUMPSelectionFlag)
                 loadLinks();
@@ -417,7 +417,7 @@ namespace Composability_Tool_20160301
         private void targetSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             composeResults = null;
-            DynamicTargetUMPValues();
+            DynamicTargetUMPValues(null);
             targetUMPSelectionFlag = true;
             if (sourceUMPSelectionFlag)
                 loadLinks();
@@ -426,7 +426,7 @@ namespace Composability_Tool_20160301
         private void linkingSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             composeResults = null;
-            DynamicLinkingValues();
+            DynamicLinkingValues(null);
         }
 
         private void ShowError(string errorMsg)
@@ -489,7 +489,7 @@ namespace Composability_Tool_20160301
             pbCalculationProgress.Visibility = Visibility.Hidden;
             switch (methodCallName) {
                 case "Save":
-                    File.WriteAllText(fileName, UMP.writeXMLComposedSystemContent((UMP)SourceUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, sourceVarList, targetVarList, composeResults[3], composeResults[4], null, null));
+                    File.WriteAllText(fileName, UMP.writeXMLComposedSystemContent((UMP)SourceUMP.SelectedValue, (UMP)TargetUMP.SelectedValue, (Transformation)Transformation.SelectedValue, sourceVarList, targetVarList, linkVarList, composeResults[3], composeResults[4], null, null));
                     break;
                 case "Finish":
                     string composedUMPName = "";
@@ -552,6 +552,51 @@ namespace Composability_Tool_20160301
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Done");
+        }
+
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            sourceUMPSelectionFlag = false;
+            // Create OpenFileDialog 
+            OpenFileDialog dlg = new OpenFileDialog();
+            // Set filter for file extension and default file extension 
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "XML file (*.xml)|*.xml";
+            // Display OpenFileDialog by calling ShowDialog method 
+            Nullable<bool> result = dlg.ShowDialog();
+            // Get the selected file name and display in a TextBox 
+            if (result == true)
+            {
+                // Open document 
+                string filename = dlg.FileName;
+                // 1. SourceName, 2. SourceParameters, 3.TargetName, 4.TargetParameters, 5. LinkTargetInput, 6. LinkSourceOutput, 7. LinkingParameters
+                List<object> loadedComposedSystem = UMP.readXMLComposedSystemAllContent(filename);
+                if(loadedComposedSystem.Count != 7)
+                {
+                    ShowError("Corrupt or incorrectly formatted file, please choose another file to load.");
+                    return;
+                }
+                foreach (UMP currUMP in myUMPs)
+                {
+                    if (currUMP.name.Equals((string)loadedComposedSystem[0]))
+                        SourceUMP.SelectedValue = currUMP;
+                    if (currUMP.name.Equals((string)loadedComposedSystem[2]))
+                        TargetUMP.SelectedValue = currUMP;
+                }
+                if (Transformation.SelectedValue == null)
+                    loadLinks();
+                foreach (Link link in xmlreader.linkingList)
+                {
+                    foreach (Transformation tmpTrans in link.transformations)
+                    {
+                        if (tmpTrans.targetInput.Equals((string)loadedComposedSystem[4]) && tmpTrans.sourceOutput.Equals((string)loadedComposedSystem[5]))
+                            Transformation.SelectedValue = tmpTrans;
+                    }
+                }
+                DynamicSourceUMPValues(((Dictionary<string, double>)loadedComposedSystem[1]));
+                DynamicTargetUMPValues(((Dictionary<string, double>)loadedComposedSystem[3]));
+                DynamicLinkingValues(((Dictionary<string, double>)loadedComposedSystem[6]));
+            }            
         }
     }
 
