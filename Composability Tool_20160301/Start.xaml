@@ -30,7 +30,12 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <TextBlock Style="{StaticResource TextBlockStyle}">Welcome to the front page of the Composability Tool. Follow the top banner buttons to complete your project. The bottom banner buttons provide assistance and background information. To return to the homepage, hover over and click on the upper left image</TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle}">
+                    Welcome to the front page of the Composing Tool. 
+                    Navigate the top banner to complete your project. 
+                    The bottom banner provides assistance and background information. 
+                    To return to the homepage, hover over and click on the upper lefthand image.
+                </TextBlock>
             </Grid>
         </Grid>
         
@@ -41,8 +46,8 @@
 
         <!--Make Buttons to Navigate to other Pages of the Application-->
         <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False">
-            <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" >Compose</Button>
-            <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click">Warehouse</Button>
+            <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click" >Warehouse</Button>
+            <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click">Compose</Button>
             <Button Style="{StaticResource bannerStyle}" Click="ResultsButton_Click">Results</Button>
             <Button Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click">Comparison</Button>
         </DockPanel>
@@ -66,6 +71,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="bg" Property="Background" Value="Black"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

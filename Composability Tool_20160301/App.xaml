@@ -191,5 +191,16 @@
             <Setter Property="Margin" Value="10,20,10,10"/>
         </Style>
 
+        <!--Uses a smaller text size-->
+        <Style x:Key="TextBlockStyle2" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextBlock.FontSize" Value="18"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Justify"/>
+            <Setter Property="TextBlock.FontFamily" Value="Arial"/>
+            <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+            <Setter Property="TextBlock.Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="10,20,10,10"/>
+        </Style>
+
     </Application.Resources>
 </Application>

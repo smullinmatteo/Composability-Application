@@ -8,7 +8,7 @@
       xmlns:charting="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
       x:Class="Composability_Tool_20160301.Comparison"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="1400"
+      d:DesignHeight="600" d:DesignWidth="1400"
       Title="Comparison"
       Style="{StaticResource PageStyle}">
     <Page.Resources>
@@ -38,9 +38,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="450"/>
+            <RowDefinition Height="400"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
         <Rectangle Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
@@ -60,6 +60,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="bg" Property="Background" Value="Black"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -67,8 +68,8 @@
         </Button>
         <!--Make Buttons to Navigate to other Pages of the Application-->
         <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False">
-            <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" Content="Compose" />
-            <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click" Content="Repository"/>
+            <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click" Content="Warehouse" />
+            <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" Content="Compose"/>
             <Button Style="{StaticResource bannerStyle}" Click="ResultsButton_Click" Content="Results"/>
             <Button Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click" Background="Gray" Content="Comparison"/>
         </DockPanel>
