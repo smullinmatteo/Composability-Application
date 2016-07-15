@@ -28,7 +28,7 @@
         <Rectangle Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <!--label definitions-->
-        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Compose"/>
+        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Unit Manufacturing Process Model Composing Tool"/>
         <!--inside comparison UI-->
 
         <Grid Grid.Column="1" Grid.Row="2">
@@ -45,9 +45,9 @@
                 <RowDefinition Height="*"  MinHeight="150"/>
                 <RowDefinition Height="*"  MinHeight="450"/-->
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Margin="10" Height="auto" >SelectSourceUMP</TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="0" Margin="10" Height="auto" >SelectTargetUMP</TextBlock>
-            <TextBlock Grid.Column="2" Grid.Row="0" Margin="10" Height="auto" >Select Linking Variable</TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource TextBlockStyle}">Select Source UMP</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource TextBlockStyle}">Select Target UMP</TextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource TextBlockStyle}">Select Linking Variable</TextBlock>
             
             <ListView Name="SourceUMP" Grid.Column="0" Grid.Row="1" Margin="10" Background="White" Foreground="Black" ItemsSource="{Binding myUMPs}" SelectionChanged="selectionChanged">
                 <ListView.ItemContainerStyle>
@@ -112,9 +112,9 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Linking Source Output Variable"  DisplayMemberBinding="{Binding sourceOutput}"/>
+                        <GridViewColumn Header="Source Variable    "  DisplayMemberBinding="{Binding sourceOutput}"/>
                         <!--DisplayMemberBinding="{Binding variable}-->
-                        <GridViewColumn Header="Linking Target Input Variable" DisplayMemberBinding="{Binding targetInput}"/>
+                        <GridViewColumn Header="Target Variable    " DisplayMemberBinding="{Binding targetInput}"/>
                         <!--DisplayMemberBinding="{Binding equation}-->
 
                     </GridView>

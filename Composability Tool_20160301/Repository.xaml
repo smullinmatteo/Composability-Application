@@ -29,16 +29,16 @@
         <Rectangle Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <!--label definitions-->
-        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Warehouse"/>
+        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Unit Manufacturing Process Model Composing Tool"/>
         <Button
-            Grid.Column="0"
-            Grid.Row="0"
-            Margin="5,5,5,5"
-            Click="StartButton_Click">
+			Grid.Column="0"
+			Grid.Row="0"
+			Margin="5,5,5,5"
+			Click="StartButton_Click">
             <Button.Template>
                 <ControlTemplate>
                     <Grid x:Name="bg">
-                        <Image Margin="4" Source="C:\Documents\Visual Studio 2015\Composability Tool_20160301\Composability Tool_20160301\ISL Logo.png"/>
+                        <Image Margin="4" Source="Images\ISL Logo.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -48,6 +48,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+
         <!--Make Buttons to Navigate to other Pages of the Application-->
         <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False">
             <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" >Compose</Button>
