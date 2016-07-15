@@ -223,10 +223,10 @@
 
         <!--Make Buttons to Navigate to other Pages of the Application-->
         <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False">
-            <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" >Compose</Button>
-            <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click">Warehouse</Button>
-            <Button Style="{StaticResource bannerStyle}" Click="ResultsButton_Click">Results</Button>
-            <Button Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click">Comparison</Button>
+            <Button x:Name="ComposeButton" Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" Background="Gray" >Compose</Button>
+            <Button x:Name="RepositoryButton" Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click">Warehouse</Button>
+            <Button x:Name="ResultsButton" Style="{StaticResource bannerStyle}" Click="ResultsButton_Click">Results</Button>
+            <Button x:Name="ComparisonButton" Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click">Comparison</Button>
         </DockPanel>
         <!--HomePage Footer-->
         <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" LastChildFill="False">

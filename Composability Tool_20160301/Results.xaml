@@ -136,7 +136,7 @@
         <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False">
             <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" Content="Compose" />
             <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click" Content="Warehouse"/>
-            <Button Style="{StaticResource bannerStyle}" Click="ResultsButton_Click" Content="Results"/>
+            <Button Style="{StaticResource bannerStyle}" Click="ResultsButton_Click" Background="Gray" Content="Results"/>
             <Button Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click" Content="Comparison"/>
         </DockPanel>
         <!--HomePage Footer-->

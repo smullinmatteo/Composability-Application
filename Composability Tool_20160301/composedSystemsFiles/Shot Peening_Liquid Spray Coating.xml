@@ -3,42 +3,42 @@
 <UMP name="Shot Peening" type="Surface Modification" description="imparts a compressive residual stress to the surface of the workpiece through bombardment with high velocity shot">
 <Parameter name="percentCov" value="1"/>
 <Parameter name="batchTime" value="0.1"/>
-<Parameter name="shotUseRate" value="10"/>
-<Parameter name="shotFlowRater" value="10"/>
-<Parameter name="shotVelocity" value="10"/>
-<Parameter name="E" value="10"/>
+<Parameter name="shotUseRate" value="30"/>
+<Parameter name="shotFlowRater" value="30"/>
+<Parameter name="shotVelocity" value="50"/>
+<Parameter name="E" value="1"/>
 <Transformation>
 <Equation category="Time" description="process time equal to coverage times batch time">processTime=0.1</Equation>
-<Equation category="Shot" description="mass of shot consumption">shotConsumption=1</Equation>
-<Equation category="Shot" description="shot power">shotPower=1.38888888888889E-05</Equation>
-<Equation category="Energy" description="on site energy consumption equal to shot power times process time">Eon=1.38888888888889E-06</Equation>
+<Equation category="Shot" description="mass of shot consumption">shotConsumption=3</Equation>
+<Equation category="Shot" description="shot power">shotPower=0.0104166666666667</Equation>
+<Equation category="Energy" description="on site energy consumption equal to shot power times process time">Eon=0.00104166666666667</Equation>
 </Transformation>
 <SustainabilityMetrics>
-<Metric name="Operating Cost($)" value="2.75" />
-<Metric name="Energy Use(kWh)" value="1.38888888888889E-06" />
+<Metric name="Operating Cost($)" value="7.75" />
+<Metric name="Energy Use(kWh)" value="0.00104166666666667" />
 <Metric name="Water Use(L)" value="0" />
-<Metric name="GHG Emissions(Kg)" value="0.00215698388888889" />
+<Metric name="GHG Emissions(Kg)" value="1.61773791666667" />
 <Metric name="Total Waste(Kg)" value="0.06" />
 <Metric name="Average Wage($/hr)" value="2.5" />
 <Metric name="Lost Work Days" value="0" />
 </SustainabilityMetrics>
 </UMP>
 <UMP name="Liquid Spray Coating" type="Surface Finishing" description="description2">
-<Parameter name="toolPaintFlow" value="10"/>
-<Parameter name="processTime" value="10"/>
-<Parameter name="layers" value="10"/>
-<Parameter name="surfaceArea" value="10"/>
-<Parameter name="layerThickness" value="10"/>
-<Parameter name="powerAirCompressor" value="10"/>
-<Parameter name="paintDensity" value="10"/>
+<Parameter name="toolPaintFlow" value="4"/>
+<Parameter name="processTime" value="0.1"/>
+<Parameter name="layers" value="1"/>
+<Parameter name="surfaceArea" value="70"/>
+<Parameter name="layerThickness" value="1"/>
+<Parameter name="powerAirCompressor" value="1.5"/>
+<Parameter name="paintDensity" value="7"/>
 <Transformation>
-<Equation category="" description="description4">volumeAirConsumed=100</Equation>
-<Equation category="category5" description="description5">volumePaintConsumed=1000</Equation>
-<Equation category="category6" description="description6">energyCoat=16.6666666666667</Equation>
-<Equation category="category6" description="description6">massPaintConsumed=100</Equation>
+<Equation category="" description="description4">volumeAirConsumed=0.4</Equation>
+<Equation category="category5" description="description5">volumePaintConsumed=70</Equation>
+<Equation category="category6" description="description6">energyCoat=0.01</Equation>
+<Equation category="category6" description="description6">massPaintConsumed=10</Equation>
 </Transformation>
 <SustainabilityMetrics>
-<Metric name="Operating Cost($)" value="64000" />
+<Metric name="Operating Cost($)" value="4480" />
 <Metric name="Energy Use(kWh)" value="0" />
 <Metric name="Water Use(L)" value="0" />
 <Metric name="GHG Emissions(Kg)" value="0" />
@@ -49,10 +49,10 @@
 </UMP>
 </UMPs>
 <FinalSustainabilityMetrics>
-<Metric name="Operating Cost($)" value="64002.75" />
-<Metric name="Energy Use(kWh)" value="1.38888888888889E-06" />
+<Metric name="Operating Cost($)" value="4487.75" />
+<Metric name="Energy Use(kWh)" value="0.00104166666666667" />
 <Metric name="Water Use(L)" value="0" />
-<Metric name="GHG Emissions(Kg)" value="0.00215698388888889" />
+<Metric name="GHG Emissions(Kg)" value="1.61773791666667" />
 <Metric name="Total Waste(Kg)" value="0.06" />
 <Metric name="Average Wage($/hr)" value="2.5" />
 <Metric name="Lost Work Days" value="0" />

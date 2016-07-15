@@ -61,7 +61,7 @@
         <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" LastChildFill="False">
             <Button Style="{StaticResource bottombannerStyle}" Click="HelpButton_Click">Help</Button>
             <Button Style="{StaticResource bottombannerStyle}" Click="AboutButton_Click">About</Button>
-            <Button Style="{StaticResource bottombannerStyle}" Click="FeedbackButton_Click">Feedback</Button>
+            <Button Style="{StaticResource bottombannerStyle}" Background="Gray" Click="FeedbackButton_Click">Feedback</Button>
         </DockPanel>
 
         <!--add image in top left and bottom right corner-->

@@ -116,14 +116,26 @@ namespace Composability_Tool_20160301
         private void RunComparisonButton_Click(object sender, RoutedEventArgs e)
         {
             Dictionary<string, double> umpSustainabilityMetrics1 = null, umpSustainabilityMetrics2 = null, umpSustainabilityMetrics3 = null;
+            int count = 0;
             if (comparisoncomboBox_1.SelectedValue != null)
+            {
                 umpSustainabilityMetrics1 = (UMP.readXMLComposedSystemContent(path + comparisoncomboBox_1.SelectedValue));
-            if (comparisoncomboBox_2.SelectedValue != null)
+                count++;
+            }
+            if (comparisoncomboBox_2.SelectedValue != null) { 
                 umpSustainabilityMetrics2 = (UMP.readXMLComposedSystemContent(path + comparisoncomboBox_2.SelectedValue));
-            if (comparisoncomboBox_3.SelectedValue != null)
+                count++;
+            }
+            if (comparisoncomboBox_3.SelectedValue != null) { 
                 umpSustainabilityMetrics3 = (UMP.readXMLComposedSystemContent(path + comparisoncomboBox_3.SelectedValue));
-            loadStackedColumnData(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
-            loadSpiderChart(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
+                count++;
+            }
+            if (count < 2)
+                MessageBox.Show("Please choose at least two Composed Systems for comparison.");
+            else {
+                loadStackedColumnData(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
+                loadSpiderChart(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
+            }
         }
         
         private Dictionary<string, double> sumupSustainabilityMetrics(Dictionary<string, Dictionary<string, double>> umpSustainabilityMetrics)
@@ -195,12 +207,44 @@ namespace Composability_Tool_20160301
             List<SimpleDataValue> FirstCollection = new List<SimpleDataValue>();
             List<SimpleDataValue> SecondCollection = new List<SimpleDataValue>();
             List<SimpleDataValue> ThirdCollection = new List<SimpleDataValue>();
-            if (umpSustainabilityMetrics1 != null)
+            Dictionary<string, double> sustMetrics = umpSustainabilityMetrics1;
+            int baselineInd = 1;
+            if (umpSustainabilityMetrics1 == null)
             {
-                foreach (string metric in umpSustainabilityMetrics1.Keys)
-                    FirstCollection.Add(new SimpleDataValue("C1", umpSustainabilityMetrics1[metric]));
+                if (umpSustainabilityMetrics2 != null)
+                {
+                    sustMetrics = umpSustainabilityMetrics2;
+                    baselineInd = 2;
+                }
+                else if (umpSustainabilityMetrics3 != null)
+                {
+                    sustMetrics = umpSustainabilityMetrics3;
+                    baselineInd = 3;
+                }
             }
-            if (umpSustainabilityMetrics2 != null)
+
+            foreach (string metric in sustMetrics.Keys) {
+                if (umpSustainabilityMetrics1 != null)//baselineInd = 1;
+                    FirstCollection.Add(new SimpleDataValue("C1", 1));
+                if(umpSustainabilityMetrics2 != null)
+                {
+                    if (baselineInd == 1)
+                        SecondCollection.Add(new SimpleDataValue("C2", umpSustainabilityMetrics2[metric] / ((umpSustainabilityMetrics1[metric] == 0) ? 1 : umpSustainabilityMetrics1[metric])));
+                    else//baselineInd = 2
+                        SecondCollection.Add(new SimpleDataValue("C2", 1));
+
+                }
+                if(umpSustainabilityMetrics3 != null)
+                {
+                    if (baselineInd == 1)
+                        ThirdCollection.Add(new SimpleDataValue("C3", umpSustainabilityMetrics3[metric] / ((umpSustainabilityMetrics1[metric] == 0) ? 1 : umpSustainabilityMetrics1[metric])));
+                    else if (baselineInd == 2)
+                        SecondCollection.Add(new SimpleDataValue("C3", umpSustainabilityMetrics3[metric] / ((umpSustainabilityMetrics2[metric] == 0) ? 1 : umpSustainabilityMetrics2[metric])));
+                    else
+                        ThirdCollection.Add(new SimpleDataValue("C3", umpSustainabilityMetrics3[metric]));
+                }
+            }
+            /*if (umpSustainabilityMetrics2 != null)
             {
                 foreach (string metric in umpSustainabilityMetrics2.Keys)
                     SecondCollection.Add(new SimpleDataValue("C2", umpSustainabilityMetrics2[metric]));
@@ -209,7 +253,7 @@ namespace Composability_Tool_20160301
             {
                 foreach (string metric in umpSustainabilityMetrics3.Keys)
                     ThirdCollection.Add(new SimpleDataValue("C3", umpSustainabilityMetrics3[metric]));
-            }
+            }*/
             StackedColumnSeries.DataContext = null;
             StackedColumnSeries.DataContext = new ChartModel(FirstCollection, SecondCollection, ThirdCollection);
             //StackedColumnSeries.DataContext = this;
@@ -242,7 +286,7 @@ namespace Composability_Tool_20160301
             {
                 if (umpSustainabilityMetrics2 != null)
                 {
-                    sustMetrics = umpSustainabilityMetrics3;
+                    sustMetrics = umpSustainabilityMetrics2;
                 }
                 else if (umpSustainabilityMetrics3 != null)
                     sustMetrics = umpSustainabilityMetrics3;

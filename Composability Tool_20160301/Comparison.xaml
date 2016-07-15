@@ -70,7 +70,7 @@
             <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" Content="Compose" />
             <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click" Content="Repository"/>
             <Button Style="{StaticResource bannerStyle}" Click="ResultsButton_Click" Content="Results"/>
-            <Button Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click" Content="Comparison"/>
+            <Button Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click" Background="Gray" Content="Comparison"/>
         </DockPanel>
         <!--HomePage Footer-->
         <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" LastChildFill="False">
@@ -247,6 +247,7 @@
                                Maximum="1" 
                                Ticks="5" 
                                Margin="10,5,20,5"
+                                       FontSize="5"
                                ShowLegend="True" 
                                LegendLocation="BottomRight"
                                LegendBackgroundColor="Aquamarine"/>
