@@ -45,8 +45,8 @@
         <Rectangle Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <!--label definitions-->
-       
-        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Comparison"/>
+
+        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Unit Manufacturing Process Model Composing Tool"/>
         <Button
 			Grid.Column="0"
 			Grid.Row="0"

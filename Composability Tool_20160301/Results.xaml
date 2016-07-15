@@ -112,7 +112,7 @@
         </Grid>
 
         <!--label definitions-->
-        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Results"/>
+        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Unit Manufacturing Process Model Composing Tool"/>
         <Button
 			Grid.Column="0"
 			Grid.Row="0"

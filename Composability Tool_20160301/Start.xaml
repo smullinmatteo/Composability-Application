@@ -24,30 +24,21 @@
             <RowDefinition Height="500"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBlock Style="{StaticResource TextBlockStyle}">Welcome to the front page of the Composability Tool. Follow the top banner buttons to complete your project. The bottom banner buttons provide assistance and background information. To return to the homepage, hover over and click on the upper left image</TextBlock>
+            </Grid>
+        </Grid>
+        
         <Rectangle Grid.Row="4" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <!--label definitions-->
         <Label Grid.Column="1" Style="{StaticResource headerTextStyle}">Unit Manufacturing Process Model Composing Tool</Label>
 
-        <Button
-            Grid.Column="0"
-            Grid.Row="0"
-            Margin="5,5,5,5"
-            Click="StartButton_Click">
-            <Button.Template>
-                <ControlTemplate>
-                    <Grid x:Name="bg">
-                        <Image Margin="4" Source="Images\ISL Logo.png"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="bg" Property="Background" Value="Black"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        
         <!--Make Buttons to Navigate to other Pages of the Application-->
         <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False">
             <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" >Compose</Button>
@@ -61,6 +52,25 @@
             <Button Style="{StaticResource bottombannerStyle}" Click="AboutButton_Click">About</Button>
             <Button Style="{StaticResource bottombannerStyle}" Click="FeedbackButton_Click">Feedback</Button>
         </DockPanel>
+
+        <Button
+			Grid.Column="0"
+			Grid.Row="0"
+			Margin="5,5,5,5"
+			Click="StartButton_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid x:Name="bg">
+                        <Image Margin="4" Source="Images\ISL Logo.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Background" Value="Black"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
         <!--add image in top left and bottom right corner-->
         <!--Image Grid.Column="0" 
