@@ -7,7 +7,7 @@
       xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
       x:Class="Composability_Tool_20160301.Results"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="1400"
+      d:DesignHeight="600" d:DesignWidth="1400"
       Title="Results"
       Style="{StaticResource PageStyle}">
 
@@ -21,30 +21,27 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="450"/>
+            <RowDefinition Height="400"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Name="UMPResult_TextBlock" VerticalAlignment="Stretch" Margin="10" Text="{Binding composedUMPName}"/>
+            <DataGrid Grid.Row="1" Margin="10" ItemsSource="{Binding umpSustainabilityMetrics}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="200" Header="Sustainability Metric" Binding="{Binding Key}"/>
+                    <DataGridTextColumn Width="200" Header="Value" Binding="{Binding Value}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
         <Rectangle Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
 
-        <Grid Grid.Row="2" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Column="1" Margin="10,89,-10,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="400"/>
-                </Grid.ColumnDefinitions>
-                <DataGrid ItemsSource="{Binding umpSustainabilityMetrics}" AutoGenerateColumns="False" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Width="200" Header="Sustainability Metric" Binding="{Binding Key}" />
-                        <DataGridTextColumn Width="200" Header="Value" Binding="{Binding Value}" />
-                    </DataGrid.Columns>
-                </DataGrid>
-
-                <!--ItemsControl x:Name="UMPResults_ItemControl" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Margin="10">
+        <!--ItemsControl x:Name="UMPResults_ItemControl" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Margin="10">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="5,5,5,5">
@@ -52,8 +49,8 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions-->
-                <!--the itemsControl will list the sustainability metrics and their resulting values for the composed system-->
-                <!--TextBlock Text="{Binding name}" Grid.Row="2" Grid.Column="0" />
+        <!--the itemsControl will list the sustainability metrics and their resulting values for the composed system-->
+        <!--TextBlock Text="{Binding name}" Grid.Row="2" Grid.Column="0" />
                                 <TextBlock Text="{Binding name}" Grid.Row="2" Grid.Column="1"/>
                             </Grid>
                         </DataTemplate>
@@ -95,9 +92,7 @@
                     </chartingToolkit:ColumnSeries>
                     
                 </-->
-            </Grid>
-            <TextBlock Name="UMPResult_TextBlock" Margin="10,10,10,398" Grid.Row="0" Grid.Column="0" Text="{Binding composedUMPName}"/>
-        </Grid>
+
         <Grid Grid.Column="2" Grid.Row="2">
             <!--StackPanel Grid.Column="2" Grid.Row="2" Margin="10" VerticalAlignment="Top">
                 <Button Style="{StaticResource SidePanelStyle}" Content="New"/>
@@ -105,14 +100,14 @@
                
             </-->
             <StackPanel Margin="0,0,10,10" VerticalAlignment="Bottom">
-                <Button x:Name="SaveButton" Visibility="Visible" VerticalAlignment="Bottom" Style="{StaticResource SidePanelStyle}" Click="SaveButton_Click" Content="Save Results" Margin="6,0,-6,0"/>
+                <Button x:Name="SaveButton" Visibility="Visible" VerticalAlignment="Bottom" Style="{StaticResource SidePanelStyle}" Click="SaveButton_Click" Content="Save Results" Margin="0"/>
                 <!--Click="SaveButton_Click"-->
-
             </StackPanel>
         </Grid>
 
         <!--label definitions-->
         <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Unit Manufacturing Process Model Composing Tool"/>
+
         <Button
 			Grid.Column="0"
 			Grid.Row="0"
@@ -126,6 +121,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="bg" Property="Background" Value="Black"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -134,8 +130,8 @@
 
         <!--Make Buttons to Navigate to other Pages of the Application-->
         <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False">
-            <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" Content="Compose" />
             <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click" Content="Warehouse"/>
+            <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" Content="Compose"/>
             <Button Style="{StaticResource bannerStyle}" Click="ResultsButton_Click" Background="Gray" Content="Results"/>
             <Button Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click" Content="Comparison"/>
         </DockPanel>
@@ -145,13 +141,11 @@
             <Button Style="{StaticResource bottombannerStyle}" Click="AboutButton_Click" Content="About"/>
             <Button Style="{StaticResource bottombannerStyle}" Click="FeedbackButton_Click" Content="Feedback"/>
         </DockPanel>
-        <!--add image in top left and bottom right corner-->
-        <!--Image Grid.Column="0" 
+    </Grid>
+</Page>
+<!--add image in top left and bottom right corner-->
+    <!--Image Grid.Column="0" 
                Grid.Row="0" 
                Source="C:\Users\smull\Documents\Visual Studio 2015\Composability Tool_20160301\Composability Tool_20160301\ISL Logo.png" 
                Margin="5,5,5,5">
         </-->
-
-
-    </Grid>
-</Page>
