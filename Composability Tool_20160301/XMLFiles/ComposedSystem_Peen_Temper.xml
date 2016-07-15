@@ -26,16 +26,16 @@
       <ResourceInformation category="Consumables" name="Mass Stoichiometric Air" description="" value="" unit="" >Mair</ResourceInformation>
       <ResourceInformation category="Consumables" name="Enthalpy of Combustion for Natural Gas" description="" value="" unit="" >deltaCHCH4</ResourceInformation>
       <Transformation>
+        <Equation category="Energy" description="heat lost from oven conduction" set="Heat">ovenHeatLoss=heatTransferOvenWall*surfaceArea*(tempOven-tempRoomAmbient)/wallThickness</Equation>
+        <Equation category="Energy" description="mass flow rate of flue gas" set="Heat">massFlowRateFlueGas=flowRate*densityFlueGas</Equation>
+        <Equation category="Time" description="time to burn one Kg CH4" set="Heat">burnTime=(massCombustAir+massCombustCH4)/massFlowRateFlueGas</Equation>
+        <Equation category="Energy" description="total heat lost in flue gas " set="Heat">flueGasHeatLoss=(tempFlueDown - tempRoomAmbient)*(massCombustAir+massCombustCH4)*(specHeatFlueGas/burnTime)</Equation>
+        <Equation category="Energy" description="total heat loss" set="Heat">totalHeat=ovenHeatLoss+flueGasHeatLoss</Equation>
         <Equation category="Energy" description="total energy required" set="Heat">energyReqd=totalHeat*processTime</Equation>
         <Equation category="Energy" description="describes the total natural gas burned " set="Natural Gas">massCH4burned=(enthalpyCombustCHCH4/energyReqd)/(1-percUncombusted)</Equation>
-        <Equation category="Energy" description="total heat loss" set="Heat">totalHeat=ovenHeatLoss+flueGasHeatLoss</Equation>
         <Equation category="Percent" description="percent heat lost in flue gas" set="Heat">percFlueGasLoss=flueGasHeatLoss/enthalpyCombustCHCH4</Equation>
-        <Equation category="Energy" description="total heat lost in flue gas " set="Heat">flueGasHeatLoss=(tempFlueDown - tempRoomAmbient)*(massCombustAir+massCombustCH4)*(specHeatFlueGas/burnTime)</Equation>
-        <Equation category="Time" description="time to burn one Kg CH4" set="Heat">burnTime=(massCombustAir+massCombustCH4)/massFlowRateFlueGas</Equation>
-        <Equation category="Energy" description="mass flow rate of flue gas" set="Heat">massFlowRateFlueGas=flowRate*densityFlueGas</Equation>
-        <Equation category="Energy" description="total air supplied to oven" set="Heat">massAir=massStoicAir*(1+percExcessAir/100)</Equation>
         <Equation category="Percent" description="percent excess air" set="Heat">percExcessAir=(percO2FlueGas/(21-percO2FlueGas))*100</Equation>
-        <Equation category="Energy" description="heat lost from oven conduction" set="Heat">ovenHeatLoss=heatTransferOvenWall*surfaceArea*(tempOven-tempRoomAmbient)/wallThickness</Equation>
+        <Equation category="Energy" description="total air supplied to oven" set="Heat">massAir=massStoicAir*(1+percExcessAir/100)</Equation>
         <Equation category="Energy" description="heat lost to Workpiece" set="Heat">workpieceHeatLoss =workpieceHeatCapacity*massPart*(tempOven-tempRoomAmbient)</Equation>
       </Transformation>
     </UMP>

@@ -1,18 +1,18 @@
 <ComposedSystem>
 <UMPs>
 <UMP name="Tempering" type="StructureChange" description="Heating and Cooling of the workpiece">
-<Parameter name="totalHeat" value="10"/>
-<Parameter name="processTime" value="1"/>
-<Parameter name="enthalpyCombustCHCH4" value="1"/>
-<Parameter name="percUncombusted" value="2"/>
-<Parameter name="ovenHeatLoss" value="3"/>
-<Parameter name="flueGasHeatLoss" value="4"/>
+<Parameter name="totalHeat" value="0"/>
+<Parameter name="processTime" value="0"/>
+<Parameter name="enthalpyCombustCHCH4" value="0"/>
+<Parameter name="percUncombusted" value="0"/>
+<Parameter name="ovenHeatLoss" value="10"/>
+<Parameter name="flueGasHeatLoss" value="10"/>
 <Parameter name="tempFlueDown" value="0"/>
 <Parameter name="tempRoomAmbient" value="0"/>
 <Parameter name="massCombustAir" value="0"/>
 <Parameter name="massCombustCH4" value="0"/>
 <Parameter name="specHeatFlueGas" value="0"/>
-<Parameter name="burnTime" value="-1.79769313486232E+308"/>
+<Parameter name="burnTime" value="10"/>
 <Parameter name="massFlowRateFlueGas" value="0"/>
 <Parameter name="flowRate" value="0"/>
 <Parameter name="densityFlueGas" value="0"/>

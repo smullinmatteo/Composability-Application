@@ -1,45 +1,39 @@
 <ComposedSystem>
 <UMPs>
 <UMP name="Tempering" type="StructureChange" description="Heating and Cooling of the workpiece">
-<Parameter name="totalHeat" value="10"/>
-<Parameter name="processTime" value="1"/>
-<Parameter name="enthalpyCombustCHCH4" value="1"/>
-<Parameter name="percUncombusted" value="2"/>
-<Parameter name="ovenHeatLoss" value="3"/>
-<Parameter name="flueGasHeatLoss" value="4"/>
-<Parameter name="tempFlueDown" value="0"/>
-<Parameter name="tempRoomAmbient" value="0"/>
-<Parameter name="massCombustAir" value="0"/>
-<Parameter name="massCombustCH4" value="0"/>
-<Parameter name="specHeatFlueGas" value="0"/>
-<Parameter name="burnTime" value="-1.79769313486232E+308"/>
-<Parameter name="massFlowRateFlueGas" value="0"/>
-<Parameter name="flowRate" value="0"/>
-<Parameter name="densityFlueGas" value="0"/>
-<Parameter name="massStoicAir" value="0"/>
-<Parameter name="percExcessAir" value="0"/>
-<Parameter name="percO2FlueGas" value="0"/>
 <Parameter name="heatTransferOvenWall" value="0"/>
 <Parameter name="surfaceArea" value="0"/>
 <Parameter name="tempOven" value="0"/>
+<Parameter name="tempRoomAmbient" value="0"/>
 <Parameter name="wallThickness" value="0"/>
+<Parameter name="flowRate" value="0"/>
+<Parameter name="densityFlueGas" value="0"/>
+<Parameter name="massCombustAir" value="0"/>
+<Parameter name="massCombustCH4" value="0"/>
+<Parameter name="tempFlueDown" value="0"/>
+<Parameter name="specHeatFlueGas" value="0"/>
+<Parameter name="processTime" value="0"/>
+<Parameter name="enthalpyCombustCHCH4" value="0"/>
+<Parameter name="percUncombusted" value="0"/>
+<Parameter name="percO2FlueGas" value="0"/>
+<Parameter name="massStoicAir" value="0"/>
 <Parameter name="workpieceHeatCapacity" value="0"/>
 <Parameter name="massPart" value="0"/>
 <Transformation>
-<Equation category="Energy" description="total energy required">energyReqd=0</Equation>
-<Equation category="Energy" description="describes the total natural gas burned ">massCH4burned=-1.79769313486232E+308</Equation>
-<Equation category="Energy" description="total heat loss">totalHeat=0</Equation>
-<Equation category="Percent" description="percent heat lost in flue gas">percFlueGasLoss=-1.79769313486232E+308</Equation>
-<Equation category="Energy" description="total heat lost in flue gas ">flueGasHeatLoss=-1.79769313486232E+308</Equation>
-<Equation category="Time" description="time to burn one Kg CH4">burnTime=-1.79769313486232E+308</Equation>
-<Equation category="Energy" description="mass flow rate of flue gas">massFlowRateFlueGas=0</Equation>
-<Equation category="Energy" description="total air supplied to oven">massAir=0</Equation>
-<Equation category="Percent" description="percent excess air">percExcessAir=0</Equation>
 <Equation category="Energy" description="heat lost from oven conduction">ovenHeatLoss=-1.79769313486232E+308</Equation>
+<Equation category="Energy" description="mass flow rate of flue gas">massFlowRateFlueGas=0</Equation>
+<Equation category="Time" description="time to burn one Kg CH4">burnTime=-1.79769313486232E+308</Equation>
+<Equation category="Energy" description="total heat lost in flue gas ">flueGasHeatLoss=0</Equation>
+<Equation category="Energy" description="total heat loss">totalHeat=-1.79769313486232E+308</Equation>
+<Equation category="Energy" description="total energy required">energyReqd=-1.79769313486232E+308</Equation>
+<Equation category="Energy" description="describes the total natural gas burned ">massCH4burned=0</Equation>
+<Equation category="Percent" description="percent heat lost in flue gas">percFlueGasLoss=-1.79769313486232E+308</Equation>
+<Equation category="Percent" description="percent excess air">percExcessAir=0</Equation>
+<Equation category="Energy" description="total air supplied to oven">massAir=0</Equation>
 <Equation category="Energy" description="heat lost to Workpiece">workpieceHeatLoss=0</Equation>
 </Transformation>
 <SustainabilityMetrics>
-<Metric name="Operating Cost($)" value="-8.98846567431158E+307" />
+<Metric name="Operating Cost($)" value="0" />
 <Metric name="Energy Use(kWh)" value="0" />
 <Metric name="Water Use(L)" value="0" />
 <Metric name="GHG Emissions(Kg)" value="0" />
