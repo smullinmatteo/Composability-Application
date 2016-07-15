@@ -8,7 +8,7 @@
         <!-- Header text style -->
         <Style x:Key="headerTextStyle">
             <Setter Property="Label.VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="Label.FontFamily" Value="Garamond"></Setter>
+            <!--Setter Property="Label.FontFamily" Value="Garamond"></-->
             <Setter Property="Label.FontWeight" Value="Bold"></Setter>
             <Setter Property="Label.FontSize" Value="30"></Setter>
             <Setter Property="Label.Foreground" Value="Black"></Setter>
@@ -142,26 +142,32 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10" Background="#C34500" BorderThickness="1" Padding="2" Margin="5,10,5,0">
+                        <Border CornerRadius="10" Background="#C34500" BorderThickness="1" Padding="1" Margin="5,10,5,0">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Setter Property="Visibility" Value="Hidden"/>
+            <Setter Property="TextElement.FontSize" Value="10"/>
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Justify"/>
         </Style>
-        
+
         <Style x:Key="RoundedButtonStyle2" TargetType="{x:Type Button}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10" Background="#F5F2ED" BorderThickness="1" Padding="2" Margin="5,10,5,0" Width="40">
+                        <Border CornerRadius="10" Background="#F5F2ED" BorderThickness="1" Padding="1" Margin="5,10,5,0" Width="60">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Setter Property="Visibility" Value="Hidden"/>
+            <Setter Property="TextElement.FontSize" Value="8"/>
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Justify"/>
         </Style>
 
     </Application.Resources>

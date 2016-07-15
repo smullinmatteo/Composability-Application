@@ -70,6 +70,7 @@
                         <GridViewColumn Header="UMP Category" DisplayMemberBinding="{Binding type}"/>
                     </GridView>
                 </ListView.View>
+                
             </ListView>
             <ListView Name="TargetUMP" Grid.Column="1" Grid.Row="1" Margin="10" Background="White" Foreground="Black" ItemsSource="{Binding myUMPs}" SelectionChanged="targetSelectionChanged">
                 <ListView.ItemContainerStyle>
@@ -233,9 +234,11 @@
             <Button Style="{StaticResource bottombannerStyle}" Click="AboutButton_Click">About</Button>
             <Button Style="{StaticResource bottombannerStyle}" Click="FeedbackButton_Click">Feedback</Button>
         </DockPanel>
-        <StackPanel HorizontalAlignment="Stretch" Margin="10" Grid.Row="2" VerticalAlignment="Stretch">
+        <StackPanel HorizontalAlignment="Stretch" Visibility="Visible" Margin="5,0,15,20" Grid.Row="2" VerticalAlignment="Stretch">
             <Button Name="ButtonChain_1" Style="{StaticResource RoundedButtonStyle}" Content="{Binding name}" Height="40"/>
-            <Button Name="ButtonChain_2" Style="{StaticResource RoundedButtonStyle2}" Content="{Binding name}" Height="40"/>
+            <Button Name="ButtonChain_2" Style="{StaticResource RoundedButtonStyle2}" Height="40">
+                <TextBlock Text="{Binding name}" TextWrapping="WrapWithOverflow" TextAlignment="Justify" />
+            </Button>
             <Button Name="ButtonChain_3" Style="{StaticResource RoundedButtonStyle2}" Content ="{Binding name}" Height="40"/>
             <Button Name="ButtonChain_4" Style="{StaticResource RoundedButtonStyle}" Content="{Binding name}" Height="40"/>
         </StackPanel>

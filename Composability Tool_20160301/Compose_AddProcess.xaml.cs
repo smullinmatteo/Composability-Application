@@ -283,8 +283,8 @@ namespace Composability_Tool_20160301
                     }
                     ButtonChain_2.Visibility = System.Windows.Visibility.Visible;
                     ButtonChain_3.Visibility = System.Windows.Visibility.Visible;
-                    ButtonChain_2.Content = ((Transformation)Transformation.SelectedValue).sourceOutput.ToString();
-                    ButtonChain_3.Content = ((Transformation)Transformation.SelectedValue).targetInput.ToString();
+                    ButtonChain_2.Content = ((Transformation)Transformation.SelectedValue).sourceOutput.ToString().Substring(0, 4);
+                    ButtonChain_3.Content = ((Transformation)Transformation.SelectedValue).targetInput.ToString().Substring(0, 4);
                 }
             }
             allUserVariables = new HashSet<string>();

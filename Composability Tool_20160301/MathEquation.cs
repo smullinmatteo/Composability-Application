@@ -222,7 +222,7 @@ namespace Composability_Tool_20160301
             //evaluateSust.Sustainability_Evaluation_Criteria(7, ref results, inputs);
             EvaluateSustainabilityMetrics evaluateSustainabilityMetrics = new EvaluateSustainabilityMetrics();
             evaluateSustainabilityMetrics.Sustainability_Evaluation_Criteria(7, ref results, inputs);
-            string[] outputMetrics = { "operatingCost", "energyUse", "waterUse", "GHGEmissions", "totalWaste", "averageWage", "lostWorkDays" };
+            string[] outputMetrics = { "Operating Cost($)", "Energy Use(kWh)", "Water Use(L)", "GHG Emissions(Kg)", "Total Waste(Kg)", "Average Wage($/hr)", "Lost Work Days" };
             Dictionary<string, double> sustainabilityOutputMetrics = new Dictionary<string, double>();
             int index = 0;
             foreach (string outputMetric in outputMetrics)

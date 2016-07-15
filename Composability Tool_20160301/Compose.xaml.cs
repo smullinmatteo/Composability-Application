@@ -84,7 +84,7 @@ namespace Composability_Tool_20160301
         public void DynamicSourceUMPValues()
         {
             //SourceUMPParameters_ItemsControl.ItemsSource = null;
-            HashSet<String> items = new HashSet<String>();
+            HashSet<string> items = new HashSet<string>();
             UMP ump = (UMP)SourceUMP.SelectedValue;
             sourceVarList = new ObservableCollection<eqVariable>();
             if (ump != null)
@@ -102,7 +102,7 @@ namespace Composability_Tool_20160301
                         if (ump.nameVarDic.ContainsKey(variable))
                             ev = new eqVariable(variable, ump.nameVarDic[variable], "");
                         else
-                            ev = new eqVariable(variable, variable, "");
+                            ev = new eqVariable(variable, "*"+variable, "");
                         sourceVarList.Add(ev);
                     }
                 }
@@ -143,7 +143,7 @@ namespace Composability_Tool_20160301
                         if (ump.nameVarDic.ContainsKey(variable))
                             ev = new eqVariable(variable, ump.nameVarDic[variable], "");
                         else
-                            ev = new eqVariable(variable, variable, "");
+                            ev = new eqVariable(variable, "*" + variable, "");
                         targetVarList.Add(ev);
                     }
                 }
@@ -180,15 +180,15 @@ namespace Composability_Tool_20160301
                         if (selectedTransformation.nameVarDic.ContainsKey(variable))
                             ev = new eqVariable(variable, selectedTransformation.nameVarDic[variable], "");
                         else
-                            ev = new eqVariable(variable, variable, "");
+                            ev = new eqVariable(variable, "*"+variable, "");
                         linkVarList.Add(ev);
                     }
                     //items.AddRange(selectedTransformation.eqVars);
                     //LinkingValues_ItemsControl.ItemsSource = items;
                     ButtonChain_2.Visibility = System.Windows.Visibility.Visible;
                     ButtonChain_3.Visibility = System.Windows.Visibility.Visible;
-                    ButtonChain_2.Content = ((Transformation)Transformation.SelectedValue).sourceOutput.ToString();
-                    ButtonChain_3.Content = ((Transformation)Transformation.SelectedValue).targetInput.ToString();
+                    ButtonChain_2.Content = ((Transformation)Transformation.SelectedValue).sourceOutput.ToString().Substring(0,4);
+                    ButtonChain_3.Content = ((Transformation)Transformation.SelectedValue).targetInput.ToString().Substring(0, 4);
 
                 }
             }
