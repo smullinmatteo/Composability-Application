@@ -298,18 +298,18 @@ namespace Composability_Tool_20160301
         {
             //pbar.Visibility = Visibility.Visible;
             //AllowUIToUpdate();
-            string fileName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name;
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "XML file (*.xml)|*.xml";
-            saveFileDialog.InitialDirectory = folderPath+"\\composedSystemsFiles\\";
-            if (saveFileDialog.ShowDialog() == true)
-                fileName = saveFileDialog.FileName;
             //File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "composedSystemsFiles\\" + ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name + ".xml", writeXMLComposedSystemContent());
             if (SourceUMP.SelectedValue == null || TargetUMP.SelectedValue == null || Transformation == null || Transformation.SelectedValue == null)
             {
                 ShowError("Error\nTo continue saving be sure to select both Target and Source UMP and a linking variable");
                 return;
             }
+            string fileName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "XML file (*.xml)|*.xml";
+            saveFileDialog.InitialDirectory = folderPath + "\\composedSystemsFiles\\";
+            if (saveFileDialog.ShowDialog() == true)
+                fileName = saveFileDialog.FileName;
             if (composeResults == null)
             {
                 composeUMPSAsynch("Save", fileName);
@@ -559,6 +559,7 @@ namespace Composability_Tool_20160301
             sourceUMPSelectionFlag = false;
             // Create OpenFileDialog 
             OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = folderPath + "\\composedSystemsFiles\\";
             // Set filter for file extension and default file extension 
             dlg.DefaultExt = ".png";
             dlg.Filter = "XML file (*.xml)|*.xml";
