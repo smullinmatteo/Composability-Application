@@ -182,7 +182,7 @@ namespace Composability_Tool_20160301
                 string composedUMPName = "";
                 if (LinkedUMP.SelectedValue != null && Transformation.SelectedValue != null && TargetUMP.SelectedValue != null)
                 {
-                    composedUMPName = ((UMP)LinkedUMP.SelectedValue).name + "_" + ((Transformation)Transformation.SelectedValue).sourceOutput + "_" + ((Transformation)Transformation.SelectedValue).targetInput + "_" + ((UMP)TargetUMP.SelectedValue).name;
+                    composedUMPName = mixedName + ">" + /*((Transformation)Transformation.SelectedValue).sourceOutput + "_" + ((Transformation)Transformation.SelectedValue).targetInput + "_" + */((UMP)TargetUMP.SelectedValue).name;
                     SourceUMPParameters_ItemsControl.IsTextSearchEnabled = true;
                     TargetUMPParameters_ItemsControl.IsTextSearchEnabled = true;
                     this.NavigationService.Navigate(new Results(composedUMPName, sourceVarList, targetVarList, linkVarList, composeResults));
@@ -365,7 +365,7 @@ namespace Composability_Tool_20160301
                     string composedUMPName = "";
                     if (LinkedUMP.SelectedValue != null && Transformation.SelectedValue != null && TargetUMP.SelectedValue != null)
                     {
-                        composedUMPName = ((UMP)LinkedUMP.SelectedValue).name + "_" + ((Transformation)Transformation.SelectedValue).sourceOutput + "_" + ((Transformation)Transformation.SelectedValue).targetInput + "_" + ((UMP)TargetUMP.SelectedValue).name;
+                        composedUMPName = mixedName + ">" + /*((Transformation)Transformation.SelectedValue).sourceOutput + "_" + ((Transformation)Transformation.SelectedValue).targetInput + "_" + */((UMP)TargetUMP.SelectedValue).name;
                         SourceUMPParameters_ItemsControl.IsTextSearchEnabled = true;
                         TargetUMPParameters_ItemsControl.IsTextSearchEnabled = true;
                         this.NavigationService.Navigate(new Results(composedUMPName, sourceVarList, targetVarList, linkVarList, composeResults));
