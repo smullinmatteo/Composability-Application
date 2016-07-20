@@ -11,7 +11,7 @@
       d:DesignHeight="600" d:DesignWidth="1400"
       Title="Comparison"
       Style="{StaticResource PageStyle}">
-    <Page.Resources>
+    <!--Page.Resources>
         <SolidColorBrush x:Key="ColorA" Color="#ff00779e"/>
         <SolidColorBrush x:Key="ColorB" Color="#ff9e0077"/>
         <SolidColorBrush x:Key="ColorC" Color="#ff009e77"/>
@@ -27,7 +27,7 @@
             <Setter Property="Stroke" Value="{StaticResource ColorC}"/>
             <Setter Property="Fill" Value="{StaticResource ColorC}"/>
         </Style>
-    </Page.Resources>
+    </-->
     <Grid>
         <!--set columns and rows. There are four rows, and three columns-->
         <Grid.ColumnDefinitions>
@@ -150,7 +150,10 @@
                             <Style TargetType="chartingToolkit:ColumnDataPoint">
                                 <Setter Property="Background" Value="Red"/>
                                 <Setter Property="BorderBrush" Value="Red" />
-                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="
+                
+                
+                Thickness" Value="1" />
                             </Style>
                         </chartingToolkit:ColumnSeries.DataPointStyle>
                     </chartingToolkit:ColumnSeries>
@@ -189,10 +192,10 @@
                 Grid.Row="0"
                 x:Name="stackedColumnSeries"
                 Title="Stacked Column"
-                    Background="White"
+                    Background="#A7C4C9"
                     BorderThickness="0"
-                Margin="20,5,10,5">
-                    <charting:StackedColumnSeries Background="White"  BorderBrush="White" BorderThickness="0">
+                Margin="10,5,10,5">
+                    <charting:StackedColumnSeries Background="#A7C4C9"  BorderBrush="#A7C4C9" BorderThickness="0">
                         <charting:SeriesDefinition
                         ItemsSource="{Binding FirstCollection}" Title="C1"
                         IndependentValuePath="IndependentValue"
@@ -248,7 +251,7 @@
                                ShowLegend="True"
                                FontSize="5"
                                LegendLocation="BottomRight"
-                               LegendBackgroundColor="White"/>
+                               LegendBackgroundColor="#A7C4C9"/>
             </Grid>
         </Grid>
         <StackPanel Grid.Column="2" Grid.Row="2" Margin="10" VerticalAlignment="Top">
