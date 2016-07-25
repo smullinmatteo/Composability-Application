@@ -186,7 +186,7 @@
                         </chartingToolkit:CategoryAxis>
                     </chartingToolkit:Chart.Axes>                    
                 </chartingToolkit:Chart-->
-                
+                <Rectangle Name="hidingRectangle" Grid.Row="0" Grid.Column ="0" Style="{StaticResource RectangleStyle2}"/>
                 <charting:Chart
                 Grid.Column="0"
                 Grid.Row="0"
@@ -194,6 +194,7 @@
                 Title="Stacked Column"
                     Background="#A7C4C9"
                     BorderThickness="0"
+                    
                 Margin="10,5,10,5">
                     <charting:StackedColumnSeries Background="#A7C4C9"  BorderBrush="#A7C4C9" BorderThickness="0">
                         <charting:SeriesDefinition
@@ -210,10 +211,13 @@
                         DependentValuePath="DependentValue"/>
                     </charting:StackedColumnSeries>
                     <charting:Chart.Axes>
-                        <charting:LinearAxis Orientation="X" ShowGridLines="False" Height="0">
+                        <charting:LinearAxis Orientation="X" ShowGridLines="False" Height="0" Background="#A7C4C9">
                         </charting:LinearAxis>
-                        <charting:LinearAxis Orientation="Y" ShowGridLines="False" Width="0"/>
+                        <charting:LinearAxis Orientation="Y" ShowGridLines="False" Width="0" Background="#A7C4C9"/>
                     </charting:Chart.Axes>
+                    <!--charting:Chart.BorderBrush>
+                        <SolidColorBrush Color="#A7C4C9"></SolidColorBrush>
+                    </-->
                     <!--charting:Chart.Template>
                         <ControlTemplate TargetType="charting:Chart">
                             <Border Background="White"

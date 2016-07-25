@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Composability_Tool_20160301
 {
     /// <summary>
@@ -22,7 +23,6 @@ namespace Composability_Tool_20160301
     {
         public List<UMP> myUMPs { get; set; }
         private XMLReader xmlreader;
-
         public Repository()
         {
             InitializeComponent();
@@ -36,6 +36,26 @@ namespace Composability_Tool_20160301
             myUMPs = xmlreader.umpList;
             UMPRepository_ListView.DataContext = this;
         }
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            //XDocument xDoc = new XDocument();
+            //string folderPath = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(Directory.GetCurrentDirectory()))) + "\\XMLFiles\\";
+            //string fileName = ("its_alive");
+            //SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //saveFileDialog.Filter = "XML file (*.xml)|*.xml";
+            //saveFileDialog.InitialDirectory = folderPath;
+            //string str = @"C:\XMLFiles\xdoc5_is_alive.xml";
+            //xDoc.Save(str);
+            //xDoc.Save(filename, folderPath + "myxml.xml");
+        }
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            //System.Diagnostics.Process.Start("http://research.engr.oregonstate.edu/isl/");
+        }
+        private void Modify_Click(object sender, RoutedEventArgs e)
+        {
+            //System.Diagnostics.Process.Start("http://research.engr.oregonstate.edu/isl/");
+        }
         private void ComposeButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Compose.xaml", UriKind.Relative));
@@ -45,7 +65,6 @@ namespace Composability_Tool_20160301
         private void RepositoryButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Repository.xaml", UriKind.Relative));
-
         }
 
         private void ResultsButton_Click(object sender, RoutedEventArgs e)

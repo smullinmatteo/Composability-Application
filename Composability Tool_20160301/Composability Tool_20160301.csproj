@@ -279,8 +279,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="sustainabilityKeywordPairs.txt" />
-    <Resource Include="XMLFiles\ComposedSystem_Peen_Temper.xml" />
+    <Resource Include="XMLFiles\ComposedSystem_Peen_Temper.xml">
+      <SubType>Designer</SubType>
+    </Resource>
     <Resource Include="sustainabilityKeywordPairs_old.txt" />
+    <Resource Include="Images\engine_cowling.jpg" />
+    <Resource Include="Images\lathe.jpg" />
+    <Resource Include="Images\forge.jpg" />
+    <Resource Include="Images\car_engine.jpg" />
     <Content Include="Library\ComposibilityMatlabTool.dll" />
     <Content Include="Library\EngMATLib.dll" />
     <Content Include="Library\System.Windows.Controls.DataVisualization.Toolkit.dll" />

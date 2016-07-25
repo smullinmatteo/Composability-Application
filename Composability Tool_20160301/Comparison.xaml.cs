@@ -136,6 +136,7 @@ namespace Composability_Tool_20160301
                 loadStackedColumnData(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
                 loadSpiderChart(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
             }
+            hidingRectangle.Visibility = Visibility.Hidden;
         }
         
         private Dictionary<string, double> sumupSustainabilityMetrics(Dictionary<string, Dictionary<string, double>> umpSustainabilityMetrics)

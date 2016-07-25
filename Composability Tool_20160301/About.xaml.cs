@@ -24,6 +24,10 @@ namespace Composability_Tool_20160301
         {
             //InitializeComponent();
         }
+        private void ISL_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://research.engr.oregonstate.edu/isl/");
+        }
         private void ComposeButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Compose.xaml", UriKind.Relative));
@@ -33,7 +37,6 @@ namespace Composability_Tool_20160301
         private void RepositoryButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Repository.xaml", UriKind.Relative));
-
         }
 
         private void ResultsButton_Click(object sender, RoutedEventArgs e)
