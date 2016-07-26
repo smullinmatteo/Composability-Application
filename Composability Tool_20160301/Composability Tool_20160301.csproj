@@ -304,6 +304,7 @@
   <ItemGroup>
     <Folder Include="composedSystemsFiles\" />
     <Folder Include="Matlab\" />
+    <Folder Include="XMLFilesUnused\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="MLApp">
