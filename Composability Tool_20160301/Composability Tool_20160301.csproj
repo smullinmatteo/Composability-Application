@@ -278,10 +278,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="sustainabilityKeywordPairs.txt" />
     <Resource Include="XMLFiles\ComposedSystem_Peen_Temper.xml">
       <SubType>Designer</SubType>
     </Resource>
+    <Resource Include="sustainabilityKeywordPairs.txt" />
     <Resource Include="sustainabilityKeywordPairs_old.txt" />
     <Resource Include="Images\engine_cowling.jpg" />
     <Resource Include="Images\lathe.jpg" />
