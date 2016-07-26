@@ -60,7 +60,7 @@ namespace Composability_Tool_20160301
                                   productprocessinfo = UMP.Descendants("ProductProcessInformation"),
                                   resourceinfo = UMP.Descendants("ResourceInformation"),
                                   equations = UMP.Element("Transformation").Descendants("Equation"),
-                                  equationVariables = UMP.Element("Transformation").Descendants("EquationVariables")
+                                  //equationVariables = UMP.Element("Transformation").Descendants("EquationVariables")
                               };
 
 

@@ -1,0 +1,151 @@
+﻿  <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<ComposedSystem>
+  <UMPs>
+    <UMP name="Tempering" type="StructureChange" description="Heating and Cooling of the workpiece">
+      <Input name="Natural Gas" description="mass of natural gas provided to provide required heat" category="Consumable" type="Energy" value="" unit="kg" />
+      <Input name="Oxygen" description="mass of oxygen provided for combustion" category="Consumable" type="Atmosphere" value="" unit="kg" />
+      <Output name="Flue Gas" description="emissions from combustion" category="GHG Emissions" type="Hazards" value="" unit="cfm" />
+      <Output name="Total Heat loss" description="heat lossed to convection and conduction" category="Energy" type="Heat" value="" unit="KJ/sec" />
+      <Output name="Yield Strength" description="target yield strength of the workpiece" category="Information" type="workpiece" value="300" unit="MPa" />
+      <Output name="Energy Consumed" description="total energy consumed by the process" category="Energy" type="Electricity" value="" unit="KwH" />
+      <Output name="Process Time" description="total elapsed time to heat and cool workpiece" category="Information" type="process" value="" unit="min" />
+      <Feedback name="Mass of Natural Gas Burned" description="" value="" unit="Kg" />
+      <Feedback name="Time to Burn one kg CH4" description="" value="-" unit="min" />
+      <Feedback name="Mass Flow Rate of Flue Gas" description="" value="" unit="cfm" />
+      <Feedback name="Percent Excess Air" description="percent excess after combustion" value="" unit="%" />
+      <Feedback name="Density of Flue Gas" description="" value="" unit="kg/m^3" />
+      <Feedback name="Heat Lost From Oven" description="due to wall conduction and convection" value="" unit="KJ/sec" />
+      <Feedback name="Heat Carried off by Workpiece" description="description3" value="" unit="KJ/sec" />
+      <ProductProcessInformation category="" description="description1" name="Heat Transfer Oven Wall" value="1" unit="">k</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description2" name="Oven Wall Thickness" value="-" unit="" >t</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description3" name="Surface Area of Workpiece" value="" unit="" >As</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description4" name="Ambient Temperature" value="" unit="" >Troom</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description4" name="Starting Oven Temperature" value="" unit="" >Toven</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description4" name="Workpiece Heat Capacity" value="" unit="" >cp</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description4" name="Workpiece Mass" value="" unit="" >mpart</ProductProcessInformation>
+      <ResourceInformation category="Consumables" name="Mass Stoichiometric Air" description="" value="" unit="" >Mair</ResourceInformation>
+      <ResourceInformation category="Consumables" name="Enthalpy of Combustion for Natural Gas" description="" value="" unit="" >deltaCHCH4</ResourceInformation>
+      <Transformation>
+        <Equation category="Energy" description="heat lost from oven conduction" set="Heat">ovenHeatLoss=heatTransferOvenWall*surfaceArea*(tempOven-tempRoomAmbient)/wallThickness</Equation>
+        <Equation category="Energy" description="mass flow rate of flue gas" set="Heat">massFlowRateFlueGas=flowRate*densityFlueGas</Equation>
+        <Equation category="Time" description="time to burn one Kg CH4" set="Heat">burnTime=(massCombustAir+massCombustCH4)/massFlowRateFlueGas</Equation>
+        <Equation category="Energy" description="total heat lost in flue gas " set="Heat">flueGasHeatLoss=(tempFlueDown - tempRoomAmbient)*(massCombustAir+massCombustCH4)*(specHeatFlueGas/burnTime)</Equation>
+        <Equation category="Energy" description="total heat loss" set="Heat">totalHeat=ovenHeatLoss+flueGasHeatLoss</Equation>
+        <Equation category="Energy" description="total energy required" set="Heat">energyReqd=totalHeat*processTime</Equation>
+        <Equation category="Energy" description="describes the total natural gas burned " set="Natural Gas">massCH4burned=(enthalpyCombustCHCH4/energyReqd)/(1-percUncombusted)</Equation>
+        <Equation category="Percent" description="percent heat lost in flue gas" set="Heat">percFlueGasLoss=flueGasHeatLoss/enthalpyCombustCHCH4</Equation>
+        <Equation category="Percent" description="percent excess air" set="Heat">percExcessAir=(percO2FlueGas/(21-percO2FlueGas))*100</Equation>
+        <Equation category="Energy" description="total air supplied to oven" set="Heat">massAir=massStoicAir*(1+percExcessAir/100)</Equation>
+        <Equation category="Energy" description="heat lost to Workpiece" set="Heat">workpieceHeatLoss =workpieceHeatCapacity*massPart*(tempOven-tempRoomAmbient)</Equation>
+      </Transformation>
+    </UMP>
+    <UMP name="Induction Hardening" type="Structure Modification" description="">
+      <Input name="Quenchant" description="description1" category="category1" type="type1" value="1" unit="unit1" />
+      <Input name="Enery" description="description2" category="category2" type="type2" value="-79228162514264337593543950335" unit="unit2" />
+      <Output name="Waste Fluid" description="description1" category="category1" type="type1" value="1" unit="unit1" />
+
+      <Feedback name="Tank Volume Full"/>
+      <Feedback name="Tank Volume Low"/>
+      <Feedback name="Tank Refill Rate"/>
+      <Feedback name="Process Time"/>
+      <Feedback name="name1"/>
+
+      <ProductProcessInformation name="Quenchant Concentration"/>
+      <ProductProcessInformation name="Generator Power"/>
+      <ProductProcessInformation name="Percent High Frequency"/>
+      <ProductProcessInformation name="Percent Medium Frequency"/>
+      <ProductProcessInformation name="Coil Resistance"/>
+      <ProductProcessInformation name="Coil Current High Frequency"/>
+      <ProductProcessInformation name="Coil Current Medium Frequency"/>
+      <ProductProcessInformation name="Initial Workpiece Resistance"/>
+      <ProductProcessInformation name="Heat Temperature"/>
+      <ProductProcessInformation name="Ambient Temperature"/>
+      <ProductProcessInformation name="Magnetic Permeability"/>
+      <ProductProcessInformation name="Surface Area Topland"/>
+      <ProductProcessInformation name="Surface Area Gear Root"/>
+      <ProductProcessInformation name="Teeth"/>
+      <ProductProcessInformation name="Area Conversion"/>
+      <ProductProcessInformation name="Topland Angle"/>
+      <ProductProcessInformation name="Gear Root Angle"/>
+      <ProductProcessInformation name="Surface Area Gear Root"/>  
+
+      <ResourceInformation name="Power Efficiency">powerEfficiency</ResourceInformation>
+      <ResourceInformation name="Resistivity">resistivity</ResourceInformation>
+      <ResourceInformation name="Coil Radius">coilRadius</ResourceInformation>
+      <ResourceInformation name="Coil Resistance">coilResistance</ResourceInformation>
+      <ResourceInformation name="Coil Cross Sectional Area"/>
+      <ResourceInformation name="Temperature Coefficient"/>
+      <ResourceInformation name="Distance to Topland"/>
+      <ResourceInformation name="Distance to Gear Root"/>
+      <ResourceInformation name="Topland Depth"/>
+      <ResourceInformation name="Gear Root Depth"/>
+      <ResourceInformation name="Magnetic Intensity Topland"/>
+      <ResourceInformation name="Magnetic Intensity Topland"/>
+
+      <Transformation>
+        <Equation>volWaterLost = (100-quenchantConc)*(tankVol-tankVolLow)*(processTime/tankRefillInterval)</Equation>
+        <Equation>volQuenchantLost = quenchantConc*(tankVol-tankVolLow)*(processTime/tankRefillInterval)</Equation>
+        <Equation>powerCoilHF = generatorPower*percHF*powerEfficiency</Equation>
+        <Equation>powerCoilHF = generatorPower*percHF*powerEfficiency</Equation>
+        <Equation>powerCoilMF = generatorPower*percMF*powerEfficiency</Equation>
+        <Equation>coilResistance = resistivity*(2*3.14*coilRadius/coilCrossSectionArea)</Equation>
+        <Equation>coilCurrentHF = (powerHF/coilResistance)^0.5</Equation>
+        <Equation>coilCurrentMF = (powerMF/coilResistance)^0.5</Equation>
+        <Equation>subVar_t = (currentHF*coilRadius^2)/(2*distanceTopland^3)</Equation>
+        <Equation>subVar_r = (currentMF*coilRadius^2)/(2*distanceRoot^3)</Equation>
+        <Equation>resistanceWP = initialResWP*(1+tempCoef(heatTemp-ambientTemp))</Equation>
+        <Equation>frequencyHF = resistanceWP/(magPerm*(depthRoot/(1.6*503))^2)</Equation>
+        <Equation>frequencyMF = resistanceWP/(magPerm*(depthTopland/(1.6*503))^2)</Equation>
+        <Equation>areaSurfaceHardTopland = surfaceAreaTopland*numberTeeth*areaConversion</Equation>
+        <Equation>areaSurfaceHardGearRoot = surfaceAreaGearRoot*numberTeeth*areaConversion</Equation>
+        <Equation>magIntensityTopland = (subvar_t^2*cos^2(angleTopland)*(0.25*sin^2(angleTopland)+1)+0.25*sin^4(angleTopland))^0.5</Equation>
+        <Equation>magIntensityGearRoot = (subvar_t^2*cos^2(angleRoot)*(0.25*sin^2(angleRoot)+1)+0.25*sin^4(angleroot))^0.5</Equation>
+        <Equation>surfacePowerDensityTopland = magIntensityTopland^2*(3.14**resistanceWP*magPerm*frequencyHF)^0.5</Equation>
+        <Equation>surfacePowerDensityGearRoot = magIntensityGearRoot^2*(3.14**resistanceWP*magPerm*frequencyMF)^0.5</Equation>
+        <Equation>powerWP = areaSurfaceHardTopland*surfacePowerDensityTopland"+areaSurfaceHardGearRoot*surfacePowerDensityGearRoot"</Equation>
+        <Equation>powerConsumptionPumps = (quenchPump+wastefluidPump+coolingPump+highpressurePump)/(quenchEff+wastefluidEff+coolingEff+highpressureEff)*quenchduration*conversion</Equation>
+        <Equation>totalEnergyConsumption = powerWP*processTime+powerConsumptionPumps</Equation>
+      </Transformation>
+    </UMP>
+    <UMP name="Liquid Spray Coating" type="Surface Finishing" description="">
+      <Input name="Paint"/>
+      <Input name="Compressed Air"/>
+      <Output name="Overspray"/>
+      <Output name="Volume of Air Consumed"/>
+      <Output name="Volume of Paint Consumed"/>
+      <Feedback name="Process Time" description="description4" value="0.9" unit="unit4" />
+      <ProductProcessInformation name="Overspray Margin"/>
+      <ProductProcessInformation name="Rated Tool Paint Flow"/>
+      <ProductProcessInformation name="Power of Air Compressor"/>
+      <ProductProcessInformation name="Number of Layers"/>
+      <ProductProcessInformation name="Layer Thickness"/>
+      <ProductProcessInformation name="Surface Area"/>
+      <ResourceInformation name="Paint Density"/>
+      <ResourceInformation name="Air Compressor Efficiency"/>
+      <Transformation>
+        <Equation category="" description="description4" set="set4">volumeAirConsumed=toolPaintFlow*processTime</Equation>
+        <Equation category="category5" description="description5" set="set5">volumePaintConsumed=layers*surfaceArea*layerThickness</Equation>
+        <Equation category="category6" description="description6" set="set6">energyCoat=volumeAirConsumed*powerAirCompressor/60</Equation>
+        <Equation category="category6" description="description6" set="set6">massPaintConsumed=volumePaintConsumed/paintDensity</Equation>
+      </Transformation>
+    </UMP>
+  </UMPs>
+  <Linking>
+    <LinkingAction targetUMP="Inducting Hardening"  sourceUMP="Tempering" description="">
+      <Transformation targetInput="Surface Area Topland" sourceOutput="Outside Diameter">
+        <!-->Equation>pressureAngleOutside=invcos(pitchDiameter*cos(pressureAngle))/pitchDiameter+2*module)</Equation-->
+        <!--Equation>theta=3.14/(2*teeth)+(2*undercut*tan(pressureAngle)/teeth+(inv(pressureAngle)-inv(pressureAngleOutside))</Equation-->
+        <!-->Equation>surfaceAreaTopland=theta*(pitchDiameter+2*module</Equation-->
+        <Equation>surfaceAreaTopland=surfaceArea-surfaceareaHoles-surfaceAreaPocket</Equation>
+      </Transformation>
+    </LinkingAction>
+    <LinkingAction targetUMP="Liquid Spray Coating" sourceUMP="Induction Hardening" >
+      <Transformation targetInput="Surface Area" sourceOutput="Surface Area">
+        <!--Equation>surfaceArea=areaSurfaceHardTopland+areaSurfaceHardGearRoot+(3.14*(pitchDiameter*cos(pressureAngle)/2+teeth*((distanceTopland+distanceGearRoot*(2.2/pitchDiameter))/2)
+        </Equation-->
+        <Equation>surfaceArea=surfaceAreaTopland</Equation>
+      </Transformation>
+    </LinkingAction>
+  </Linking>
+</ComposedSystem>

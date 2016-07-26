@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ComposedSystem>
+  <UMPs>
+    <UMP name="Annealing" type="Structure Modification" description="Heating and Cooling of the workpiece">
+      <Input name="Natural Gas" description="mass of natural gas provided to provide required heat" category="Consumable" type="Energy" value="" unit="kg" />
+      <Input name="Oxygen" description="mass of oxygen provided for combustion" category="Consumable" type="Atmosphere" value="" unit="kg" />
+      <Output name="Flue Gas" description="emissions from combustion" category="GHG Emissions" type="Hazards" value="" unit="cfm" />
+      <Output name="Total Heat loss" description="heat lossed to convection and conduction" category="Energy" type="Heat" value="" unit="KJ/sec" />
+      <Output name="Yield Strength" description="target yield strength of the workpiece" category="Information" type="workpiece" value="300" unit="MPa" />
+      <Output name="Energy Consumed" description="total energy consumed by the process" category="Energy" type="Electricity" value="" unit="KwH" />
+      <Output name="Process Time" description="total elapsed time to heat and cool workpiece" category="Information" type="process" value="" unit="min" />
+      <Feedback name="Mass of Natural Gas Burned" description="" value="" unit="Kg" />
+      <Feedback name="Time to Burn one kg CH4" description="" value="-" unit="min" />
+      <Feedback name="Mass Flow Rate of Flue Gas" description="" value="" unit="cfm" />
+      <Feedback name="Percent Excess Air" description="percent excess after combustion" value="" unit="%" />
+      <Feedback name="Density of Flue Gas" description="" value="" unit="kg/m^3" />
+      <Feedback name="Heat Lost From Oven" description="due to wall conduction and convection" value="" unit="KJ/sec" />
+      <Feedback name="Heat Carried off by Workpiece" description="description3" value="" unit="KJ/sec" />
+      <ProductProcessInformation category="" description="description1" name="Heat Transfer Oven Wall" value="1" unit="">k</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description2" name="Oven Wall Thickness" value="-" unit="" >t</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description3" name="Surface Area of Workpiece" value="" unit="" >As</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description4" name="Ambient Temperature" value="" unit="" >Troom</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description4" name="Starting Oven Temperature" value="" unit="" >Toven</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description4" name="Workpiece Heat Capacity" value="" unit="" >cp</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description4" name="Workpiece Mass" value="" unit="" >mpart</ProductProcessInformation>
+      <ResourceInformation category="Consumables" name="Mass Stoichiometric Air" description="" value="" unit="" >Mair</ResourceInformation>
+      <ResourceInformation category="Consumables" name="Enthalpy of Combustion for Natural Gas" description="" value="" unit="" >deltaCHCH4</ResourceInformation>
+      <Transformation>
+        <Equation category="Energy" description="heat lost from oven conduction" set="Heat">ovenHeatLoss=heatTransferOvenWall*surfaceArea*(tempOven-tempRoomAmbient)/wallThickness</Equation>
+        <Equation category="Energy" description="mass flow rate of flue gas" set="Heat">massFlowRateFlueGas=flowRate*densityFlueGas</Equation>
+        <Equation category="Time" description="time to burn one Kg CH4" set="Heat">burnTime=(massCombustAir+massCombustCH4)/massFlowRateFlueGas</Equation>
+        <Equation category="Energy" description="total heat lost in flue gas " set="Heat">flueGasHeatLoss=(tempFlueDown - tempRoomAmbient)*(massCombustAir+massCombustCH4)*(specHeatFlueGas/burnTime)</Equation>
+        <Equation category="Energy" description="total heat loss" set="Heat">totalHeat=ovenHeatLoss+flueGasHeatLoss</Equation>
+        <Equation category="Energy" description="total energy required" set="Heat">energyReqd=totalHeat*processTime</Equation>
+        <Equation category="Energy" description="describes the total natural gas burned " set="Natural Gas">massCH4burned=(enthalpyCombustCHCH4/energyReqd)/(1-percUncombusted)</Equation>
+        <Equation category="Percent" description="percent heat lost in flue gas" set="Heat">percFlueGasLoss=flueGasHeatLoss/enthalpyCombustCHCH4</Equation>
+        <Equation category="Percent" description="percent excess air" set="Heat">percExcessAir=(percO2FlueGas/(21-percO2FlueGas))*100</Equation>
+        <Equation category="Energy" description="total air supplied to oven" set="Heat">massAir=massStoicAir*(1+percExcessAir/100)</Equation>
+        <Equation category="Energy" description="heat lost to Workpiece" set="Heat">workpieceHeatLoss =workpieceHeatCapacity*massPart*(tempOven-tempRoomAmbient)</Equation>
+        <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+      </Transformation>
+    </UMP>
+    
+    <UMP name="Milling" type="Material Removal" description="">
+      <Input name="Coolant"></Input>
+      <Input name="Energy"></Input>
+      <Output name="Waste"></Output>
+
+      <Feedback name="Tank Volume Full"></Feedback>
+      <Feedback name="Tank Volume Low"></Feedback>
+      <Feedback name="Tank Refill Rate"></Feedback>
+      <Feedback name="Process Time"></Feedback>
+
+      <ProductProcessInformation name="Quenchant Concentration"></ProductProcessInformation>
+ 
+      <ResourceInformation name="Power Efficiency">powerEfficiency</ResourceInformation>
+
+      <Transformation>
+        <Equation>volRemoved=volInitial-volFinal</Equation>
+        <Equation>matRemoved=volRemoved*matDensity*unitConversion</Equation>
+        <Equation>volCoolant=volTank*coolantConc</Equation>
+        <Equation>volWater=volTank*coolantConc</Equation>
+        <Equation>volCoolantUsed = coolantConc*tankDischarged*cuttingTime/timeInterval</Equation>
+        <Equation>massCoolantUsed=volCoolantUsed*coolantDensity*massConversion</Equation>
+        <Equation>feedRate=feed*teeth*spindleSpeed</Equation>
+        <Equation>MRR=feedRate*widthCut*depthCut</Equation>
+        <Equation>feedFactor=0.417*feed^-0.197</Equation>
+        <Equation>powerCuttingTool=powerConstant*feedFactor*MRR*toolWear</Equation>
+        <Equation>powerMotor=powerCuttingTool*machineEff</Equation>
+        <Equation>cuttingTime=volRemoved/MRR/60</Equation>
+        <Equation>idlePower=powerMotor*idlePowerFactor</Equation>
+        <Equation>idleTime=airTime+cuttingTime</Equation>
+        <Equation>basicPower=idlePower*basicPowerFactor</Equation>
+        <Equation>basicTime=setupTime+idleTime</Equation>
+        <Equation>energyConsumption=(powerMotor*cuttingTime+idlePower*idleTime+basicPower*basicTime)/.7457</Equation>
+        <EquationVariables description="description1" category="category1" set="set1" origin="origin1"/>
+      </Transformation>
+    </UMP>
+    
+    <UMP name="Through Hardening" type="Structure Modification" description="">
+      <Input name="Natural Gas" description="mass of natural gas provided to provide required heat" category="Consumable" type="Energy" value="" unit="kg" />
+      <Input name="Oxygen" description="mass of oxygen provided for combustion" category="Consumable" type="Atmosphere" value="" unit="kg" />
+      <Output name="Flue Gas" description="emissions from combustion" category="GHG Emissions" type="Hazards" value="" unit="cfm" />
+      <Output name="Total Heat loss" description="heat lossed to convection and conduction" category="Energy" type="Heat" value="" unit="KJ/sec" />
+      <Output name="Yield Strength" description="target yield strength of the workpiece" category="Information" type="workpiece" value="300" unit="MPa" />
+      <Output name="Energy Consumed" description="total energy consumed by the process" category="Energy" type="Electricity" value="" unit="KwH" />
+      <Output name="Process Time" description="total elapsed time to heat and cool workpiece" category="Information" type="process" value="" unit="min" />
+      <Feedback name="Mass of Natural Gas Burned" description="" value="" unit="Kg" />
+      <Feedback name="Time to Burn one kg CH4" description="" value="-" unit="min" />
+      <Feedback name="Mass Flow Rate of Flue Gas" description="" value="" unit="cfm" />
+      <Feedback name="Percent Excess Air" description="percent excess after combustion" value="" unit="%" />
+      <Feedback name="Density of Flue Gas" description="" value="" unit="kg/m^3" />
+      <Feedback name="Heat Lost From Oven" description="due to wall conduction and convection" value="" unit="KJ/sec" />
+      <Feedback name="Heat Carried off by Workpiece" description="description3" value="" unit="KJ/sec" />
+      <ProductProcessInformation category="" description="description1" name="Heat Transfer Oven Wall" value="1" unit="">k</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description2" name="Oven Wall Thickness" value="-" unit="" >t</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description3" name="Surface Area of Workpiece" value="" unit="" >As</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description4" name="Ambient Temperature" value="" unit="" >Troom</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description4" name="Starting Oven Temperature" value="" unit="" >Toven</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description4" name="Workpiece Heat Capacity" value="" unit="" >cp</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description4" name="Workpiece Mass" value="" unit="" >mpart</ProductProcessInformation>
+      <ResourceInformation category="Consumables" name="Mass Stoichiometric Air" description="" value="" unit="" >Mair</ResourceInformation>
+      <ResourceInformation category="Consumables" name="Enthalpy of Combustion for Natural Gas" description="" value="" unit="" >deltaCHCH4</ResourceInformation>
+      <Transformation>
+        <Equation category="Energy" description="heat lost from oven conduction" set="Heat">ovenHeatLoss=heatTransferOvenWall*surfaceArea*(tempOven-tempRoomAmbient)/wallThickness</Equation>
+        <Equation category="Energy" description="mass flow rate of flue gas" set="Heat">massFlowRateFlueGas=flowRate*densityFlueGas</Equation>
+        <Equation category="Time" description="time to burn one Kg CH4" set="Heat">burnTime=(massCombustAir+massCombustCH4)/massFlowRateFlueGas</Equation>
+        <Equation category="Energy" description="total heat lost in flue gas " set="Heat">flueGasHeatLoss=(tempFlueDown - tempRoomAmbient)*(massCombustAir+massCombustCH4)*(specHeatFlueGas/burnTime)</Equation>
+        <Equation category="Energy" description="total heat loss" set="Heat">totalHeat=ovenHeatLoss+flueGasHeatLoss</Equation>
+        <Equation category="Energy" description="total energy required" set="Heat">energyReqd=totalHeat*processTime</Equation>
+        <Equation category="Energy" description="describes the total natural gas burned " set="Natural Gas">massCH4burned=(enthalpyCombustCHCH4/energyReqd)/(1-percUncombusted)</Equation>
+        <Equation category="Percent" description="percent heat lost in flue gas" set="Heat">percFlueGasLoss=flueGasHeatLoss/enthalpyCombustCHCH4</Equation>
+        <Equation category="Percent" description="percent excess air" set="Heat">percExcessAir=(percO2FlueGas/(21-percO2FlueGas))*100</Equation>
+        <Equation category="Energy" description="total air supplied to oven" set="Heat">massAir=massStoicAir*(1+percExcessAir/100)</Equation>
+        <Equation category="Energy" description="heat lost to Workpiece" set="Heat">workpieceHeatLoss =workpieceHeatCapacity*massPart*(tempOven-tempRoomAmbient)</Equation>
+        <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+      </Transformation>
+    </UMP>
+    
+    <UMP name="Recovery Anneal" type="Structure Modification" description="">
+      <Input name=""/>
+      <Input name=""/>
+      <Output name=""/>
+      <Feedback name="Process Time">processtime</Feedback>
+      <ProductProcessInformation name=""/>
+      <ResourceInformation></ResourceInformation>
+      <Transformation >
+      <Equation category="Energy" description="heat lost from oven conduction" set="Heat">ovenHeatLoss=heatTransferOvenWall*surfaceArea*(tempOven-tempRoomAmbient)/wallThickness</Equation>
+      <Equation category="Energy" description="mass flow rate of flue gas" set="Heat">massFlowRateFlueGas=flowRate*densityFlueGas</Equation>
+      <Equation category="Time" description="time to burn one Kg CH4" set="Heat">burnTime=(massCombustAir+massCombustCH4)/massFlowRateFlueGas</Equation>
+      <Equation category="Energy" description="total heat lost in flue gas " set="Heat">flueGasHeatLoss=(tempFlueDown - tempRoomAmbient)*(massCombustAir+massCombustCH4)*(specHeatFlueGas/burnTime)</Equation>
+      <Equation category="Energy" description="total heat loss" set="Heat">totalHeat=ovenHeatLoss+flueGasHeatLoss</Equation>
+      <Equation category="Energy" description="total energy required" set="Heat">energyReqd=totalHeat*processTime</Equation>
+      <Equation category="Energy" description="describes the total natural gas burned " set="Natural Gas">massCH4burned=(enthalpyCombustCHCH4/energyReqd)/(1-percUncombusted)</Equation>
+      <Equation category="Percent" description="percent heat lost in flue gas" set="Heat">percFlueGasLoss=flueGasHeatLoss/enthalpyCombustCHCH4</Equation>
+      <Equation category="Percent" description="percent excess air" set="Heat">percExcessAir=(percO2FlueGas/(21-percO2FlueGas))*100</Equation>
+      <Equation category="Energy" description="total air supplied to oven" set="Heat">massAir=massStoicAir*(1+percExcessAir/100)</Equation>
+      <Equation category="Energy" description="heat lost to Workpiece" set="Heat">workpieceHeatLoss =workpieceHeatCapacity*massPart*(tempOven-tempRoomAmbient)</Equation>
+      <Equation>processtime=t_cooling</Equation>
+      <Equation>WP_UTS = -99.8+3.734*WPHardness</Equation>
+      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+      </Transformation>
+    </UMP>
+    
+  </UMPs>
+  <Linking>
+    <LinkingAction targetUMP="Milling" sourceUMP="Annealing" />
+    <Transformation targetInput="UTS" sourceOutput="Vicker's Hardness">
+      <Equation>WP_UTS = -99.8+3.734*WPHardness</Equation>
+      <!--MPa-->
+      <Equation>WP_UTS = WP_UTS*10^6</Equation>
+      <!--Pa; [Pavlina and Van Tyne 2008]-->
+      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+    </Transformation>
+    
+    <LinkingAction targetUMP="Through Hardening" sourceUMP="Milling"/>
+    <Transformation targetInput="Thickness"  sourceOutput="Thickness">
+      <Equation>hardeningProcessTime =60*60*WPThickness</Equation>
+      <Equation>Call Cutting_Energy_Incremental.m</Equation> <!--calls a matlab function to calculate the energy required to mill the workpiece-->
+      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+    </Transformation>
+    
+    <LinkingAction targetUMP="Recovery Anneal" sourceUMP="Through Hardening"/>
+    <Transformation targetInput="Process Time" sourceOutput="Oven Temperature">
+      <Equation>Cooling_Rate = (Temp_Oven-Temp_Quench)/t_Cooling</Equation>
+      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+    </Transformation>
+    
+    <LinkingAction targetUMP="Recovery Anneal" sourceUMP="Through Hardening"/>
+    <Transformation targetInput="Ultimate Tensile Strength" sourceOutput="Oven Temperature">
+      <Equation>Cooling_Rate=(Temp_Oven-Temp_Quench)/t_Cooling</Equation>
+      <Equation>T=Temp_Oven</Equation>
+      <Equation>Call HT_CL_Hard.m</Equation> <!--calls a matlab equation to calculate the change in strength; integral function-->
+      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+    </Transformation>
+    
+  </Linking>
+</ComposedSystem>
