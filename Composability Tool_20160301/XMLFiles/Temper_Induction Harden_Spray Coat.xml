@@ -84,6 +84,7 @@
       <Transformation>
         <Equation>volWaterLost = (100-quenchantConc)*(tankVol-tankVolLow)*(processTime/tankRefillInterval)</Equation>
         <Equation>volQuenchantLost = quenchantConc*(tankVol-tankVolLow)*(processTime/tankRefillInterval)</Equation>
+        <Equation>massQuenchantLost=volQuenchantLost/quenchantDensity</Equation>
         <Equation>powerCoilHF = generatorPower*percHF*powerEfficiency</Equation>
         <Equation>powerCoilMF = generatorPower*percMF*powerEfficiency</Equation>
         <Equation>coilResistance = resistivity*(2*3.14*coilRadius/coilCrossSectionArea)</Equation>

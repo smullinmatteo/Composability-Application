@@ -60,7 +60,7 @@
       <ResourceInformation category="Shot" name="shot density" description="" value="" unit="Kg/m^3" />
       <ResourceInformation category="Shot" name="shot radius" description="" value="" unit="m" >r</ResourceInformation>
       <Transformation>
-        <Equation category="Time" description="process time equal to coverage times batch time" set="">processTime = percentCov*batchTime</Equation>
+        <Equation category="Time" description="process time equal to coverage times batch time" set="">processTime = percentCov/100*batchTime</Equation>
         <Equation category="Shot" description="mass of shot consumption" set="">shotConsumption = shotUseRate*processTime</Equation>
         <Equation category="Shot" description="shot power" set="">shotPower = (0.5*shotFlowRater*shotVelocity^2/(3600*1000))/E</Equation>
         <Equation category="Energy" description="on site energy consumption equal to shot power times process time" set="">Eon = shotPower*processTime</Equation>

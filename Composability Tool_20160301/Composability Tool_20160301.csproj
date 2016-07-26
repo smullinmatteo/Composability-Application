@@ -265,9 +265,13 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="ProcessModelDatabase\ProcessModelDatabase.xlsm" />
+    <None Include="ProcessModelDatabase\ProcessModelDatabase_Annealing.csv" />
     <None Include="ProcessModelDatabase\ProcessModelDatabase_Liquid Spray Coating.csv" />
+    <None Include="ProcessModelDatabase\ProcessModelDatabase_Milling.csv" />
+    <None Include="ProcessModelDatabase\ProcessModelDatabase_Recovery Anneal.csv" />
     <None Include="ProcessModelDatabase\ProcessModelDatabase_Shot Peening.csv" />
     <None Include="ProcessModelDatabase\ProcessModelDatabase_Tempering.csv" />
+    <None Include="ProcessModelDatabase\ProcessModelDatabase_Through Hardening.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -72,7 +72,6 @@
         <Equation>basicPower=idlePower*basicPowerFactor</Equation>
         <Equation>basicTime=setupTime+idleTime</Equation>
         <Equation>energyConsumption=(powerMotor*cuttingTime+idlePower*idleTime+basicPower*basicTime)/.7457</Equation>
-        <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
       </Transformation>
     </UMP>
     <UMP name="Induction Hardening" type="Structure Modification" description="">
@@ -139,7 +138,6 @@
         <Equation>powerWP = areaSurfaceHardTopland*surfacePowerDensityTopland"+areaSurfaceHardGearRoot*surfacePowerDensityGearRoot"</Equation>
         <Equation>powerConsumptionPumps = (quenchPump+wastefluidPump+coolingPump+highpressurePump)/(quenchEff+wastefluidEff+coolingEff+highpressureEff)*quenchduration*conversion</Equation>
         <Equation>totalEnergyConsumption = powerWP*processTime+powerConsumptionPumps</Equation>
-        <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
       </Transformation>
     </UMP>
     <UMP name="Recovery Anneal" type="Structure Modification" description="">
@@ -156,35 +154,37 @@
     </UMP>
   </UMPs>
   <Linking>
-    <LinkingAction targetUMP="Milling" sourceUMP="Annealing" />
+    <LinkingAction targetUMP="Milling" sourceUMP="Annealing"  description="">
     <Transformation targetInput="UTS" sourceOutput="Vicker's Hardness">
       <!--%Vickers Hardness    [ASM Handbook] used in place for the hardness model because it was inaccurate-->
       <Equation>WP_UTS = -99.8+3.734*WPHardness</Equation>
       <!--MPa-->
-      <Equation>WP_UTS = WP_UTS*10^6</Equation>
+      <Equation>Final_WP_UTS = WP_UTS*10^6</Equation>
       <!--Pa; [Pavlina and Van Tyne 2008]-->
-      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
     </Transformation>
+    </LinkingAction>
     
-    <LinkingAction targetUMP="Induction Hardening" sourceUMP="Milling"/>
+   
+    <LinkingAction targetUMP="Induction Hardening" sourceUMP="Milling" description="">
     <Transformation targetInput="Hardened Area"  sourceOutput="Surface Area">
-      <Equation>areaSurfaceHardTopland+areaSurfaceHardGearRoot=surfaceArea/((3.14*(pitchDiameter*cos(pressureAngle)/2+teeth*((distanceTopland+distanceGearRoot*(2.2/pitchDiameter))/2))</Equation>
+      <!--Equation>areaSurfaceHardTopland+areaSurfaceHardGearRoot=surfaceArea/((3.14*(pitchDiameter*cos(pressureAngle)/2+teeth*((distanceTopland+distanceGearRoot*(2.2/pitchDiameter))/2))</Equation-->
       <Equation>hardenedArea=areaSurfaceHardTopland+areaSurfaceHardGearRoot</Equation>
-      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
     </Transformation>
+    </LinkingAction>
     
-    <LinkingAction targetUMP="Recovery Anneal" sourceUMP="Induction Hardening"/>
+    <LinkingAction targetUMP="Recovery Anneal" sourceUMP="Induction Hardening" description="">
     <Transformation targetInput="Process Time" sourceOutput="Oven Temperature">
       <Equation>Cooling_Rate = (Temp_Oven-Temp_Quench)/t_Cooling</Equation>
     </Transformation>
+    </LinkingAction>
     
-    <LinkingAction targetUMP="Recovery Anneal" sourceUMP="Induction Hardening"/>
+    <LinkingAction targetUMP="Recovery Anneal" sourceUMP="Induction Hardening" description="">
     <Transformation targetInput="Ultimate Tensile Strength" sourceOutput="Oven Temperature">
       <Equation>Cooling_Rate=(Temp_Oven-Temp_Quench)/t_Cooling</Equation>
       <Equation>T=Temp_Oven</Equation>
       <Equation>HT_CL_Hard.m</Equation> <!--calls a matlab equation to calculate the change in strength; integral function-->
       <Equation>WP_UTS = -99.8+3.734*WPHardness</Equation>
-      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
     </Transformation>
+    </LinkingAction>
   </Linking>
 </ComposedSystem>

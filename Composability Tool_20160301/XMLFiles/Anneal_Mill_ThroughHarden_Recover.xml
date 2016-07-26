@@ -29,7 +29,7 @@
         <Equation category="Energy" description="heat lost from oven conduction" set="Heat">ovenHeatLoss=heatTransferOvenWall*surfaceArea*(tempOven-tempRoomAmbient)/wallThickness</Equation>
         <Equation category="Energy" description="mass flow rate of flue gas" set="Heat">massFlowRateFlueGas=flowRate*densityFlueGas</Equation>
         <Equation category="Time" description="time to burn one Kg CH4" set="Heat">burnTime=(massCombustAir+massCombustCH4)/massFlowRateFlueGas</Equation>
-        <Equation category="Energy" description="total heat lost in flue gas " set="Heat">flueGasHeatLoss=(tempFlueDown - tempRoomAmbient)*(massCombustAir+massCombustCH4)*(specHeatFlueGas/burnTime)</Equation>
+        <Equation category="Energy" description="total heat lost in flue gas " set="Heat">flueGasHeatLoss=(tempFlueDown-tempRoomAmbient)*(massCombustAir+massCombustCH4)*(specHeatFlueGas/burnTime)</Equation>
         <Equation category="Energy" description="total heat loss" set="Heat">totalHeat=ovenHeatLoss+flueGasHeatLoss</Equation>
         <Equation category="Energy" description="total energy required" set="Heat">energyReqd=totalHeat*processTime</Equation>
         <Equation category="Energy" description="describes the total natural gas burned " set="Natural Gas">massCH4burned=(enthalpyCombustCHCH4/energyReqd)/(1-percUncombusted)</Equation>
@@ -136,7 +136,7 @@
       <Equation category="Percent" description="percent excess air" set="Heat">percExcessAir=(percO2FlueGas/(21-percO2FlueGas))*100</Equation>
       <Equation category="Energy" description="total air supplied to oven" set="Heat">massAir=massStoicAir*(1+percExcessAir/100)</Equation>
       <Equation category="Energy" description="heat lost to Workpiece" set="Heat">workpieceHeatLoss =workpieceHeatCapacity*massPart*(tempOven-tempRoomAmbient)</Equation>
-      <Equation>processtime=t_cooling</Equation>
+      <Equation>processTime=t_cooling</Equation>
       <Equation>WP_UTS = -99.8+3.734*WPHardness</Equation>
       <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
       </Transformation>
@@ -144,35 +144,33 @@
     
   </UMPs>
   <Linking>
-    <LinkingAction targetUMP="Milling" sourceUMP="Annealing" />
+    <LinkingAction targetUMP="Milling" sourceUMP="Annealing"  description=""/>
     <Transformation targetInput="UTS" sourceOutput="Vicker's Hardness">
       <Equation>WP_UTS = -99.8+3.734*WPHardness</Equation>
       <!--MPa-->
-      <Equation>WP_UTS = WP_UTS*10^6</Equation>
+      <Equation>Final_WP_UTS = WP_UTS*10^6</Equation>
       <!--Pa; [Pavlina and Van Tyne 2008]-->
-      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
     </Transformation>
     
-    <LinkingAction targetUMP="Through Hardening" sourceUMP="Milling"/>
+    <LinkingAction targetUMP="Through Hardening" sourceUMP="Milling" description="">
     <Transformation targetInput="Thickness"  sourceOutput="Thickness">
-      <Equation>hardeningProcessTime =60*60*WPThickness</Equation>
-      <Equation>Call Cutting_Energy_Incremental.m</Equation> <!--calls a matlab function to calculate the energy required to mill the workpiece-->
-      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+      <Equation>processTime =60*60*WPThickness</Equation>
+      <!--Equation>Cutting_Energy_Incremental.m</Equation> calls a matlab function to calculate the energy required to mill the workpiece-->
     </Transformation>
+    </LinkingAction>
     
-    <LinkingAction targetUMP="Recovery Anneal" sourceUMP="Through Hardening"/>
+    <LinkingAction targetUMP="Recovery Anneal" sourceUMP="Through Hardening" description="">
     <Transformation targetInput="Process Time" sourceOutput="Oven Temperature">
-      <Equation>Cooling_Rate = (Temp_Oven-Temp_Quench)/t_Cooling</Equation>
-      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+      <Equation>t_Cooling = (Temp_Oven-Temp_Quench)/Cooling_Rate</Equation>
     </Transformation>
+    </LinkingAction>
     
-    <LinkingAction targetUMP="Recovery Anneal" sourceUMP="Through Hardening"/>
+    <LinkingAction targetUMP="Recovery Anneal" sourceUMP="Through Hardening" description="">
     <Transformation targetInput="Ultimate Tensile Strength" sourceOutput="Oven Temperature">
-      <Equation>Cooling_Rate=(Temp_Oven-Temp_Quench)/t_Cooling</Equation>
+      <Equation>t_Cooling=(Temp_Oven-Temp_Quench)/Cooling_Rate</Equation>
       <Equation>T=Temp_Oven</Equation>
-      <Equation>Call HT_CL_Hard.m</Equation> <!--calls a matlab equation to calculate the change in strength; integral function-->
-      <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
+      <!--Equation>HT_CL_Hard.m</Equation> calls a matlab equation to calculate the change in strength; integral function-->
     </Transformation>
-    
+    </LinkingAction>
   </Linking>
 </ComposedSystem>
