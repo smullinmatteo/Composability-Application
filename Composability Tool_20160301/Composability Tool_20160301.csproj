@@ -266,6 +266,7 @@
     <None Include="packages.config" />
     <None Include="ProcessModelDatabase\ProcessModelDatabase.xlsm" />
     <None Include="ProcessModelDatabase\ProcessModelDatabase_Annealing.csv" />
+    <None Include="ProcessModelDatabase\ProcessModelDatabase_Induction Hardening.csv" />
     <None Include="ProcessModelDatabase\ProcessModelDatabase_Liquid Spray Coating.csv" />
     <None Include="ProcessModelDatabase\ProcessModelDatabase_Milling.csv" />
     <None Include="ProcessModelDatabase\ProcessModelDatabase_Recovery Anneal.csv" />
@@ -282,11 +283,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="XMLFiles\Recovery Anneal_Peen.xml" />
     <Resource Include="XMLFiles\Anneal_Mill_Induction Harden_Recover.xml" />
     <Resource Include="XMLFiles\Anneal_Mill_ThroughHarden_Recover.xml" />
     <Resource Include="XMLFiles\Temper_Induction Harden_Spray Coat.xml" />
     <Resource Include="sustainabilityKeywordPairs.txt" />
-    <Resource Include="XMLFiles\ComposedSystem_Peen_Temper.xml" />
     <Resource Include="sustainabilityKeywordPairs_old.txt" />
     <Content Include="Library\ComposibilityMatlabTool.dll" />
     <Content Include="Library\EngMATLib.dll" />
@@ -294,7 +295,7 @@
     <Content Include="Library\System.Windows.Controls.DataVisualization.Toolkit.pdb" />
     <Content Include="Library\x.dll" />
     <Content Include="test1.m" />
-    <Resource Include="XMLFiles\Peen_SurfaceArea_Paint.xml">
+    <Resource Include="XMLFiles\Peen_Paint.xml">
       <SubType>Designer</SubType>
     </Resource>
     <Resource Include="Library\ComposedSystem_Anneal_Cut_Temper_Quench.xml" />

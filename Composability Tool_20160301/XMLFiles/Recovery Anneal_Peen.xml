@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ComposedSystem>
+  <UMPs>
+    <UMP name="Recovery Anneal" type="Structure Modification" description="Cooling of the workpiece">
+      <Input name="Natural Gas" description="mass of natural gas provided to provide required heat" category="Consumable" type="Energy" value="" unit="kg" />
+      <Input name="Oxygen" description="mass of oxygen provided for combustion" category="Consumable" type="Atmosphere" value="" unit="kg" />
+      <Output name="Flue Gas" description="emissions from combustion" category="GHG Emissions" type="Hazards" value="" unit="cfm" />
+      <Output name="Total Heat loss" description="heat lossed to convection and conduction" category="Energy" type="Heat" value="" unit="KJ/sec" />
+      <Output name="Yield Strength" description="target yield strength of the workpiece" category="Information" type="workpiece" value="300" unit="MPa" />
+      <Output name="Energy Consumed" description="total energy consumed by the process" category="Energy" type="Electricity" value="" unit="KwH" />
+      <Output name="Process Time" description="total elapsed time to heat and cool workpiece" category="Information" type="process" value="" unit="min" />
+      <Feedback name="Mass of Natural Gas Burned" description="" value="" unit="Kg" />
+      <Feedback name="Time to Burn one kg CH4" description="" value="-" unit="min" />
+      <Feedback name="Mass Flow Rate of Flue Gas" description="" value="" unit="cfm" />
+      <Feedback name="Percent Excess Air" description="percent excess after combustion" value="" unit="%" />
+      <Feedback name="Density of Flue Gas" description="" value="" unit="kg/m^3" />
+      <Feedback name="Heat Lost From Oven" description="due to wall conduction and convection" value="" unit="KJ/sec" />
+      <Feedback name="Heat Carried off by Workpiece" description="description3" value="" unit="KJ/sec" />
+      <ProductProcessInformation category="" description="description1" name="Heat Transfer Oven Wall" value="1" unit="">k</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description2" name="Oven Wall Thickness" value="-" unit="" >t</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description3" name="Surface Area of Workpiece" value="" unit="" >As</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description4" name="Ambient Temperature" value="" unit="" >Troom</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description4" name="Starting Oven Temperature" value="" unit="" >Toven</ProductProcessInformation>>
+      <ProductProcessInformation category="" description="description4" name="Workpiece Heat Capacity" value="" unit="" >cp</ProductProcessInformation>
+      <ProductProcessInformation category="" description="description4" name="Workpiece Mass" value="" unit="" >mpart</ProductProcessInformation>
+      <ResourceInformation category="Consumables" name="Mass Stoichiometric Air" description="" value="" unit="" >Mair</ResourceInformation>
+      <ResourceInformation category="Consumables" name="Enthalpy of Combustion for Natural Gas" description="" value="" unit="" >deltaCHCH4</ResourceInformation>
+      <Transformation>
+        <Equation category="Energy" description="heat lost from oven conduction" set="Heat">ovenHeatLoss=heatTransferOvenWall*surfaceArea*(tempOven-tempRoomAmbient)/wallThickness</Equation>
+        <Equation category="Energy" description="mass flow rate of flue gas" set="Heat">massFlowRateFlueGas=flowRate*densityFlueGas</Equation>
+        <Equation category="Time" description="time to burn one Kg CH4" set="Heat">burnTime=(massCombustAir+massCombustCH4)/massFlowRateFlueGas</Equation>
+        <Equation category="Energy" description="total heat lost in flue gas " set="Heat">flueGasHeatLoss=(tempFlueDown - tempRoomAmbient)*(massCombustAir+massCombustCH4)*(specHeatFlueGas/burnTime)</Equation>
+        <Equation category="Energy" description="total heat loss" set="Heat">totalHeat=ovenHeatLoss+flueGasHeatLoss</Equation>
+        <Equation category="Energy" description="total energy required" set="Heat">energyReqd=totalHeat*processTime</Equation>
+        <Equation category="Energy" description="describes the total natural gas burned " set="Natural Gas">massCH4burned=(enthalpyCombustCHCH4/energyReqd)/(1-percUncombusted)</Equation>
+        <Equation category="Percent" description="percent heat lost in flue gas" set="Heat">percFlueGasLoss=flueGasHeatLoss/enthalpyCombustCHCH4</Equation>
+        <Equation category="Percent" description="percent excess air" set="Heat">percExcessAir=(percO2FlueGas/(21-percO2FlueGas))*100</Equation>
+        <Equation category="Energy" description="total air supplied to oven" set="Heat">massAir=massStoicAir*(1+percExcessAir/100)</Equation>
+        <Equation category="Energy" description="heat lost to Workpiece" set="Heat">workpieceHeatLoss =workpieceHeatCapacity*massPart*(tempOven-tempRoomAmbient)</Equation>
+      </Transformation>
+    </UMP>
+    
+    <UMP name="Shot Peening" type="Surface Modification" description="imparts a compressive residual stress to the surface of the workpiece through bombardment with high velocity shot">
+      <Input name="Shot" description="circular pellets of optional material" category="Consumables" type="steel" value="" unit="Kg" />
+      <Input name="Power" description="electrical energy to power process machinery" category="Consumables" type="electrical" value="" unit="Kw" />
+      <Input name="Coverage" description="Coverage required to achieve a compressive stress" category="Information" type="workpiece" value="1.1" unit="%" />
+      <Output name="Spent Shot" description="spent shot unsuitable for reuse" category="Waste" type="process" value="" unit="Kg" />
+      <Output name="Process Time" description="time to peen a work surface to preset " category="Information" type="process" value="" unit="min" />
+      <Output name="Workpiece Surface Area" description="the surface area of the workpiece after peening" category="Information" type="workpiece" value="" unit="m^3" />
+      <Output name="Workpiece Compressive Stress" description="compressive stress imparted to work surface by peening" category="Information" type="workpiece" value="" unit="MPa" />
+      <Feedback name="shot use rate" description="" value="" unit="Kg/sec" >shotUseRate</Feedback>
+      <Feedback name="shot flow rate" description="" value="" unit="Kg/sec" >shotFlowRate</Feedback>
+      <Feedback name="process time" description="" value="" unit="hrs" >processTime</Feedback>
+      <ProductProcessInformation category="Process" description="" name="percent coverage" value="" unit="%">percentCov</ProductProcessInformation>
+      <ProductProcessInformation category="Process" description="" name="machine efficiency" value="" unit="%">E</ProductProcessInformation>
+      <ProductProcessInformation category="Process" description="" name="batchtime" value="" unit="%">batchTime</ProductProcessInformation>
+      <ResourceInformation category="Shot" name="shot mass" description="" value="" unit="Kg" >m</ResourceInformation>
+      <ResourceInformation category="Shot" name="shot velocity" description="" value="" unit="m/s" >shotVelocity</ResourceInformation>
+      <ResourceInformation category="Shot" name="shot volume" description="" value="" unit="m^3" >v</ResourceInformation>
+      <ResourceInformation category="Shot" name="shot density" description="" value="" unit="Kg/m^3" />
+      <ResourceInformation category="Shot" name="shot radius" description="" value="" unit="m" >r</ResourceInformation>
+      <Transformation>
+        <Equation category="Time" description="process time equal to coverage times batch time" set="">processTime = percentCov/100*batchTime</Equation>
+        <Equation category="Shot" description="mass of shot consumption" set="">shotConsumption = shotUseRate*processTime</Equation>
+        <Equation category="Shot" description="shot power" set="">shotPower = (0.5*shotFlowRater*shotVelocity^2/(3600*1000))/E</Equation>
+        <Equation category="Energy" description="on site energy consumption equal to shot power times process time" set="">Eon = shotPower*processTime</Equation>
+      </Transformation>
+    </UMP>
+  </UMPs>
+  <Linking>
+    <LinkingAction targetUMP="Shot Peening" sourceUMP="Recovery Anneal" description="" allocationVariable="1">
+      <Transformation targetInput="Process Time"  sourceOutput="Yield Strength" description="yield strength of the tempered workpiece will influce shot peening process time since the peening aparatus can only cover a smaller portion of area per unit time">
+        <Equation description="the equation to convert yield strength into coverage impact area" allocationVariable="1">
+              Z=100*[1-exp((-3*beta*0.05*flowrate*pressure*nozzlelength*(sin(theta^2)))/(2.5*shotdensity*(tan(nozzleangle)*standoff^2*yieldstrength*pi*shotradius^2)))]
+        </Equation>
+        <!--Equation description="determining the coverage factor K"> 
+                >K = (feedrate*impactarea)/(shotmass*Z)
+        </Equation-->
+        <Equation description="find the moving coverage factor using the transfer speed to determine how long it will take to peen the workpiece to a predetermined coverage percentage" allocationVariable="1">
+              Kaverage = feedrate*impactarea*((2*sqrt(Z))/3.14)/(shotmass*Z*(transferspeed + ((2*sqrt(Z))/3.14)))
+        </Equation>
+        <Equation description="find the process time to fully peen the area Z based on desired coverage percentage (total is 99%) and coverage factor (Kaverage)">
+              Ztime=ln(1-C/100)/-Kaverage
+        </Equation>
+        <Equation description="find total process time by dividing total workpiece surface area by Ztime for a rought approximation ">
+              processTime=surfacearea/Ztime
+        </Equation>
+        <EquationVariables description="mass flow rate" category="Shot" set="" origin="Shot Peening">flowrate</EquationVariables>
+        <EquationVariables description="shot density" category="Shot" set="" origin="Shot Peening">shotdensity</EquationVariables>
+        <EquationVariables description="pressure" category="Shot" set="" origin="Shot Peening">pressure</EquationVariables>
+        <EquationVariables description="nozzle length" category="Shot" set="" origin="Shot Peening">nozzlelength</EquationVariables>
+        <EquationVariables description="nozzle angle" category="Shot" set="" origin="Shot Peening">nozzleangle</EquationVariables>
+        <EquationVariables description="shot radius" category="Shot" set="" origin="Shot Peening">shotradius</EquationVariables>
+        <EquationVariables description="beta" category="Shot" set="" origin="Shot Peening">beta</EquationVariables>
+        <EquationVariables description="youngs modulus" category="Mechanical" set="" origin="Tempering">youngsmodulus</EquationVariables>
+        <EquationVariables description="yield strength" category="Mechanical" set="" origin="Tempering">yieldstrength</EquationVariables>
+      </Transformation>
+    </LinkingAction>
+  </Linking>
+</ComposedSystem>

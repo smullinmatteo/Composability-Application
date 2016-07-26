@@ -495,14 +495,14 @@ namespace Composability_Tool_20160301
                     string composedUMPName = "";
                     if (SourceUMP.SelectedValue != null && Transformation.SelectedValue != null && TargetUMP.SelectedValue != null)
                     {
-                        composedUMPName = ((UMP)SourceUMP.SelectedValue).name + ">" + /*((Transformation)Transformation.SelectedValue).sourceOutput + ">" + ((Transformation)Transformation.SelectedValue).targetInput + ">" + */((UMP)TargetUMP.SelectedValue).name;
+                        composedUMPName = ((UMP)SourceUMP.SelectedValue).name + "_" + /*((Transformation)Transformation.SelectedValue).sourceOutput + ">" + ((Transformation)Transformation.SelectedValue).targetInput + ">" + */((UMP)TargetUMP.SelectedValue).name;
                         SourceUMPParameters_ItemsControl.IsTextSearchEnabled = true;
                         TargetUMPParameters_ItemsControl.IsTextSearchEnabled = true;
                         this.NavigationService.Navigate(new Results(composedUMPName, sourceVarList, targetVarList, linkVarList, composeResults));
                     }
                     break;
                 case "Link":
-                    string mixedName = ((UMP)SourceUMP.SelectedValue).name + ">" + ((UMP)TargetUMP.SelectedValue).name;
+                    string mixedName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name;
                     this.NavigationService.Navigate(new Compose_AddProcess(((UMP)TargetUMP.SelectedValue).name, sourceVarList, targetVarList, linkVarList, mixedName, composeResults));
                     break;
                 default:

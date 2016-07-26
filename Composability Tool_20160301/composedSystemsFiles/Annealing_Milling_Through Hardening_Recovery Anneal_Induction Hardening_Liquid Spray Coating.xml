@@ -1,0 +1,230 @@
+<ComposedSystem>
+<UMPs>
+<UMP name="Annealing_Milling_Through Hardening_Recovery Anneal_Induction Hardening" type="" description="Annealing_Milling_Through Hardening_Recovery Anneal_Induction Hardening">
+<Parameter name="heatTransferOvenWall_Annealing" value="0"/>
+<Parameter name="surfaceArea_Annealing" value="0"/>
+<Parameter name="tempOven_Annealing" value="0"/>
+<Parameter name="tempRoomAmbient_Annealing" value="0"/>
+<Parameter name="wallThickness_Annealing" value="0"/>
+<Parameter name="flowRate_Annealing" value="0"/>
+<Parameter name="densityFlueGas_Annealing" value="0"/>
+<Parameter name="massCombustAir_Annealing" value="0"/>
+<Parameter name="massCombustCH4_Annealing" value="0"/>
+<Parameter name="tempFlueDown_Annealing" value="0"/>
+<Parameter name="specHeatFlueGas_Annealing" value="0"/>
+<Parameter name="processTime_Annealing" value="0"/>
+<Parameter name="enthalpyCombustCHCH4_Annealing" value="0"/>
+<Parameter name="percUncombusted_Annealing" value="0"/>
+<Parameter name="percO2FlueGas_Annealing" value="0"/>
+<Parameter name="massStoicAir_Annealing" value="0"/>
+<Parameter name="workpieceHeatCapacity_Annealing" value="0"/>
+<Parameter name="massPart_Annealing" value="0"/>
+<Parameter name="volInitial_Milling" value="0"/>
+<Parameter name="volFinal_Milling" value="0"/>
+<Parameter name="matDensity_Milling" value="0"/>
+<Parameter name="unitConversion_Milling" value="0"/>
+<Parameter name="volTank_Milling" value="0"/>
+<Parameter name="coolantConc_Milling" value="0"/>
+<Parameter name="tankDischarged_Milling" value="0"/>
+<Parameter name="cuttingTime_Milling" value="-1.79769313486232E+308"/>
+<Parameter name="timeInterval_Milling" value="0"/>
+<Parameter name="coolantDensity_Milling" value="0"/>
+<Parameter name="massConversion_Milling" value="0"/>
+<Parameter name="feed_Milling" value="0"/>
+<Parameter name="teeth_Milling" value="0"/>
+<Parameter name="spindleSpeed_Milling" value="0"/>
+<Parameter name="widthCut_Milling" value="0"/>
+<Parameter name="depthCut_Milling" value="0"/>
+<Parameter name="powerConstant_Milling" value="0"/>
+<Parameter name="toolWear_Milling" value="0"/>
+<Parameter name="machineEff_Milling" value="0"/>
+<Parameter name="idlePowerFactor_Milling" value="0"/>
+<Parameter name="airTime_Milling" value="0"/>
+<Parameter name="basicPowerFactor_Milling" value="0"/>
+<Parameter name="setupTime_Milling" value="0"/>
+<Parameter name="heatTransferOvenWall_Through Hardening" value="0"/>
+<Parameter name="surfaceArea_Through Hardening" value="0"/>
+<Parameter name="tempOven_Through Hardening" value="0"/>
+<Parameter name="tempRoomAmbient_Through Hardening" value="0"/>
+<Parameter name="wallThickness_Through Hardening" value="0"/>
+<Parameter name="flowRate_Through Hardening" value="0"/>
+<Parameter name="densityFlueGas_Through Hardening" value="0"/>
+<Parameter name="massCombustAir_Through Hardening" value="0"/>
+<Parameter name="massCombustCH4_Through Hardening" value="0"/>
+<Parameter name="tempFlueDown_Through Hardening" value="0"/>
+<Parameter name="specHeatFlueGas_Through Hardening" value="0"/>
+<Parameter name="processTime_Through Hardening" value="0"/>
+<Parameter name="enthalpyCombustCHCH4_Through Hardening" value="0"/>
+<Parameter name="percUncombusted_Through Hardening" value="0"/>
+<Parameter name="percO2FlueGas_Through Hardening" value="0"/>
+<Parameter name="massStoicAir_Through Hardening" value="0"/>
+<Parameter name="workpieceHeatCapacity_Through Hardening" value="0"/>
+<Parameter name="massPart_Through Hardening" value="0"/>
+<Parameter name="t_cooling_Recovery Anneal" value="0"/>
+<Parameter name="WPHardness_Recovery Anneal" value="0"/>
+<Parameter name="areaSurfaceHardTopland_Induction Hardening" value="0"/>
+<Parameter name="areaSurfaceHardGearRoot_Induction Hardening" value="0"/>
+<Parameter name="quenchantConc_Induction Hardening" value="0"/>
+<Parameter name="tankVol_Induction Hardening" value="0"/>
+<Parameter name="tankVolLow_Induction Hardening" value="0"/>
+<Parameter name="processTime_Induction Hardening" value="0"/>
+<Parameter name="tankRefillInterval_Induction Hardening" value="0"/>
+<Parameter name="generatorPower_Induction Hardening" value="0"/>
+<Parameter name="percHF_Induction Hardening" value="0"/>
+<Parameter name="powerEfficiency_Induction Hardening" value="0"/>
+<Parameter name="percMF_Induction Hardening" value="0"/>
+<Parameter name="resistivity_Induction Hardening" value="0"/>
+<Parameter name="coilRadius_Induction Hardening" value="0"/>
+<Parameter name="coilCrossSectionArea_Induction Hardening" value="0"/>
+<Parameter name="powerHF_Induction Hardening" value="0"/>
+<Parameter name="powerMF_Induction Hardening" value="0"/>
+<Parameter name="currentHF_Induction Hardening" value="0"/>
+<Parameter name="distanceTopland_Induction Hardening" value="0"/>
+<Parameter name="currentMF_Induction Hardening" value="0"/>
+<Parameter name="distanceRoot_Induction Hardening" value="0"/>
+<Parameter name="initialResWP_Induction Hardening" value="0"/>
+<Parameter name="tempCoef_Induction Hardening" value="0"/>
+<Parameter name="heatTemp_Induction Hardening" value="0"/>
+<Parameter name="ambientTemp_Induction Hardening" value="0"/>
+<Parameter name="magPerm_Induction Hardening" value="0"/>
+<Parameter name="depthRoot_Induction Hardening" value="0"/>
+<Parameter name="depthTopland_Induction Hardening" value="0"/>
+<Parameter name="surfaceAreaTopland_Induction Hardening" value="0"/>
+<Parameter name="numberTeeth_Induction Hardening" value="0"/>
+<Parameter name="areaConversion_Induction Hardening" value="0"/>
+<Parameter name="surfaceAreaGearRoot_Induction Hardening" value="0"/>
+<Parameter name="subvar_t_Induction Hardening" value="0"/>
+<Parameter name="cos_Induction Hardening" value="0"/>
+<Parameter name="angleTopland_Induction Hardening" value="0"/>
+<Parameter name="sin_Induction Hardening" value="0"/>
+<Parameter name="angleRoot_Induction Hardening" value="0"/>
+<Parameter name="angleroot_Induction Hardening" value="0"/>
+<Parameter name="surfacePowerDensityTopland" value="0"/>
+<Parameter name="surfacePowerDensityGearRoot" value="0"/>
+<Parameter name="quenchPump_Induction Hardening" value="0"/>
+<Parameter name="wastefluidPump_Induction Hardening" value="0"/>
+<Parameter name="coolingPump_Induction Hardening" value="0"/>
+<Parameter name="highpressurePump_Induction Hardening" value="0"/>
+<Parameter name="quenchEff_Induction Hardening" value="0"/>
+<Parameter name="wastefluidEff_Induction Hardening" value="0"/>
+<Parameter name="coolingEff_Induction Hardening" value="0"/>
+<Parameter name="highpressureEff_Induction Hardening" value="0"/>
+<Parameter name="quenchduration_Induction Hardening" value="0"/>
+<Parameter name="conversion_Induction Hardening" value="0"/>
+<Transformation>
+<Equation>ovenHeatLoss_Annealing=-1.79769313486232E+308</Equation>
+<Equation>massFlowRateFlueGas_Annealing=0</Equation>
+<Equation>burnTime_Annealing=-1.79769313486232E+308</Equation>
+<Equation>flueGasHeatLoss_Annealing=0</Equation>
+<Equation>totalHeat_Annealing=-1.79769313486232E+308</Equation>
+<Equation>energyReqd_Annealing=-1.79769313486232E+308</Equation>
+<Equation>massCH4burned_Annealing=0</Equation>
+<Equation>percFlueGasLoss_Annealing=-1.79769313486232E+308</Equation>
+<Equation>percExcessAir_Annealing=0</Equation>
+<Equation>massAir_Annealing=0</Equation>
+<Equation>workpieceHeatLoss_Annealing=0</Equation>
+<Equation>volRemoved_Milling=0</Equation>
+<Equation>matRemoved_Milling=0</Equation>
+<Equation>volCoolant_Milling=0</Equation>
+<Equation>volWater_Milling=0</Equation>
+<Equation>volCoolantUsed_Milling=-1.79769313486232E+308</Equation>
+<Equation>massCoolantUsed_Milling=-1.79769313486232E+308</Equation>
+<Equation>feedRate_Milling=0</Equation>
+<Equation>MRR_Milling=0</Equation>
+<Equation>feedFactor_Milling=-1.79769313486232E+308</Equation>
+<Equation>powerCuttingTool_Milling=-1.79769313486232E+308</Equation>
+<Equation>powerMotor_Milling=-1.79769313486232E+308</Equation>
+<Equation>cuttingTime_Milling=-1.79769313486232E+308</Equation>
+<Equation>idlePower_Milling=-1.79769313486232E+308</Equation>
+<Equation>idleTime_Milling=-1.79769313486232E+308</Equation>
+<Equation>basicPower_Milling=-1.79769313486232E+308</Equation>
+<Equation>basicTime_Milling=-1.79769313486232E+308</Equation>
+<Equation>energyConsumption_Milling=-1.79769313486232E+308</Equation>
+<Equation>ovenHeatLoss_Through Hardening=-1.79769313486232E+308</Equation>
+<Equation>massFlowRateFlueGas_Through Hardening=0</Equation>
+<Equation>burnTime_Through Hardening=-1.79769313486232E+308</Equation>
+<Equation>flueGasHeatLoss_Through Hardening=0</Equation>
+<Equation>totalHeat_Through Hardening=-1.79769313486232E+308</Equation>
+<Equation>energyReqd_Through Hardening=-1.79769313486232E+308</Equation>
+<Equation>massCH4burned_Through Hardening=0</Equation>
+<Equation>percFlueGasLoss_Through Hardening=-1.79769313486232E+308</Equation>
+<Equation>percExcessAir_Through Hardening=0</Equation>
+<Equation>massAir_Through Hardening=0</Equation>
+<Equation>workpieceHeatLoss_Through Hardening=0</Equation>
+<Equation>processtime_Recovery Anneal=0</Equation>
+<Equation>WP_UTS_Recovery Anneal=-99.8</Equation>
+<Equation>HardenedArea_Induction Hardening=0</Equation>
+<Equation>volWaterLost_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>volQuenchantLost_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>powerCoilHF_Induction Hardening=0</Equation>
+<Equation>powerCoilMF_Induction Hardening=0</Equation>
+<Equation>coilResistance_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>coilCurrentHF_Induction Hardening=0</Equation>
+<Equation>coilCurrentMF_Induction Hardening=0</Equation>
+<Equation>subVar_t_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>subVar_r_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>resistanceWP_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>frequencyHF_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>frequencyMF_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>areaSurfaceHardTopland_Induction Hardening=0</Equation>
+<Equation>areaSurfaceHardGearRoot_Induction Hardening=0</Equation>
+<Equation>magIntensityTopland_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>magIntensityGearRoot_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>surfacePowerDensityTopland_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>surfacePowerDensityGearRoot_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>powerWP_Induction Hardening=0</Equation>
+<Equation>powerConsumptionPumps_Induction Hardening=-1.79769313486232E+308</Equation>
+<Equation>totalEnergyConsumption_Induction Hardening=-1.79769313486232E+308</Equation>
+</Transformation>
+<SustainabilityMetrics>
+<Metric name="Operating Cost($)" value="-2.1752086931834E+306" />
+<Metric name="Energy Use(kWh)" value="-1.97746244834855E+307" />
+<Metric name="Water Use(L)" value="-1.97746244834855E+307" />
+<Metric name="GHG Emissions(Kg)" value="-∞" />
+<Metric name="Total Waste(Kg)" value="32.846" />
+<Metric name="Average Wage($/hr)" value="0" />
+<Metric name="Lost Work Days" value="4940000" />
+</SustainabilityMetrics>
+</UMP>
+<UMP name="Liquid Spray Coating" type="Surface Finishing" description="description2">
+<Parameter name="toolPaintFlow" value="0"/>
+<Parameter name="processTime" value="0"/>
+<Parameter name="layers" value="0"/>
+<Parameter name="surfaceArea" value="0"/>
+<Parameter name="layerThickness" value="0"/>
+<Parameter name="powerAirCompressor" value="0"/>
+<Parameter name="paintDensity" value="0"/>
+<Transformation>
+<Equation category="" description="description4">volumeAirConsumed=0</Equation>
+<Equation category="category5" description="description5">volumePaintConsumed=0</Equation>
+<Equation category="category6" description="description6">energyCoat=0</Equation>
+<Equation category="category6" description="description6">massPaintConsumed=-1.79769313486232E+308</Equation>
+</Transformation>
+<SustainabilityMetrics>
+<Metric name="Operating Cost($)" value="-∞" />
+<Metric name="Energy Use(kWh)" value="0" />
+<Metric name="Water Use(L)" value="0" />
+<Metric name="GHG Emissions(Kg)" value="0" />
+<Metric name="Total Waste(Kg)" value="0" />
+<Metric name="Average Wage($/hr)" value="0" />
+<Metric name="Lost Work Days" value="0" />
+</SustainabilityMetrics>
+</UMP>
+</UMPs>
+<Linking>
+<LinkingAction targetUMP = "Liquid Spray Coating" sourceUMP = "Induction Hardening" allocationVariable = "1">
+<Transformation targetInput="Surface Area"  sourceOutput="Surface Area">
+<Equation name="surfaceAreaTopland">0</Equation>
+</Transformation>
+</LinkingAction>
+</Linking>
+<FinalSustainabilityMetrics>
+<Metric name="Operating Cost($)" value="-∞" />
+<Metric name="Energy Use(kWh)" value="-1.97746244834855E+307" />
+<Metric name="Water Use(L)" value="-1.97746244834855E+307" />
+<Metric name="GHG Emissions(Kg)" value="-∞" />
+<Metric name="Total Waste(Kg)" value="32.846" />
+<Metric name="Average Wage($/hr)" value="0" />
+<Metric name="Lost Work Days" value="4940000" />
+</FinalSustainabilityMetrics>
+</ComposedSystem>

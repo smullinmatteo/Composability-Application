@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ComposedSystem>
   <UMPs>
-    <UMP name="Tempering" type="StructureChange" description="Heating and Cooling of the workpiece">
+    <UMP name="Recovery Anneal" type="Structure Modification" description="Cooling of the workpiece">
       <Input name="Natural Gas" description="mass of natural gas provided to provide required heat" category="Consumable" type="Energy" value="" unit="kg" />
       <Input name="Oxygen" description="mass of oxygen provided for combustion" category="Consumable" type="Atmosphere" value="" unit="kg" />
       <Output name="Flue Gas" description="emissions from combustion" category="GHG Emissions" type="Hazards" value="" unit="cfm" />
@@ -130,8 +130,8 @@
     </UMP>
   </UMPs>
   <Linking>
-    <LinkingAction targetUMP="Induction Hardening"  sourceUMP="Tempering" description="">
-      <Transformation targetInput="Surface Area Topland" sourceOutput="Outside Diameter">
+    <LinkingAction targetUMP="Induction Hardening"  sourceUMP="Recovery Anneal" description="">
+      <Transformation targetInput="Surface Area Topland" sourceOutput="Surface Area">
         <!-->Equation>pressureAngleOutside=invcos(pitchDiameter*cos(pressureAngle))/pitchDiameter+2*module)</Equation-->
         <!--Equation>theta=3.14/(2*teeth)+(2*undercut*tan(pressureAngle)/teeth+(inv(pressureAngle)-inv(pressureAngleOutside))</Equation-->
         <!-->Equation>surfaceAreaTopland=theta*(pitchDiameter+2*module</Equation-->
