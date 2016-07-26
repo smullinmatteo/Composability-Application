@@ -69,7 +69,7 @@
   </UMPs>
   <Linking>
     <LinkingAction targetUMP="Shot Peening" sourceUMP="Tempering" description="" allocationVariable="1">
-      <Transformation targetInput="ProcessTime"  sourceOutput="Yield Strength" description="yield strength of the tempered workpiece will influce shot peening process time since the peening aparatus can only cover a smaller portion of area per unit time">
+      <Transformation targetInput="Process Time"  sourceOutput="Yield Strength" description="yield strength of the tempered workpiece will influce shot peening process time since the peening aparatus can only cover a smaller portion of area per unit time">
         <Equation description="the equation to convert yield strength into coverage impact area" allocationVariable="1">
               Z=100*[1-exp((-3*beta*0.05*flowrate*pressure*nozzlelength*(sin(theta^2)))/(2.5*shotdensity*(tan(nozzleangle)*standoff^2*yieldstrength*pi*shotradius^2)))]
         </Equation>

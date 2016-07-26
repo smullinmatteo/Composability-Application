@@ -1,5 +1,4 @@
-﻿  <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ComposedSystem>
   <UMPs>
     <UMP name="Tempering" type="StructureChange" description="Heating and Cooling of the workpiece">
@@ -42,14 +41,13 @@
     </UMP>
     <UMP name="Induction Hardening" type="Structure Modification" description="">
       <Input name="Quenchant" description="description1" category="category1" type="type1" value="1" unit="unit1" />
-      <Input name="Enery" description="description2" category="category2" type="type2" value="-79228162514264337593543950335" unit="unit2" />
+      <Input name="Energy" description="description2" category="category2" type="type2" value="-79228162514264337593543950335" unit="unit2" />
       <Output name="Waste Fluid" description="description1" category="category1" type="type1" value="1" unit="unit1" />
 
       <Feedback name="Tank Volume Full"/>
       <Feedback name="Tank Volume Low"/>
       <Feedback name="Tank Refill Rate"/>
       <Feedback name="Process Time"/>
-      <Feedback name="name1"/>
 
       <ProductProcessInformation name="Quenchant Concentration"/>
       <ProductProcessInformation name="Generator Power"/>
@@ -86,7 +84,6 @@
       <Transformation>
         <Equation>volWaterLost = (100-quenchantConc)*(tankVol-tankVolLow)*(processTime/tankRefillInterval)</Equation>
         <Equation>volQuenchantLost = quenchantConc*(tankVol-tankVolLow)*(processTime/tankRefillInterval)</Equation>
-        <Equation>powerCoilHF = generatorPower*percHF*powerEfficiency</Equation>
         <Equation>powerCoilHF = generatorPower*percHF*powerEfficiency</Equation>
         <Equation>powerCoilMF = generatorPower*percMF*powerEfficiency</Equation>
         <Equation>coilResistance = resistivity*(2*3.14*coilRadius/coilCrossSectionArea)</Equation>
@@ -132,7 +129,7 @@
     </UMP>
   </UMPs>
   <Linking>
-    <LinkingAction targetUMP="Inducting Hardening"  sourceUMP="Tempering" description="">
+    <LinkingAction targetUMP="Induction Hardening"  sourceUMP="Tempering" description="">
       <Transformation targetInput="Surface Area Topland" sourceOutput="Outside Diameter">
         <!-->Equation>pressureAngleOutside=invcos(pitchDiameter*cos(pressureAngle))/pitchDiameter+2*module)</Equation-->
         <!--Equation>theta=3.14/(2*teeth)+(2*undercut*tan(pressureAngle)/teeth+(inv(pressureAngle)-inv(pressureAngleOutside))</Equation-->

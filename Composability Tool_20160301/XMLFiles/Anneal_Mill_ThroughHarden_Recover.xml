@@ -123,8 +123,8 @@
       <Output name=""/>
       <Feedback name="Process Time">processtime</Feedback>
       <ProductProcessInformation name=""/>
-      <ResourceInformation></ResourceInformation>
-      <Transformation >
+      <ResourceInformation name="" ></ResourceInformation>
+      <Transformation>
       <Equation category="Energy" description="heat lost from oven conduction" set="Heat">ovenHeatLoss=heatTransferOvenWall*surfaceArea*(tempOven-tempRoomAmbient)/wallThickness</Equation>
       <Equation category="Energy" description="mass flow rate of flue gas" set="Heat">massFlowRateFlueGas=flowRate*densityFlueGas</Equation>
       <Equation category="Time" description="time to burn one Kg CH4" set="Heat">burnTime=(massCombustAir+massCombustCH4)/massFlowRateFlueGas</Equation>

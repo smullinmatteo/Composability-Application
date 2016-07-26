@@ -147,7 +147,7 @@
       <Output name="Waste Heat"/>
       <Feedback name="Process Time">processtime</Feedback>
       <ProductProcessInformation name="Cooling Rate">t_cooling</ProductProcessInformation>
-      <ResourceInformation></ResourceInformation>
+      <ResourceInformation name="" ></ResourceInformation>
       <Transformation>
         <Equation>processtime=t_cooling</Equation>
         <Equation>WP_UTS = -99.8+3.734*WPHardness</Equation>
