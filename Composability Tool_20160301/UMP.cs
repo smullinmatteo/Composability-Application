@@ -64,6 +64,11 @@ namespace Composability_Tool_20160301
             description = _description;
         }
 
+        internal static string writeXMLNewXML(string newUMPName)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddInput(string inputName)
         {
             inputList.Add(inputName);

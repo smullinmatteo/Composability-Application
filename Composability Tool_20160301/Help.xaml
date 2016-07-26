@@ -16,44 +16,38 @@
         <!--set columns and rows. There are four rows, and three columns-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="600"/>
+            <ColumnDefinition Width="800"/>
             <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="13.8"/>
-            <RowDefinition Height="387"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBlock Style="{StaticResource TextBlockStyle}">
+                    1) Gently push your chair out from your desk.
+                    2) Turn your chair so as to face the person in the lab sitting closest to you.
+                    3) Abruptly interrupt their chain of thought and pour out your anxieties to them.
+                </TextBlock>
+            </Grid>
+        </Grid>
+
         <Rectangle Grid.Row="4" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource RectangleStyle}"/>
         <!--label definitions-->
-        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" Content="Help" Margin="0,33,0,32.8"/>
-
-        <Button
-            Grid.Column="0"
-            Grid.Row="0"
-            Margin="5,5,5,5"
-            Click="StartButton_Click">
-            <Button.Template>
-                <ControlTemplate>
-                    <Grid x:Name="bg">
-                        <Image Margin="4" Source="C:\Users\smull\Documents\Visual Studio 2015\Composability Tool_20160301\Composability Tool_20160301\ISL Logo.png"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="bg" Property="Background" Value="Black"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}">Unit Manufacturing Process Model Composing Tool</Label>
 
         <!--Make Buttons to Navigate to other Pages of the Application-->
-        <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False" Margin="0,0.2,0,13.4" Grid.RowSpan="2">
-            <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click" >Compose</Button>
-            <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click" Margin="0,0,0,-8.4" VerticalAlignment="Top">Warehouse</Button>
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" LastChildFill="False">
+            <Button Style="{StaticResource bannerStyle}" Click="RepositoryButton_Click" >Warehouse</Button>
+            <Button Style="{StaticResource bannerStyle}" Click="ComposeButton_Click">Compose</Button>
             <Button Style="{StaticResource bannerStyle}" Click="ResultsButton_Click">Results</Button>
             <Button Style="{StaticResource bannerStyle}" Click="ComparisonButton_Click">Comparison</Button>
         </DockPanel>
@@ -63,6 +57,26 @@
             <Button Style="{StaticResource bottombannerStyle}" Click="AboutButton_Click">About</Button>
             <Button Style="{StaticResource bottombannerStyle}" Click="FeedbackButton_Click">Feedback</Button>
         </DockPanel>
+
+        <Button
+			Grid.Column="0"
+			Grid.Row="0"
+			Margin="5,5,5,5"
+			Click="StartButton_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid x:Name="bg">
+                        <Image Margin="4" Source="Images\ISL Logo.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Background" Value="Black"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
         <!--add image in top left and bottom right corner-->
         <!--Image Grid.Column="0" 

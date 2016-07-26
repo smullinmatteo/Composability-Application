@@ -136,6 +136,7 @@ namespace Composability_Tool_20160301
                 loadStackedColumnData(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
                 loadSpiderChart(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
             }
+            hidingRectangle.Visibility = Visibility.Hidden;
         }
         
         private Dictionary<string, double> sumupSustainabilityMetrics(Dictionary<string, Dictionary<string, double>> umpSustainabilityMetrics)
@@ -362,7 +363,7 @@ namespace Composability_Tool_20160301
                 DrawingVisual isolatedVisual = new DrawingVisual();
                 using (DrawingContext drawing = isolatedVisual.RenderOpen())
                 {
-                    drawing.DrawRectangle(Brushes.White, null, new Rect(new Point(), bounds.Size)); // Optional Background
+                    //drawing.DrawRectangle(Brushes.Turquoise, null, new Rect(new Point(), bounds.Size)); // Optional Background
                     drawing.DrawRectangle(new VisualBrush(stackedColumnSeries), null, new Rect(new Point(), bounds.Size));
                 }
 
@@ -375,7 +376,7 @@ namespace Composability_Tool_20160301
                 DrawingVisual isolatedVisualSpider = new DrawingVisual();
                 using (DrawingContext drawing = isolatedVisualSpider.RenderOpen())
                 {
-                    drawing.DrawRectangle(Brushes.White, null, new Rect(new Point(), bounds.Size)); // Optional Background
+                    //drawing.DrawRectangle(Brushes.Turquoise, null, new Rect(new Point(), bounds.Size)); // Optional Background
                     drawing.DrawRectangle(new VisualBrush(spiderChart), null, new Rect(new Point(), bounds.Size));
                 }
 

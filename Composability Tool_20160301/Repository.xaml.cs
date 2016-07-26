@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Composability_Tool_20160301
 {
@@ -21,12 +24,14 @@ namespace Composability_Tool_20160301
     public partial class Repository : Page
     {
         public List<UMP> myUMPs { get; set; }
-        private XMLReader xmlreader;
+        public string NewUMPName { get; private set; }
 
+        private XMLReader xmlreader;
         public Repository()
         {
             InitializeComponent();
             xmlreader = new XMLReader();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
             xmlreader.readComposedSystem();
             loadUMPs();
         }
@@ -35,6 +40,35 @@ namespace Composability_Tool_20160301
         {
             myUMPs = xmlreader.umpList;
             UMPRepository_ListView.DataContext = this;
+        }
+        public void Add_Click(object sender, RoutedEventArgs e)
+        {
+            /*XDocument xDoc = new XDocument();
+            string folderPath = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(Directory.GetCurrentDirectory()))) + "\\XMLFiles\\";
+            string fileName = folderPath + "\\XMLFiles\\" + NewUMPName + "_NEW.xml";
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "XML file (*.xml)|*.xml";
+            saveFileDialog.InitialDirectory = folderPath + "\\composedSystemsFiles\\";
+            //if (saveFileDialog.ShowDialog() == true)
+                fileName = saveFileDialog.FileName;
+            File.WriteAllText(fileName, UMP.writeXMLNewXML(NewUMPName));
+            System.Windows.Forms.MessageBox.Show("Done");
+
+                        //string fileName = ("its_alive");
+            //SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //saveFileDialog.Filter = "XML file (*.xml)|*.xml";
+            //saveFileDialog.InitialDirectory = folderPath;
+            //string folderPath = @"C:\XMLFiles\xdoc5_is_alive.xml";
+            //xDoc.Save(folderPath);
+            //xDoc.Save(filename, folderPath + "myxml.xml");*/
+        }
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            //System.Diagnostics.Process.Start("http://research.engr.oregonstate.edu/isl/");
+        }
+        private void Modify_Click(object sender, RoutedEventArgs e)
+        {
+            //System.Diagnostics.Process.Start("http://research.engr.oregonstate.edu/isl/");
         }
         private void ComposeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -45,7 +79,6 @@ namespace Composability_Tool_20160301
         private void RepositoryButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Repository.xaml", UriKind.Relative));
-
         }
 
         private void ResultsButton_Click(object sender, RoutedEventArgs e)

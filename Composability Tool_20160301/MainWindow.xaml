@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Composability_Tool_20160301"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800" Source="Start.xaml"
+        Title="MainWindow" Height="auto" Width="auto" Source="Start.xaml"
                  
         Style="{StaticResource WindowStyle}">
     

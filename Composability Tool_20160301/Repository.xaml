@@ -75,11 +75,11 @@
         </ListView>
         <Grid Grid.Column="2" Grid.Row="2">
             <StackPanel Grid.Column="2" Grid.Row="2" Margin="10" VerticalAlignment="Top">
-                <Button Style="{StaticResource SidePanelStyle}">Add</Button>
+                <Button Style="{StaticResource SidePanelStyle}" Click="Add_Click">Add</Button>
                 <!--="AddUMPButton_Click"-->
-                <Button Style="{StaticResource SidePanelStyle}">Remove</Button>
+                <Button Style="{StaticResource SidePanelStyle}" Click="Remove_Click">Remove</Button>
                 <!--="RemoveUMPButton_Click"-->
-                <Button Style="{StaticResource SidePanelStyle}">Modify</Button>
+                <Button Style="{StaticResource SidePanelStyle}" Click="Modify_Click">Modify</Button>
                 <!--="ModifyUMPButton_Click"-->
             </StackPanel>
 
