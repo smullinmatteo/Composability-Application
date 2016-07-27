@@ -1,0 +1,11 @@
+<ComposedSystem name="Annealing_Milling_Through Hardening_Recovery Anneal_Shot Peening_Liquid Spray Coating">
+<FinalSustainabilityMetrics>
+<Metric name="Operating Cost($)" value="19.20" />
+<Metric name="Energy Use(kWh)" value="1600" />
+<Metric name="Water Use(L)" value="1" />
+<Metric name="GHG Emissions(Kg)" value="1" />
+<Metric name="Total Waste(Kg)" value="1" />
+<Metric name="Average Wage($/hr)" value="1" />
+<Metric name="Lost Work Days" value="1" />
+</FinalSustainabilityMetrics>
+</ComposedSystem>

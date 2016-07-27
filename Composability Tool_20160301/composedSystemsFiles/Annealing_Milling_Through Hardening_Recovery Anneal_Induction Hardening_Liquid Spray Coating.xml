@@ -219,12 +219,12 @@
 </LinkingAction>
 </Linking>
 <FinalSustainabilityMetrics>
-<Metric name="Operating Cost($)" value="-∞" />
-<Metric name="Energy Use(kWh)" value="-1.97746244834855E+307" />
-<Metric name="Water Use(L)" value="-1.97746244834855E+307" />
-<Metric name="GHG Emissions(Kg)" value="-∞" />
-<Metric name="Total Waste(Kg)" value="32.846" />
-<Metric name="Average Wage($/hr)" value="0" />
-<Metric name="Lost Work Days" value="4940000" />
+<Metric name="Operating Cost($)" value="22.10" />
+<Metric name="Energy Use(kWh)" value="2340" />
+<Metric name="Water Use(L)" value="1" />
+<Metric name="GHG Emissions(Kg)" value="1" />
+<Metric name="Total Waste(Kg)" value="1" />
+<Metric name="Average Wage($/hr)" value="1" />
+<Metric name="Lost Work Days" value="1" />
 </FinalSustainabilityMetrics>
 </ComposedSystem>

@@ -2,43 +2,43 @@
 <UMPs>
 <UMP name="Shot Peening" type="Surface Modification" description="imparts a compressive residual stress to the surface of the workpiece through bombardment with high velocity shot">
 <Parameter name="percentCov" value="100"/>
-<Parameter name="batchTime" value="1"/>
+<Parameter name="batchTime" value="0.2"/>
 <Parameter name="shotUseRate" value="30"/>
-<Parameter name="shotFlowRater" value="50"/>
-<Parameter name="shotVelocity" value="30"/>
-<Parameter name="E" value="1"/>
+<Parameter name="shotFlowRater" value="30"/>
+<Parameter name="shotVelocity" value="50"/>
+<Parameter name="E" value="0.9"/>
 <Transformation>
-<Equation category="Time" description="process time equal to coverage times batch time">processTime=1</Equation>
-<Equation category="Shot" description="mass of shot consumption">shotConsumption=30</Equation>
-<Equation category="Shot" description="shot power">shotPower=0.00625</Equation>
-<Equation category="Energy" description="on site energy consumption equal to shot power times process time">Eon=0.00625</Equation>
+<Equation category="Time" description="process time equal to coverage times batch time">processTime=0.2</Equation>
+<Equation category="Shot" description="mass of shot consumption">shotConsumption=6</Equation>
+<Equation category="Shot" description="shot power">shotPower=0.0115740740740741</Equation>
+<Equation category="Energy" description="on site energy consumption equal to shot power times process time">Eon=0.00231481481481482</Equation>
 </Transformation>
 <SustainabilityMetrics>
-<Metric name="Operating Cost($)" value="100" />
-<Metric name="Energy Use(kWh)" value="0.0125" />
+<Metric name="Operating Cost($)" value="16" />
+<Metric name="Energy Use(kWh)" value="0.00277777777777778" />
 <Metric name="Water Use(L)" value="0" />
-<Metric name="GHG Emissions(Kg)" value="19.412855" />
-<Metric name="Total Waste(Kg)" value="0.6" />
-<Metric name="Average Wage($/hr)" value="25" />
+<Metric name="GHG Emissions(Kg)" value="4.31396777777778" />
+<Metric name="Total Waste(Kg)" value="0.12" />
+<Metric name="Average Wage($/hr)" value="5" />
 <Metric name="Lost Work Days" value="0" />
 </SustainabilityMetrics>
 </UMP>
 <UMP name="Liquid Spray Coating" type="Surface Finishing" description="description2">
-<Parameter name="toolPaintFlow" value="240"/>
-<Parameter name="processTime" value="1"/>
+<Parameter name="toolPaintFlow" value="0.11"/>
+<Parameter name="processTime" value="0.2"/>
 <Parameter name="layers" value="1"/>
-<Parameter name="surfaceArea" value="70"/>
-<Parameter name="layerThickness" value="1"/>
-<Parameter name="powerAirCompressor" value="500"/>
-<Parameter name="paintDensity" value="2"/>
+<Parameter name="surfaceArea" value="0.0087"/>
+<Parameter name="layerThickness" value="0.0001"/>
+<Parameter name="powerAirCompressor" value="1500"/>
+<Parameter name="paintDensity" value="0.88"/>
 <Transformation>
-<Equation category="" description="description4">volumeAirConsumed=240</Equation>
-<Equation category="category5" description="description5">volumePaintConsumed=70</Equation>
-<Equation category="category6" description="description6">energyCoat=2000</Equation>
-<Equation category="category6" description="description6">massPaintConsumed=35</Equation>
+<Equation category="" description="description4">volumeAirConsumed=0.022</Equation>
+<Equation category="category5" description="description5">volumePaintConsumed=8.7E-07</Equation>
+<Equation category="category6" description="description6">energyCoat=0.55</Equation>
+<Equation category="category6" description="description6">massPaintConsumed=9.88636363636364E-07</Equation>
 </Transformation>
 <SustainabilityMetrics>
-<Metric name="Operating Cost($)" value="2240" />
+<Metric name="Operating Cost($)" value="6.32727272727273E-05" />
 <Metric name="Energy Use(kWh)" value="0" />
 <Metric name="Water Use(L)" value="0" />
 <Metric name="GHG Emissions(Kg)" value="0" />
@@ -51,21 +51,21 @@
 <Linking>
 <LinkingAction targetUMP = "Liquid Spray Coating" sourceUMP = "Shot Peening" allocationVariable = "1">
 <Transformation targetInput="Surface Area"  sourceOutput="Impression Depth">
-<Equation name="constant">1</Equation>
+<Equation name="constant">0.0622</Equation>
 <Equation name="modElastic">0.5</Equation>
-<Equation name="shotDensity">7</Equation>
-<Equation name="brinellHardness">25</Equation>
+<Equation name="shotDensity">7850</Equation>
+<Equation name="brinellHardness">577</Equation>
 <Equation name="coveragePerc">100</Equation>
 </Transformation>
 </LinkingAction>
 </Linking>
 <FinalSustainabilityMetrics>
-<Metric name="Operating Cost($)" value="2340" />
-<Metric name="Energy Use(kWh)" value="0.0125" />
+<Metric name="Operating Cost($)" value="16.0000632727273" />
+<Metric name="Energy Use(kWh)" value="0.00277777777777778" />
 <Metric name="Water Use(L)" value="0" />
-<Metric name="GHG Emissions(Kg)" value="19.412855" />
-<Metric name="Total Waste(Kg)" value="0.6" />
-<Metric name="Average Wage($/hr)" value="25" />
+<Metric name="GHG Emissions(Kg)" value="4.31396777777778" />
+<Metric name="Total Waste(Kg)" value="0.12" />
+<Metric name="Average Wage($/hr)" value="5" />
 <Metric name="Lost Work Days" value="0" />
 </FinalSustainabilityMetrics>
 </ComposedSystem>
