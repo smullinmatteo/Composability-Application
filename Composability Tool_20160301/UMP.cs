@@ -15,6 +15,7 @@ namespace Composability_Tool_20160301
     {
         public static string errorMsg { get; set; }
         public string name { get; set; }
+        public string presentationName { get; set; }
         public string type { get; set; }
         public string description { get; set; }
         public List<String> inputList { get; set; }
@@ -50,7 +51,7 @@ namespace Composability_Tool_20160301
 
         }
 
-        public UMP(string _name, string _type, string _description)
+        public UMP(string _name, string _presentationName, string _type, string _description)
         {
             inputList = new List<string>();
             outputList = new List<string>();
@@ -59,6 +60,7 @@ namespace Composability_Tool_20160301
             resourceInfoList = new List<string>();
             equations = new List<UMPEquation>();
             name = _name;
+            presentationName = _presentationName;
             type = _type;
             internalVars = new Dictionary<string, double>();
             description = _description;
@@ -146,7 +148,7 @@ namespace Composability_Tool_20160301
                     }
                 }
                 else {
-                    fileContent.Append("<UMP name=\"" + tmpUMP.name + "\" type=\"" + tmpUMP.type + "\" description=\"" + tmpUMP.description + "\">\n");
+                    fileContent.Append("<UMP name=\"" + tmpUMP.presentationName + "\" type=\"" + tmpUMP.type + "\" description=\"" + tmpUMP.description + "\">\n");
                     foreach (eqVariable param in varList[ind])
                     {
                         fileContent.Append("<Parameter name=\"" + param.name + "\" value=\"" + param.value + "\"/>\n");
@@ -243,12 +245,13 @@ namespace Composability_Tool_20160301
 
             foreach (var umpVar in umpsVar)
             {
+                double tmp;
                 Dictionary<string, double> parameters = new Dictionary<string, double>();
                 var paramVar = from param in umpVar.parameter
-                                select new
-                              {
-                                  name = Convert.ToString(param.Attribute("name").Value),
-                                  value = Convert.ToDouble(param.Attribute("value").Value)
+                               select new
+                               {
+                                   name = Convert.ToString(param.Attribute("name").Value),
+                                   value = Double.TryParse(param.Attribute("value").Value, out tmp) ? Convert.ToDouble(param.Attribute("value").Value) : -1
                               };
                 foreach(var par in paramVar)                
                     parameters.Add(par.name, par.value);

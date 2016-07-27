@@ -35,9 +35,10 @@ namespace Composability_Tool_20160301
             shiftedCount = 0;
             eq = eq.Replace("exp(", "Pow(2.71828,");
             eq = replaceCarrot(eq);
-            NCalc.Expression expression = new NCalc.Expression(eq);
-            expression.Parameters["pi"] = 3.14;
-            var value = expression.Evaluate();
+            //NCalc.Expression expression = new NCalc.Expression(eq);
+            //expression.Parameters["pi"] = 3.14;
+            //var value = expression.Evaluate();
+            var value = -1;
             return (double)value;
         }
 
@@ -140,16 +141,16 @@ namespace Composability_Tool_20160301
             eq = eq.Replace("log(", "log10(");
             eq = eq.Replace("ln(", "log(");
             eq = eq.Replace("--", "+");
-            MLApp.MLApp matlab = new MLApp.MLApp();
+            //MLApp.MLApp matlab = new MLApp.MLApp();
             //String res = matlab.Execute(new Uri("evaluateComposibilityEquations", UriKind.Relative).AbsolutePath);
             //matlab.Execute(@"cd 'C:\Users\smull\Documents\Visual Studio 2015\Composability Tool_20160301\Composability Tool_20160301\Matlab'");
             //matlab.Execute(@"cd Matlab\");
             //matlab.Execute(@"cd " + matlabPath);
-            matlab.Execute(@"cd('"+matlabPath+"')");
+            //matlab.Execute(@"cd('"+matlabPath+"')");
             object result = null;
 
             // Call the MATLAB function myfunc
-            matlab.Feval("evaluateComposibilityEquations", 1, out result, eq);
+            //matlab.Feval("evaluateComposibilityEquations", 1, out result, eq);
             //matlab.Execute(@"cd ..");
             // Display result 
             object[] res = result as object[];
@@ -246,8 +247,8 @@ namespace Composability_Tool_20160301
                 }
                 keywordValues.Add(keyword, keywordVal);
             }
-            MLApp.MLApp matlab = new MLApp.MLApp();
-            matlab.Execute(@"cd('" + matlabPath + "')");
+            //MLApp.MLApp matlab = new MLApp.MLApp();
+            //matlab.Execute(@"cd('" + matlabPath + "')");
             //String res = matlab.Execute(new Uri("evaluateComposibilityEquations", UriKind.Relative).AbsolutePath);
             //matlab.Execute(@"cd 'C:\Users\smull\Documents\Visual Studio 2015\Composability Tool_20160301\Composability Tool_20160301\Matlab'");
             //matlab.Execute(@"cd " + matlabPath);
@@ -263,7 +264,7 @@ namespace Composability_Tool_20160301
                 inputs[ind] = keywordValues[metric];
                 ind++;
             }
-            matlab.Feval("Sustainability_Evaluation_Criteria", 7, out result, inputs);
+            //matlab.Feval("Sustainability_Evaluation_Criteria", 7, out result, inputs);
             /*matlab.Feval("Sustainability_Evaluation_Criteria", 7, out result, test, keywordValues[metrics[0]], keywordValues[metrics[1]], keywordValues[metrics[2]], keywordValues[metrics[3]]
                 , keywordValues[metrics[4]], keywordValues[metrics[5]], keywordValues[metrics[6]], keywordValues[metrics[7]], keywordValues[metrics[8]], keywordValues[metrics[9]],
                 keywordValues[metrics[10]], keywordValues[metrics[11]], keywordValues[metrics[12]], keywordValues[metrics[13]] , keywordValues[metrics[14]], keywordValues[metrics[15]], 
