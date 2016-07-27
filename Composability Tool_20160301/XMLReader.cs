@@ -68,7 +68,7 @@ namespace Composability_Tool_20160301
                 foreach (var umpVar in umpsVar)
                 {
                     //foreach (var equation in umpVar.transformation)
-                    UMP tmpUMP = new UMP(umpVar.name, umpVar.type, umpVar.description);
+                    UMP tmpUMP = new UMP(umpVar.name, umpVar.name, umpVar.type, umpVar.description);
                     var inputsVar = from input in umpVar.inputs
                                     select new
                                     {

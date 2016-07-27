@@ -67,7 +67,7 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="UMP" DisplayMemberBinding="{Binding name}"/>
+                        <GridViewColumn Header="UMP" DisplayMemberBinding="{Binding presentationName}"/>
                         <GridViewColumn Header="UMP Category" DisplayMemberBinding="{Binding type}"/>
                     </GridView>
                 </ListView.View>
