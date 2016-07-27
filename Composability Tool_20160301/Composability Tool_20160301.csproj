@@ -289,6 +289,10 @@
     <Resource Include="XMLFiles\Temper_Induction Harden_Spray Coat.xml" />
     <Resource Include="sustainabilityKeywordPairs.txt" />
     <Resource Include="sustainabilityKeywordPairs_old.txt" />
+    <Resource Include="Images\car_engine.jpg" />
+    <Resource Include="Images\engine_cowling.jpg" />
+    <Resource Include="Images\forge.jpg" />
+    <Resource Include="Images\lathe.jpg" />
     <Content Include="Library\ComposibilityMatlabTool.dll" />
     <Content Include="Library\EngMATLib.dll" />
     <Content Include="Library\System.Windows.Controls.DataVisualization.Toolkit.dll" />

@@ -1,67 +1,67 @@
 <ComposedSystem>
 <UMPs>
-<UMP name="Annealing_Milling_Through Hardening_Recovery Anneal_Induction Hardening" type="" description="Annealing_Milling_Through Hardening_Recovery Anneal_Induction Hardening">
-<Parameter name="heatTransferOvenWall_Annealing" value="0"/>
-<Parameter name="surfaceArea_Annealing" value="0"/>
-<Parameter name="tempOven_Annealing" value="0"/>
-<Parameter name="tempRoomAmbient_Annealing" value="0"/>
-<Parameter name="wallThickness_Annealing" value="0"/>
-<Parameter name="flowRate_Annealing" value="0"/>
-<Parameter name="densityFlueGas_Annealing" value="0"/>
-<Parameter name="massCombustAir_Annealing" value="0"/>
-<Parameter name="massCombustCH4_Annealing" value="0"/>
-<Parameter name="tempFlueDown_Annealing" value="0"/>
-<Parameter name="specHeatFlueGas_Annealing" value="0"/>
-<Parameter name="processTime_Annealing" value="0"/>
-<Parameter name="enthalpyCombustCHCH4_Annealing" value="0"/>
-<Parameter name="percUncombusted_Annealing" value="0"/>
-<Parameter name="percO2FlueGas_Annealing" value="0"/>
-<Parameter name="massStoicAir_Annealing" value="0"/>
-<Parameter name="workpieceHeatCapacity_Annealing" value="0"/>
-<Parameter name="massPart_Annealing" value="0"/>
-<Parameter name="volInitial_Milling" value="0"/>
-<Parameter name="volFinal_Milling" value="0"/>
-<Parameter name="matDensity_Milling" value="0"/>
-<Parameter name="unitConversion_Milling" value="0"/>
-<Parameter name="volTank_Milling" value="0"/>
-<Parameter name="coolantConc_Milling" value="0"/>
-<Parameter name="tankDischarged_Milling" value="0"/>
-<Parameter name="cuttingTime_Milling" value="-1.79769313486232E+308"/>
+<UMP name="Annealing_Milling_Through Hardening_Recovery Anneal_Induction Hardening" type="" description="">
+<Parameter name="heatTransferOvenWall_Annealing" value=".36"/>
+<Parameter name="surfaceArea_Annealing" value="8"/>
+<Parameter name="tempOven_Annealing" value="1173"/>
+<Parameter name="tempRoomAmbient_Annealing" value="301"/>
+<Parameter name="wallThickness_Annealing" value=".1524"/>
+<Parameter name="flowRate_Annealing" value="6.6545"/>
+<Parameter name="densityFlueGas_Annealing" value="1.23"/>
+<Parameter name="massCombustAir_Annealing" value="1"/>
+<Parameter name="massCombustCH4_Annealing" value="1"/>
+<Parameter name="tempFlueDown_Annealing" value="303"/>
+<Parameter name="specHeatFlueGas_Annealing" value="1004.16"/>
+<Parameter name="processTime_Annealing" value="7200"/>
+  <!--Parameter name="enthalpyCombustCHCH4_Annealing" value="0"/-->
+  <!--Parameter name="percUncombusted_Annealing" value="0"/-->
+<Parameter name="percO2FlueGas_Annealing" value="8"/>
+<Parameter name="massStoicAir_Annealing" value="24.9540"/>
+<Parameter name="workpieceHeatCapacity_Annealing" value="502"/>
+<Parameter name="massPart_Annealing" value="7.2361"/>
+<Parameter name="volInitial_Milling" value="9.2180"/>
+<Parameter name="volFinal_Milling" value="4.9290"/>
+<Parameter name="matDensity_Milling" value="7850"/>
+<Parameter name="unitConversion_Milling" value=".7524"/>
+<Parameter name="volTank_Milling" value="20"/>
+<Parameter name="coolantConc_Milling" value="10"/>
+<Parameter name="tankDischarged_Milling" value="5"/>
+<Parameter name="cuttingTime_Milling" value="0"/>
 <Parameter name="timeInterval_Milling" value="0"/>
 <Parameter name="coolantDensity_Milling" value="0"/>
 <Parameter name="massConversion_Milling" value="0"/>
-<Parameter name="feed_Milling" value="0"/>
-<Parameter name="teeth_Milling" value="0"/>
-<Parameter name="spindleSpeed_Milling" value="0"/>
-<Parameter name="widthCut_Milling" value="0"/>
-<Parameter name="depthCut_Milling" value="0"/>
-<Parameter name="powerConstant_Milling" value="0"/>
+<Parameter name="feed_Milling" value=".0113"/>
+<Parameter name="teeth_Milling" value="2"/>
+<Parameter name="spindleSpeed_Milling" value="900"/>
+<Parameter name="widthCut_Milling" value=".5"/>
+<Parameter name="depthCut_Milling" value="0.0127"/>
+<Parameter name="powerConstant_Milling" value="1"/>
 <Parameter name="toolWear_Milling" value="0"/>
-<Parameter name="machineEff_Milling" value="0"/>
-<Parameter name="idlePowerFactor_Milling" value="0"/>
-<Parameter name="airTime_Milling" value="0"/>
-<Parameter name="basicPowerFactor_Milling" value="0"/>
-<Parameter name="setupTime_Milling" value="0"/>
-<Parameter name="heatTransferOvenWall_Through Hardening" value="0"/>
-<Parameter name="surfaceArea_Through Hardening" value="0"/>
-<Parameter name="tempOven_Through Hardening" value="0"/>
-<Parameter name="tempRoomAmbient_Through Hardening" value="0"/>
-<Parameter name="wallThickness_Through Hardening" value="0"/>
-<Parameter name="flowRate_Through Hardening" value="0"/>
-<Parameter name="densityFlueGas_Through Hardening" value="0"/>
-<Parameter name="massCombustAir_Through Hardening" value="0"/>
-<Parameter name="massCombustCH4_Through Hardening" value="0"/>
-<Parameter name="tempFlueDown_Through Hardening" value="0"/>
-<Parameter name="specHeatFlueGas_Through Hardening" value="0"/>
-<Parameter name="processTime_Through Hardening" value="0"/>
-<Parameter name="enthalpyCombustCHCH4_Through Hardening" value="0"/>
-<Parameter name="percUncombusted_Through Hardening" value="0"/>
-<Parameter name="percO2FlueGas_Through Hardening" value="0"/>
-<Parameter name="massStoicAir_Through Hardening" value="0"/>
-<Parameter name="workpieceHeatCapacity_Through Hardening" value="0"/>
-<Parameter name="massPart_Through Hardening" value="0"/>
-<Parameter name="t_cooling_Recovery Anneal" value="0"/>
-<Parameter name="WPHardness_Recovery Anneal" value="0"/>
+<Parameter name="machineEff_Milling" value=".9"/>
+<Parameter name="idlePowerFactor_Milling" value=".5"/>
+<Parameter name="airTime_Milling" value=".1"/>
+<Parameter name="basicPowerFactor_Milling" value=".3"/>
+<Parameter name="setupTime_Milling" value=".1"/>
+  <Parameter name="heatTransferOvenWall_Through Hardening" value=".36"/>
+  <Parameter name="surfaceArea_Through Hardening" value="8"/>
+  <Parameter name="tempOven_Through Hardening" value="1173"/>
+  <Parameter name="tempRoomAmbient_Through Hardening" value="301"/>
+  <Parameter name="wallThickness_Through Hardening" value=".1524"/>
+  <Parameter name="flowRate_Through Hardening" value="6.6545"/>
+  <Parameter name="densityFlueGas_Through Hardening" value="1.23"/>
+  <Parameter name="massCombustAir_Through Hardening" value="1"/>
+  <Parameter name="massCombustCH4_Through Hardening" value="1"/>
+  <Parameter name="tempFlueDown_Through Hardening" value="303"/>
+  <Parameter name="specHeatFlueGas_Through Hardening" value="1004.16"/>
+  <Parameter name="processTime_Through Hardening" value="7200"/>
+  <!--Parameter name="enthalpyCombustCHCH4_Annealing" value="0"/-->
+  <!--Parameter name="percUncombusted_Annealing" value="0"/-->
+  <Parameter name="percO2FlueGas_Through Hardening" value="8"/>
+  <Parameter name="massStoicAir_Through Hardening" value="24.9540"/>
+  <Parameter name="workpieceHeatCapacity_Through Hardening" value="502"/>
+  <Parameter name="massPart_Through Hardening" value="3.8693"/>
+<Parameter name="t_cooling_Recovery Anneal" value="10"/>
+<Parameter name="WPHardness_Recovery Anneal" value="730.5341"/>
 <Parameter name="areaSurfaceHardTopland_Induction Hardening" value="0"/>
 <Parameter name="areaSurfaceHardGearRoot_Induction Hardening" value="0"/>
 <Parameter name="quenchantConc_Induction Hardening" value="0"/>
@@ -177,9 +177,9 @@
 <Equation>totalEnergyConsumption_Induction Hardening=-1.79769313486232E+308</Equation>
 </Transformation>
 <SustainabilityMetrics>
-<Metric name="Operating Cost($)" value="-2.1752086931834E+306" />
-<Metric name="Energy Use(kWh)" value="-1.97746244834855E+307" />
-<Metric name="Water Use(L)" value="-1.97746244834855E+307" />
+<Metric name="Operating Cost($)" value="0" />
+<Metric name="Energy Use(kWh)" value="-1.97746244834855" />
+<Metric name="Water Use(L)" value="-1.97746244834855" />
 <Metric name="GHG Emissions(Kg)" value="-∞" />
 <Metric name="Total Waste(Kg)" value="32.846" />
 <Metric name="Average Wage($/hr)" value="0" />
