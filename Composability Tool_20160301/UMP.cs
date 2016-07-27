@@ -218,13 +218,13 @@ namespace Composability_Tool_20160301
                     sustainabilityMetrics.Add(met.name, met.value);
                 sustainabilityList.Add(umpVar.name, sustainabilityMetrics);            
             }*/
-
+            double tmp;
             var metricVar = from metric in testXML.Descendants("FinalSustainabilityMetrics").Descendants("Metric")
                             select new
                           {
                               name = Convert.ToString(metric.Attribute("name").Value),
-                              value = Convert.ToDouble(metric.Attribute("value").Value)
-                          };
+                              value = Double.TryParse(metric.Attribute("value").Value, out tmp) ? Convert.ToDouble(metric.Attribute("value").Value) : Double.MinValue
+                            };
             foreach (var met in metricVar)
                 sustainabilityMetrics.Add(met.name, met.value);
             return sustainabilityMetrics;
