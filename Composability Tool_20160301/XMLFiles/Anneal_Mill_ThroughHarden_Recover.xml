@@ -32,10 +32,10 @@
         <Equation category="Energy" description="total heat lost in flue gas " set="Heat">flueGasHeatLoss=(tempFlueDown-tempRoomAmbient)*(massCombustAir+massCombustCH4)*(specHeatFlueGas/burnTime)</Equation>
         <Equation category="Energy" description="total heat loss" set="Heat">totalHeat=ovenHeatLoss+flueGasHeatLoss</Equation>
         <Equation category="Energy" description="total energy required" set="Heat">energyReqd=totalHeat*processTime</Equation>
-        <Equation category="Energy" description="describes the total natural gas burned " set="Natural Gas">massCH4burned=(enthalpyCombustCHCH4/energyReqd)/(1-percUncombusted)</Equation>
-        <Equation category="Percent" description="percent heat lost in flue gas" set="Heat">percFlueGasLoss=flueGasHeatLoss/enthalpyCombustCHCH4</Equation>
-        <Equation category="Percent" description="percent excess air" set="Heat">percExcessAir=(percO2FlueGas/(21-percO2FlueGas))*100</Equation>
-        <Equation category="Energy" description="total air supplied to oven" set="Heat">massAir=massStoicAir*(1+percExcessAir/100)</Equation>
+        <!--Equation category="Energy" description="describes the total natural gas burned " set="Natural Gas">massCH4burned=(enthalpyCombustCHCH4/energyReqd)/(1-percUncombusted)</Equation-->
+        <!--Equation category="Percent" description="percent heat lost in flue gas" set="Heat">percFlueGasLoss=flueGasHeatLoss/enthalpyCombustCHCH4</Equation-->
+        <!--Equation category="Percent" description="percent excess air" set="Heat">percExcessAir=(percO2FlueGas/(21-percO2FlueGas))*100</Equation-->
+        <!--Equation category="Energy" description="total air supplied to oven" set="Heat">massAir=massStoicAir*(1+percExcessAir/100)</Equation-->
         <Equation category="Energy" description="heat lost to Workpiece" set="Heat">workpieceHeatLoss =workpieceHeatCapacity*massPart*(tempOven-tempRoomAmbient)</Equation>
         <EquationVariables description="description1" category="category1" set="set1" origin="origin1" />
       </Transformation>

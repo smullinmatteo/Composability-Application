@@ -46,7 +46,7 @@ namespace Composability_Tool_20160301
             InitializeComponent();
             mixedName = _mixedName;
             linkedUMPName = new ObservableCollection<UMP>();
-            linkedUMPName.Add(new UMP(umpAName, "", mixedName));
+            linkedUMPName.Add(new UMP(umpAName, umpAName, "", mixedName));
             //sourceVarList = umpAVars;
             composedUMPResults = _composedUMPResults;
             DynamicLinkedUMPValues(umpASourceVars, umpATargetVars);

@@ -114,7 +114,7 @@ namespace Composability_Tool_20160301
                 //SourceUMPParameters_ItemsControl.ItemsSource = items;
                 */
                 ButtonChain_1.Visibility = System.Windows.Visibility.Visible;
-                ButtonChain_1.Content = ((UMP)SourceUMP.SelectedValue).name.ToString();
+                ButtonChain_1.Content = ((UMP)SourceUMP.SelectedValue).presentationName.ToString();
 
             }
             //foreach (string p in items)
@@ -154,7 +154,7 @@ namespace Composability_Tool_20160301
                 //TargetUMPParameters_ItemsControl.ItemsSource = items;
                 */
                 ButtonChain_4.Visibility = System.Windows.Visibility.Visible;
-                ButtonChain_4.Content = ((UMP)TargetUMP.SelectedValue).name.ToString();
+                ButtonChain_4.Content = ((UMP)TargetUMP.SelectedValue).presentationName.ToString();
 
             }
             TargetUMPParameters_ItemsControl.DataContext = this;
@@ -362,12 +362,13 @@ namespace Composability_Tool_20160301
             }
             else
             {
-                string mixedName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name;
+                string mixedName = ((UMP)SourceUMP.SelectedValue).presentationName + "_" + ((UMP)TargetUMP.SelectedValue).name;
                 this.NavigationService.Navigate(new Compose_AddProcess(((UMP)TargetUMP.SelectedValue).name, sourceVarList, targetVarList, linkVarList, mixedName, composeResults));
             }
         }
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
+            myUMPs = xmlreader.umpList;
             SourceUMP.UnselectAll();
             TargetUMP.UnselectAll();
             Transformation.UnselectAll();
@@ -383,6 +384,8 @@ namespace Composability_Tool_20160301
             ButtonChain_3.Content = "";
             ButtonChain_4.Visibility = System.Windows.Visibility.Hidden;
             ButtonChain_4.Content = "";
+            SourceUMP.DataContext = null;
+            SourceUMP.DataContext = this;
         }
 
         private void Run_Click(object sender, RoutedEventArgs e)
@@ -495,14 +498,14 @@ namespace Composability_Tool_20160301
                     string composedUMPName = "";
                     if (SourceUMP.SelectedValue != null && Transformation.SelectedValue != null && TargetUMP.SelectedValue != null)
                     {
-                        composedUMPName = ((UMP)SourceUMP.SelectedValue).name + "_" + /*((Transformation)Transformation.SelectedValue).sourceOutput + ">" + ((Transformation)Transformation.SelectedValue).targetInput + ">" + */((UMP)TargetUMP.SelectedValue).name;
+                        composedUMPName = ((UMP)SourceUMP.SelectedValue).presentationName + "_" + /*((Transformation)Transformation.SelectedValue).sourceOutput + ">" + ((Transformation)Transformation.SelectedValue).targetInput + ">" + */((UMP)TargetUMP.SelectedValue).name;
                         SourceUMPParameters_ItemsControl.IsTextSearchEnabled = true;
                         TargetUMPParameters_ItemsControl.IsTextSearchEnabled = true;
                         this.NavigationService.Navigate(new Results(composedUMPName, sourceVarList, targetVarList, linkVarList, composeResults));
                     }
                     break;
                 case "Link":
-                    string mixedName = ((UMP)SourceUMP.SelectedValue).name + "_" + ((UMP)TargetUMP.SelectedValue).name;
+                    string mixedName = ((UMP)SourceUMP.SelectedValue).presentationName + "_" + ((UMP)TargetUMP.SelectedValue).name;
                     this.NavigationService.Navigate(new Compose_AddProcess(((UMP)TargetUMP.SelectedValue).name, sourceVarList, targetVarList, linkVarList, mixedName, composeResults));
                     break;
                 default:
@@ -577,15 +580,32 @@ namespace Composability_Tool_20160301
                     ShowError("Corrupt or incorrectly formatted file, please choose another file to load.");
                     return;
                 }
+                
                 foreach (UMP currUMP in myUMPs)
                 {
+                    bool found = false;
                     if (currUMP.name.Equals((string)loadedComposedSystem[0]))
+                    {
                         SourceUMP.SelectedValue = currUMP;
+                        found = true;
+                    }
+                    if (!found)//did not match with any UMP, it should be a composedUMP 
+                    {
+                        SourceUMP.DataContext = null;
+                        string[] splits = ((string)loadedComposedSystem[0]).Split('_');
+                        UMP composedSourceUMP = new UMP(splits[splits.Length-1], (string)loadedComposedSystem[0], "", "");
+                        myUMPs = new List<UMP>();
+                        myUMPs.Add(composedSourceUMP);
+                        SourceUMP.SelectedValue = composedSourceUMP;
+                        SourceUMP.DataContext = this;
+                    }
                     if (currUMP.name.Equals((string)loadedComposedSystem[2]))
                         TargetUMP.SelectedValue = currUMP;
                 }
                 if (Transformation.SelectedValue == null)
+                {
                     loadLinks();
+                }
                 foreach (Link link in xmlreader.linkingList)
                 {
                     foreach (Transformation tmpTrans in link.transformations)
