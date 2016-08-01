@@ -1,6 +1,7 @@
 ﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:metrochart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Composability_Tool_20160301"
@@ -88,24 +89,24 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <DockPanel Grid.Column="0" Grid.Row="0" Margin="20">
+            <DockPanel Grid.Column="0" Grid.Row="0" Margin="10">
                 <TextBlock DockPanel.Dock="Top"  Background="Black" Foreground="White"><Run Text="Comparison 1"/></TextBlock>
                 <ComboBox x:Name="comparisoncomboBox_1" ItemsSource="{Binding composedUMPName}" Grid.Column="1" Margin="0,0,0,0"/>
             </DockPanel>
-            <DockPanel Grid.Column="1" Grid.Row="0" Margin="20">
+            <DockPanel Grid.Column="1" Grid.Row="0" Margin="10">
                 <TextBlock DockPanel.Dock="Top" Background="Black" Foreground="White"><Run Text="Comparison 2"/></TextBlock>
                 <ComboBox x:Name="comparisoncomboBox_2" ItemsSource="{Binding composedUMPName}" Grid.Column="1" Margin="0,0,0,0"/>
             </DockPanel>
-            <DockPanel Grid.Column="2" Grid.Row="0" Margin="20">
+            <DockPanel Grid.Column="2" Grid.Row="0" Margin="10">
                 <TextBlock DockPanel.Dock="Top" Background="Black" Foreground="White"><Run Text="Comparison 3"/></TextBlock>
                 <ComboBox x:Name="comparisoncomboBox_3" ItemsSource="{Binding composedUMPName}" Grid.Column="1" Margin="0,0,0,0"/>
             </DockPanel>
-            <Grid Grid.Row="1" Grid.ColumnSpan="3">
+            <Grid Grid.ColumnSpan="3" Margin="0,73,0,0" Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -186,76 +187,44 @@
                         </chartingToolkit:CategoryAxis>
                     </chartingToolkit:Chart.Axes>                    
                 </chartingToolkit:Chart-->
-                <Rectangle Name="hidingRectangle" Grid.Row="0" Grid.Column ="0" Style="{StaticResource RectangleStyle2}"/>
-                <charting:Chart
-                Grid.Column="0"
-                Grid.Row="0"
-                x:Name="stackedColumnSeries"
-                Title="Stacked Column"
-                    Background="#A7C4C9"
-                    BorderThickness="0"
-                    
-                Margin="10,5,10,5">
-                    <charting:StackedColumnSeries Background="#A7C4C9"  BorderBrush="#A7C4C9" BorderThickness="0">
-                        <charting:SeriesDefinition
-                        ItemsSource="{Binding FirstCollection}" Title="C1"
-                        IndependentValuePath="IndependentValue"
-                        DependentValuePath="DependentValue"/>
-                        <charting:SeriesDefinition
-                        ItemsSource="{Binding SecondCollection}" Title="C2"
-                        IndependentValuePath="IndependentValue"
-                        DependentValuePath="DependentValue"/>
-                        <charting:SeriesDefinition
-                        ItemsSource="{Binding ThirdCollection}" Title="C3"
-                        IndependentValuePath="IndependentValue"
-                        DependentValuePath="DependentValue"/>
-                    </charting:StackedColumnSeries>
-                    <charting:Chart.Axes>
-                        <charting:LinearAxis Orientation="X" ShowGridLines="False" Height="0" Background="#A7C4C9">
-                        </charting:LinearAxis>
-                        <charting:LinearAxis Orientation="Y" ShowGridLines="False" Width="0" Background="#A7C4C9"/>
-                    </charting:Chart.Axes>
-                    <!--charting:Chart.BorderBrush>
-                        <SolidColorBrush Color="#A7C4C9"></SolidColorBrush>
-                    </-->
-                    <!--charting:Chart.Template>
-                        <ControlTemplate TargetType="charting:Chart">
-                            <Border Background="White"
-                            BorderBrush="White"
-                            BorderThickness="0"
-                            Padding="0">
-                            </Border>
-                        </ControlTemplate>
-                    </charting:Chart.Template-->
-                    <!--charting:Stacked100ColumnSeries>
-                        <charting:SeriesDefinition
-                        ItemsSource="{Binding}"
-                        IndependentValuePath="IndependentValue"
-                        DependentValuePath="DependentValueA"
-                        DataPointStyle="{StaticResource DataPointStyleA}"/>
-                        <charting:SeriesDefinition
-                        ItemsSource="{Binding}"
-                        IndependentValuePath="IndependentValue"
-                        DependentValuePath="DependentValueB"
-                        DataPointStyle="{StaticResource DataPointStyleB}"/>
-                        <charting:SeriesDefinition
-                        ItemsSource="{Binding}"
-                        IndependentValuePath="IndependentValue"
-                        DependentValuePath="DependentValueC"
-                        DataPointStyle="{StaticResource DataPointStyleC}"/>
-                    </charting:Stacked100ColumnSeries-->
-                </charting:Chart>
-                <WpfCharts:SpiderChart Name="spiderChart" Title="Spider chart" Grid.Column="1" Grid.Row="0" Height="370"
+                <!--Rectangle Name="hidingRectangle" Grid.Row="0" Grid.Column ="0" Style="{StaticResource RectangleStyle2}"/-->
+                <metrochart:StackedColumnChart Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" Background="White"
+                Style="{StaticResource MinimalChartStyle}"
+                Name="metroChart"
+                ChartTitleVisibility="Collapsed"
+            SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" >   
+                    <!--ChartTitle="Minimal Chart"
+        ChartSubTitle="Chart with fixed width and height"-->
+                    <metrochart:StackedColumnChart.Series>
+                        <metrochart:ChartSeries
+                SeriesTitle="C1"
+                DisplayMember="IndependentValue"
+                ValueMember="DependentValue"
+                ItemsSource="{Binding Path=FirstCollection}" />
+                        <metrochart:ChartSeries
+                SeriesTitle="C2"
+                DisplayMember="IndependentValue"
+                ValueMember="DependentValue"
+                ItemsSource="{Binding Path=SecondCollection}" />
+                        <metrochart:ChartSeries
+                SeriesTitle="C3"
+                DisplayMember="IndependentValue"
+                ValueMember="DependentValue"
+                ItemsSource="{Binding Path=ThirdCollection}" />
+                    </metrochart:StackedColumnChart.Series>
+                </metrochart:StackedColumnChart>
+
+                <WpfCharts:SpiderChart Name="spiderChart" Grid.Column="1" Grid.Row="0" Height="320"
                                Lines="{Binding Lines}" 
-                               Axis="{Binding Axes}" 
-                               Minimum="0" 
+                               Axis="{Binding Axes}"
+                               Minimum="0"
                                Maximum="1"
-                               Ticks="10" 
-                               Margin="10,5,20,5"
+                               Ticks="10"
+                               Margin="10,10,10,10"
                                ShowLegend="True"
+                               
                                FontSize="5"
-                               LegendLocation="BottomRight"
-                               LegendBackgroundColor="#A7C4C9"/>
+                               Foreground="ForestGreen"/>
             </Grid>
         </Grid>
         <StackPanel Grid.Column="2" Grid.Row="2" Margin="10" VerticalAlignment="Top">

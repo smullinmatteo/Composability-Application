@@ -39,7 +39,7 @@ namespace WpfCharts
     {
         static SpiderChart()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof (SpiderChart), new FrameworkPropertyMetadata(typeof (SpiderChart)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(SpiderChart), new FrameworkPropertyMetadata(typeof(SpiderChart)));
         }
 
         #region Axis
@@ -47,7 +47,7 @@ namespace WpfCharts
         /// <summary>
         ///   Axis Dependency Property
         /// </summary>
-        public static readonly DependencyProperty AxisProperty = DependencyProperty.Register("Axis", typeof (IEnumerable), typeof (SpiderChart), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnAxisChanged));
+        public static readonly DependencyProperty AxisProperty = DependencyProperty.Register("Axis", typeof(IEnumerable), typeof(SpiderChart), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnAxisChanged));
 
         /// <summary>
         ///   Gets or sets the Axis property. This dependency property 
@@ -55,7 +55,7 @@ namespace WpfCharts
         /// </summary>
         public IEnumerable Axis
         {
-            get { return (IEnumerable) GetValue(AxisProperty); }
+            get { return (IEnumerable)GetValue(AxisProperty); }
             set { SetValue(AxisProperty, value); }
         }
 
@@ -64,8 +64,8 @@ namespace WpfCharts
         /// </summary>
         private static void OnAxisChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (SpiderChart) d;
-            var oldAxis = (IEnumerable) e.OldValue;
+            var target = (SpiderChart)d;
+            var oldAxis = (IEnumerable)e.OldValue;
             var newAxis = target.Axis;
             target.OnAxisChanged(oldAxis, newAxis);
         }
@@ -122,8 +122,8 @@ namespace WpfCharts
         /// <summary>
         ///   Minimum Dependency Property
         /// </summary>
-        public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof (double), 
-            typeof (SpiderChart), new FrameworkPropertyMetadata(0.4, OnMinimumChanged, CoerceMinimum));
+        public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double),
+            typeof(SpiderChart), new FrameworkPropertyMetadata(0.4, OnMinimumChanged, CoerceMinimum));
 
         /// <summary>
         ///   Gets or sets the Minimum property. This dependency property 
@@ -131,7 +131,7 @@ namespace WpfCharts
         /// </summary>
         public double Minimum
         {
-            get { return (double) GetValue(MinimumProperty); }
+            get { return (double)GetValue(MinimumProperty); }
             set { SetValue(MinimumProperty, value); }
         }
 
@@ -140,8 +140,8 @@ namespace WpfCharts
         /// </summary>
         private static void OnMinimumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var target = (SpiderChart) d;
-            var oldMinimum = (double) e.OldValue;
+            var target = (SpiderChart)d;
+            var oldMinimum = (double)e.OldValue;
             var newMinimum = target.Minimum;
             target.OnMinimumChanged(oldMinimum, newMinimum);
         }
@@ -158,8 +158,8 @@ namespace WpfCharts
         /// </summary>
         private static object CoerceMinimum(DependencyObject d, object value)
         {
-            var target = (SpiderChart) d;
-            var desiredMinimum = (double) value;
+            var target = (SpiderChart)d;
+            var desiredMinimum = (double)value;
 
             return Math.Min(desiredMinimum, target.Maximum);
         }
@@ -290,15 +290,26 @@ namespace WpfCharts
         /// </summary>
         public static readonly DependencyProperty LegendBackgroundColorProperty =
             DependencyProperty.Register("LegendBackgroundColor", typeof(Color), typeof(SpiderChart),
-                new FrameworkPropertyMetadata((Color)Colors.Wheat, OnLegendBackgroundColorChanged));
+                new FrameworkPropertyMetadata((Color)Colors.White, OnLegendBackgroundColorChanged));
 
+
+        public static readonly DependencyProperty AxisTextColorProperty =
+            DependencyProperty.Register("AxisTextColor", typeof(Color), typeof(SpiderChart),
+                new FrameworkPropertyMetadata((Color)Colors.Red, OnAxisTextColorChanged));
         /// <summary>
         /// Gets or sets the LegendBackgroundColor property. \
         /// </summary>
+
         public Color LegendBackgroundColor
         {
             get { return (Color)GetValue(LegendBackgroundColorProperty); }
             set { SetValue(LegendBackgroundColorProperty, value); }
+        }
+
+        public Color AxisLabelColor
+        {
+            get { return (Color)GetValue(AxisTextColorProperty); }
+            set { SetValue(AxisTextColorProperty, value); }
         }
 
         /// <summary>
@@ -312,6 +323,14 @@ namespace WpfCharts
             target.OnLegendBackgroundColorChanged(oldLegendBackgroundColor, newLegendBackgroundColor);
         }
 
+        // handles changes to the AxisTextColorProperty.
+        private static void OnAxisTextColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var target = (SpiderChart)d;
+            var oldLegendBackgroundColor = (Color)e.OldValue;
+            var newLegendBackgroundColor = target.LegendBackgroundColor;
+            target.OnLegendBackgroundColorChanged(oldLegendBackgroundColor, newLegendBackgroundColor);
+        }
         /// <summary>
         /// LegendBackgroundColor Dependency Property
         /// </summary>

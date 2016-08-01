@@ -64,6 +64,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Visual Studio 2015\Projects\Composability Tool_20160301\Composability Tool_20160301\Composability Tool_20160301\Library\ComposibilityMatlabTool.dll</HintPath>
     </Reference>
+    <Reference Include="De.TorstenMandelkow.MetroChart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d5b8d1bbc99c4a2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\De.TorstenMandelkow.MetroChart.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNet.Highcharts, Version=4.0.0.0, Culture=neutral, PublicKeyToken=88854f873df851bf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\DotNet.Highcharts.dll</HintPath>
+    </Reference>
     <Reference Include="MWArray, Version=2.16.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files\MATLAB\R2016a\toolbox\dotnetbuilder\bin\win64\v2.0\MWArray.dll</HintPath>
@@ -128,9 +136,6 @@
     </Compile>
     <Compile Include="Comparison.xaml.cs" />
     <Compile Include="Integer.cs" />
-    <Compile Include="Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ProgressBarInderminate.xaml.cs">
       <DependentUpon>ProgressBarInderminate.xaml</DependentUpon>
     </Compile>
@@ -202,10 +207,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Page1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ProcessSelection.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -290,6 +291,8 @@
     <Resource Include="Images\forge.jpg" />
     <Resource Include="Images\lathe.jpg" />
     <Content Include="Library\ComposibilityMatlabTool.dll" />
+    <Content Include="Library\De.TorstenMandelkow.MetroChart.dll" />
+    <Content Include="Library\DotNet.Highcharts.dll" />
     <Content Include="Library\EngMATLib.dll" />
     <Content Include="Library\System.Windows.Controls.DataVisualization.Toolkit.dll" />
     <Content Include="Library\System.Windows.Controls.DataVisualization.Toolkit.pdb" />

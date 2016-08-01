@@ -35,7 +35,24 @@ namespace Composability_Tool_20160301
         public ObservableCollection<double> DependentValueB { get; set; }
         public ObservableCollection<double> DependentValueC { get; set; }
         public ObservableCollection<string> IndependentValue { get; set; }
+        public ObservableCollection<SimpleDataValue> FirstCollection { get; set; }
+        public ObservableCollection<SimpleDataValue> SecondCollection { get; set; }
+        public ObservableCollection<SimpleDataValue> ThirdCollection { get; set; }
         public string[] Axes { get; set; }
+
+        private object selectedItem = null;
+        public object SelectedItem
+        {
+            get
+            {
+                return selectedItem;
+            }
+            set
+            {
+                // selected item has changed
+                selectedItem = value;
+            }
+        }
         public Comparison()
         {
             InitializeComponent();
@@ -133,10 +150,10 @@ namespace Composability_Tool_20160301
             if (count < 2)
                 MessageBox.Show("Please choose at least two Composed Systems for comparison.");
             else {
-                loadStackedColumnData(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
+                loadStackedColumnData2(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
                 loadSpiderChart(umpSustainabilityMetrics1, umpSustainabilityMetrics2, umpSustainabilityMetrics3);
             }
-            hidingRectangle.Visibility = Visibility.Hidden;
+            //hidingRectangle.Visibility = Visibility.Hidden;
         }
         
         private Dictionary<string, double> sumupSustainabilityMetrics(Dictionary<string, Dictionary<string, double>> umpSustainabilityMetrics)
@@ -202,6 +219,54 @@ namespace Composability_Tool_20160301
             return result;
         }*/
 
+       private void loadStackedColumnData2(Dictionary<string, double> umpSustainabilityMetrics1, Dictionary<string, double> umpSustainabilityMetrics2, Dictionary<string, double> umpSustainabilityMetrics3)
+        {
+            FirstCollection = new ObservableCollection<SimpleDataValue>();
+            SecondCollection = new ObservableCollection<SimpleDataValue>();
+            ThirdCollection = new ObservableCollection<SimpleDataValue>();
+            Dictionary<string, double> sustMetrics = umpSustainabilityMetrics1;
+            int baselineInd = 1;
+            if (umpSustainabilityMetrics1 == null)
+            {
+                if (umpSustainabilityMetrics2 != null)
+                {
+                    sustMetrics = umpSustainabilityMetrics2;
+                    baselineInd = 2;
+                }
+                else if (umpSustainabilityMetrics3 != null)
+                {
+                    sustMetrics = umpSustainabilityMetrics3;
+                    baselineInd = 3;
+                }
+            }
+
+            foreach (string metric in sustMetrics.Keys)
+            {
+                if (umpSustainabilityMetrics1 != null)//baselineInd = 1;
+                    FirstCollection.Add(new SimpleDataValue(metric, 1));
+                if (umpSustainabilityMetrics2 != null)
+                {
+                    if (baselineInd == 1)
+                        SecondCollection.Add(new SimpleDataValue(metric, double.Parse(string.Format("{0:0.00}", umpSustainabilityMetrics2[metric] / ((umpSustainabilityMetrics1[metric] == 0) ? 1 : umpSustainabilityMetrics1[metric])))));
+                    else//baselineInd = 2
+                        SecondCollection.Add(new SimpleDataValue(metric, 1));
+
+                }
+                if (umpSustainabilityMetrics3 != null)
+                {
+                    if (baselineInd == 1)
+                        ThirdCollection.Add(new SimpleDataValue(metric, double.Parse(string.Format("{0:0.00}", umpSustainabilityMetrics3[metric] / ((umpSustainabilityMetrics1[metric] == 0) ? 1 : umpSustainabilityMetrics1[metric])))));
+                    else if (baselineInd == 2)
+                        ThirdCollection.Add(new SimpleDataValue(metric, double.Parse(string.Format("{0:0.00}", umpSustainabilityMetrics3[metric] / ((umpSustainabilityMetrics2[metric] == 0) ? 1 : umpSustainabilityMetrics2[metric])))));
+                    else
+                        ThirdCollection.Add(new SimpleDataValue(metric, double.Parse(string.Format("{0:0.00}", umpSustainabilityMetrics3[metric]))));
+                }
+
+            }
+            metroChart.DataContext = null;
+            metroChart.DataContext = this;
+        }
+        
         private void loadStackedColumnData(Dictionary<string, double> umpSustainabilityMetrics1, Dictionary<string, double> umpSustainabilityMetrics2, Dictionary<string, double> umpSustainabilityMetrics3)
         {
             IndependentValue = new ObservableCollection<string>() { "C1", "C2", "C3" };
@@ -230,7 +295,7 @@ namespace Composability_Tool_20160301
                 if(umpSustainabilityMetrics2 != null)
                 {
                     if (baselineInd == 1)
-                        SecondCollection.Add(new SimpleDataValue("C2", umpSustainabilityMetrics2[metric] / ((umpSustainabilityMetrics1[metric] == 0) ? 1 : umpSustainabilityMetrics1[metric])));
+                        SecondCollection.Add(new SimpleDataValue("C2", double.Parse(string.Format("{0:0.00}", (umpSustainabilityMetrics2[metric] / ((umpSustainabilityMetrics1[metric] == 0) ? 1 : umpSustainabilityMetrics1[metric]))))));
                     else//baselineInd = 2
                         SecondCollection.Add(new SimpleDataValue("C2", 1));
 
@@ -238,11 +303,11 @@ namespace Composability_Tool_20160301
                 if(umpSustainabilityMetrics3 != null)
                 {
                     if (baselineInd == 1)
-                        ThirdCollection.Add(new SimpleDataValue("C3", umpSustainabilityMetrics3[metric] / ((umpSustainabilityMetrics1[metric] == 0) ? 1 : umpSustainabilityMetrics1[metric])));
+                        ThirdCollection.Add(new SimpleDataValue("C3", double.Parse(string.Format("{0:0.00}", umpSustainabilityMetrics3[metric] / ((umpSustainabilityMetrics1[metric] == 0) ? 1 : umpSustainabilityMetrics1[metric])))));
                     else if (baselineInd == 2)
-                        SecondCollection.Add(new SimpleDataValue("C3", umpSustainabilityMetrics3[metric] / ((umpSustainabilityMetrics2[metric] == 0) ? 1 : umpSustainabilityMetrics2[metric])));
+                        SecondCollection.Add(new SimpleDataValue("C3", double.Parse(string.Format("{0:0.00}", umpSustainabilityMetrics3[metric] / ((umpSustainabilityMetrics2[metric] == 0) ? 1 : umpSustainabilityMetrics2[metric])))));
                     else
-                        ThirdCollection.Add(new SimpleDataValue("C3", umpSustainabilityMetrics3[metric]));
+                        ThirdCollection.Add(new SimpleDataValue("C3", double.Parse(string.Format("{0:0.00}", umpSustainabilityMetrics3[metric]))));
                 }
             }
             /*if (umpSustainabilityMetrics2 != null)
@@ -255,8 +320,8 @@ namespace Composability_Tool_20160301
                 foreach (string metric in umpSustainabilityMetrics3.Keys)
                     ThirdCollection.Add(new SimpleDataValue("C3", umpSustainabilityMetrics3[metric]));
             }*/
-            stackedColumnSeries.DataContext = null;
-            stackedColumnSeries.DataContext = new ChartModel(FirstCollection, SecondCollection, ThirdCollection);
+            //stackedColumnSeries.DataContext = null;
+            //stackedColumnSeries.DataContext = new ChartModel(FirstCollection, SecondCollection, ThirdCollection);
             //StackedColumnSeries.DataContext = this;
 
             /*this.StackedColumnSeries.DataContext = new ChartModel
@@ -278,7 +343,7 @@ namespace Composability_Tool_20160301
             }
             barChart.DataContext = null;*/
         }
-
+        
         public void loadSpiderChart(Dictionary<string, double> umpSustainabilityMetrics1, Dictionary<string, double> umpSustainabilityMetrics2, Dictionary<string, double> umpSustainabilityMetrics3)
         {
             
@@ -299,7 +364,9 @@ namespace Composability_Tool_20160301
             var ptsC = new List<double>(Axes.Length);
             foreach (string metric in sustMetrics.Keys)
             {
-                Axes[ind] = metric.Replace("Average", "Avg"); ind++;
+                //Axes[ind] = metric.PadLeft(50);
+                Axes[ind] = metric.Replace("Average", "Avg"); ind++;              
+
                 double minValue = 0, maxValue = 0;
                 minValue = Math.Min((umpSustainabilityMetrics1==null)? double.MaxValue : umpSustainabilityMetrics1[metric], (umpSustainabilityMetrics2 == null) ? double.MaxValue : umpSustainabilityMetrics2[metric]);
                 minValue = Math.Min(minValue, (umpSustainabilityMetrics3 == null) ? double.MaxValue : umpSustainabilityMetrics3[metric]);
@@ -351,20 +418,20 @@ namespace Composability_Tool_20160301
         }
         private void Export_Click(object sender, RoutedEventArgs e)
         {
-            if (stackedColumnSeries.DataContext == null)
+            if (metroChart.DataContext == null)
             {
                 MessageBox.Show("there is nothing to export");
             }
             else
             {
-                Rect bounds = VisualTreeHelper.GetDescendantBounds(stackedColumnSeries);
+                Rect bounds = VisualTreeHelper.GetDescendantBounds(metroChart);
                 RenderTargetBitmap renderBitmap = new RenderTargetBitmap((int)bounds.Width, (int)bounds.Height, 96, 96, PixelFormats.Pbgra32);
 
                 DrawingVisual isolatedVisual = new DrawingVisual();
                 using (DrawingContext drawing = isolatedVisual.RenderOpen())
                 {
                     //drawing.DrawRectangle(Brushes.Turquoise, null, new Rect(new Point(), bounds.Size)); // Optional Background
-                    drawing.DrawRectangle(new VisualBrush(stackedColumnSeries), null, new Rect(new Point(), bounds.Size));
+                    drawing.DrawRectangle(new VisualBrush(metroChart), null, new Rect(new Point(), bounds.Size));
                 }
 
                 renderBitmap.Render(isolatedVisual);
@@ -434,5 +501,11 @@ namespace Composability_Tool_20160301
             SecondCollection = _B;
             ThirdCollection = _C;
         }
+    }
+    public class TestClass
+    {
+        public string Category { get; set; }
+
+        public int Number { get; set; }
     }
 }

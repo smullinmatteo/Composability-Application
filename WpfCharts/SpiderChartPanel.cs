@@ -191,6 +191,58 @@ namespace WpfCharts
         }
 
         #endregion
+        /*#region Axis
+
+        /// <summary>
+        /// Lines Dependency Property (acts as a kind of ItemsSource, triggering a redraw when the collection is changed)
+        /// </summary>
+        public static readonly DependencyProperty AxisProperty =
+            DependencyProperty.Register("Axis", typeof(SpiderChartPanel), new FrameworkPropertyMetadata(null, OnAxisChanged));
+
+        /// <summary>
+        /// Gets or sets the Axis property.
+        /// </summary>
+        public IEnumerable<ChartLine> Axis
+        {
+            get { return (IEnumerable<ChartLine>)GetValue(AxisProperty); }
+            set { SetValue(AxisProperty, value); }
+        }
+
+        /// <summary>
+        /// Handles changes to the Lines property.
+        /// </summary>
+        private static void OnAxisChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var target = (SpiderChartPanel)d;
+            var oldLines = (IEnumerable<ChartAxis>)e.OldValue;
+            var newLines = target.Axis;
+
+            // Remove handler
+            var oldValueINotifyCollectionChanged = (e.OldValue as IEnumerable) as INotifyCollectionChanged;
+            if (oldValueINotifyCollectionChanged != null)
+                oldValueINotifyCollectionChanged.CollectionChanged -= target.AxisCollectionChanged;
+
+            // Add handler in case the Lines collection implements INotifyCollectionChanged
+            var newValueINotifyCollectionChanged = (e.NewValue as IEnumerable) as INotifyCollectionChanged;
+            if (newValueINotifyCollectionChanged != null)
+                newValueINotifyCollectionChanged.CollectionChanged += target.AxisCollectionChanged;
+
+            target.OnLinesChanged(oldAxis, newAxis);
+        }
+
+        private void AxisCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            InvalidateVisual();
+        }
+
+        /// <summary>
+        /// Provides derived classes an opportunity to handle changes to the Lines property.
+        /// </summary>
+        protected virtual void OnxisChanged(IEnumerable<ChartLine> oldAxis, IEnumerable<ChartLine> newAxis)
+        {
+        }
+
+        #endregion*/
 
         protected override void OnRender(DrawingContext dc)
         {

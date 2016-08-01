@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ComposibilityToolProject
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for AddComposedSystem.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class AddComposedSystem : Window
     {
-        public Page1()
+        public AddComposedSystem()
         {
             InitializeComponent();
         }

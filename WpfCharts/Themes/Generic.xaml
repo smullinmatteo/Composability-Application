@@ -4,7 +4,7 @@
     xmlns:local="clr-namespace:WpfCharts"
     xmlns:Converters="clr-namespace:WpfCharts.Converters">
     <Style TargetType="{x:Type local:SpiderChart}">
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="White" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:SpiderChart}">
